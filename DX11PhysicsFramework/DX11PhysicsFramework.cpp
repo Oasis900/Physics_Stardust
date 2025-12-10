@@ -59,22 +59,22 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 
 	hr = CreateWindowHandle(hInstance, nShowCmd);
 	if (FAILED(hr)) return E_FAIL;
-
+	//--------------------------------------------------//
 	hr = CreateD3DDevice();
 	if (FAILED(hr)) return E_FAIL;
-
+	//--------------------------------------------------//
 	hr = CreateSwapChainAndFrameBuffer();
 	if (FAILED(hr)) return E_FAIL;
-
+	//--------------------------------------------------//
 	hr = InitShadersAndInputLayout();
 	if (FAILED(hr)) return E_FAIL;
-
+	//--------------------------------------------------//
 	hr = InitVertexIndexBuffers();
 	if (FAILED(hr)) return E_FAIL;
-
+	//--------------------------------------------------//
 	hr = InitPipelineStates();
 	if (FAILED(hr)) return E_FAIL;
-
+	//--------------------------------------------------//
 	hr = InitRunTimeData();
 	if (FAILED(hr)) return E_FAIL;
 
@@ -83,8 +83,8 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 
 HRESULT DX11PhysicsFramework::CreateWindowHandle(HINSTANCE hInstance, int nCmdShow)
 {
-	const wchar_t* windowName = L"DX11Framework";
-
+	const wchar_t* windowName = L"DX11 Physics Stardust";
+	//--------------------------------------------------//
 	WNDCLASSW wndClass;
 	wndClass.style = 0;
 	wndClass.lpfnWndProc = WndProc;
@@ -96,9 +96,9 @@ HRESULT DX11PhysicsFramework::CreateWindowHandle(HINSTANCE hInstance, int nCmdSh
 	wndClass.hbrBackground = 0;
 	wndClass.lpszMenuName = 0;
 	wndClass.lpszClassName = windowName;
-
+	//--------------------------------------------------//
 	RegisterClassW(&wndClass);
-
+	//--------------------------------------------------//
 	_windowHandle = CreateWindowExW(0, windowName, windowName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, _WindowWidth, _WindowHeight, nullptr, nullptr, hInstance, nullptr);
 
 	return S_OK;
@@ -107,15 +107,15 @@ HRESULT DX11PhysicsFramework::CreateWindowHandle(HINSTANCE hInstance, int nCmdSh
 HRESULT DX11PhysicsFramework::CreateD3DDevice()
 {
 	HRESULT hr = S_OK;
-
+	//--------------------------------------------------//
 	D3D_FEATURE_LEVEL featureLevels[] = {
 		D3D_FEATURE_LEVEL_11_1, D3D_FEATURE_LEVEL_11_0,
 		D3D_FEATURE_LEVEL_10_1, D3D_FEATURE_LEVEL_10_0,
 	};
-
+	//--------------------------------------------------//
 	ID3D11Device* baseDevice;
 	ID3D11DeviceContext* baseDeviceContext;
-
+	//--------------------------------------------------//
 	DWORD createDeviceFlags = 0;
 #ifdef _DEBUG
 	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
@@ -147,7 +147,7 @@ HRESULT DX11PhysicsFramework::CreateD3DDevice()
 HRESULT DX11PhysicsFramework::CreateSwapChainAndFrameBuffer()
 {
 	HRESULT hr = S_OK;
-
+	//--------------------------------------------------//
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc;
 	swapChainDesc.Width = 0; // Defer to WindowWidth
 	swapChainDesc.Height = 0; // Defer to WindowHeight
@@ -161,43 +161,42 @@ HRESULT DX11PhysicsFramework::CreateSwapChainAndFrameBuffer()
 	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL;
 	swapChainDesc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
 	swapChainDesc.Flags = 0;
-
+	//--------------------------------------------------//
 	hr = _dxgiFactory->CreateSwapChainForHwnd(_device, _windowHandle, &swapChainDesc, nullptr, nullptr, &_swapChain);
 	if (FAILED(hr)) return hr;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	ID3D11Texture2D* frameBuffer = nullptr;
-
+	//--------------------------------------------------//
 	hr = _swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&frameBuffer));
 	if (FAILED(hr)) return hr;
-
+	//--------------------------------------------------//
 	D3D11_RENDER_TARGET_VIEW_DESC framebufferDesc = {};
 	framebufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB; //sRGB render target enables hardware gamma correction
 	framebufferDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
-
+	//--------------------------------------------------//
 	hr = _device->CreateRenderTargetView(frameBuffer, &framebufferDesc, &_frameBufferView);
-
+	//--------------------------------------------------//
 	frameBuffer->Release();
-
+	//--------------------------------------------------//
 	D3D11_TEXTURE2D_DESC depthBufferDesc;
 	frameBuffer->GetDesc(&depthBufferDesc); // copy from framebuffer properties
-
+	//--------------------------------------------------//
 	depthBufferDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
 	depthBufferDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-
+	//--------------------------------------------------//
 	_device->CreateTexture2D(&depthBufferDesc, nullptr, &_depthStencilBuffer);
 	_device->CreateDepthStencilView(_depthStencilBuffer, nullptr, &_depthBufferView);
-
+	//--------------------------------------------------//
 	return hr;
 }
 
 HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 {
-
 	HRESULT hr = S_OK;
 	ID3DBlob* errorBlob;
-
+	//--------------------------------------------------//
 	DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
 #ifdef _DEBUG
 	// Set the D3DCOMPILE_DEBUG flag to embed debug information in the shaders.
@@ -207,9 +206,8 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 	dwShaderFlags |= D3DCOMPILE_DEBUG;
 #endif
 
+	#pragma region Compile & Create Vertex Shader
 	ID3DBlob* vsBlob;
-
-    // Compile the vertex shader
     hr = D3DCompileFromFile(L"Shaders/SimpleShaders.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "VS_main", "vs_5_0", dwShaderFlags, 0, &vsBlob, &errorBlob);
 	if (FAILED(hr))
 	{
@@ -217,17 +215,16 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 		errorBlob->Release();
 		return hr;
 	}
-
-	// Create the vertex shader
+	//--------------------------------------------------//
 	hr = _device->CreateVertexShader(vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), nullptr, &_vertexShader);
-
 	if (FAILED(hr))
 	{	
 		vsBlob->Release();
         return hr;
 	}
+	#pragma endregion
 
-	// Compile the pixel shader
+	#pragma region Compile & Create Pixel Shader
 	ID3DBlob* psBlob;
 	hr = D3DCompileFromFile(L"Shaders/SimpleShaders.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PS_main", "ps_5_0", dwShaderFlags, 0, &psBlob, &errorBlob);
 	if (FAILED(hr))
@@ -240,10 +237,10 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 	// Create the pixel shader
 	hr = _device->CreatePixelShader(psBlob->GetBufferPointer(), psBlob->GetBufferSize(), nullptr, &_pixelShader);
 
-    if (FAILED(hr))
-        return hr;
+    if (FAILED(hr)) return hr;
+	#pragma endregion
 	
-    // Define the input layout
+    #pragma region Define & Create Input Layout
     D3D11_INPUT_ELEMENT_DESC inputElementDesc[] =
     {
         { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
@@ -253,6 +250,7 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 
     // Create the input layout
 	hr = _device->CreateInputLayout(inputElementDesc, ARRAYSIZE(inputElementDesc), vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), &_inputLayout);
+	#pragma endregion
 	
 	vsBlob->Release();
 	psBlob->Release();
@@ -263,8 +261,7 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 
 HRESULT DX11PhysicsFramework::InitVertexIndexBuffers()
 {
-	HRESULT hr;
-
+	#pragma region Create & Bind Cube VB
     // Create vertex buffer
     SimpleVertex vertices[] =
     {
@@ -310,11 +307,11 @@ HRESULT DX11PhysicsFramework::InitVertexIndexBuffers()
 	ZeroMemory(&InitData, sizeof(InitData));
     InitData.pSysMem = vertices;
 
-    hr = _device->CreateBuffer(&bd, &InitData, &_cubeVertexBuffer);
+    HRESULT hr = _device->CreateBuffer(&bd, &InitData, &_cubeVertexBuffer);
+    if (FAILED(hr)) return hr;
+	#pragma endregion
 
-    if (FAILED(hr))
-        return hr;
-
+	#pragma region Create & Bind Cube IB
 	// Create index buffer
 	WORD indices[] =
 	{
@@ -347,10 +344,10 @@ HRESULT DX11PhysicsFramework::InitVertexIndexBuffers()
 	ZeroMemory(&InitData, sizeof(InitData));
 	InitData.pSysMem = indices;
 	hr = _device->CreateBuffer(&bd, &InitData, &_cubeIndexBuffer);
+	if (FAILED(hr)) return hr;
+	#pragma endregion
 
-	if (FAILED(hr))
-		return hr;
-
+	#pragma region Create & Bind Plane VB
 	// Create vertex buffer
 	SimpleVertex planeVertices[] =
 	{
@@ -371,9 +368,10 @@ HRESULT DX11PhysicsFramework::InitVertexIndexBuffers()
 
 	hr = _device->CreateBuffer(&bd, &InitData, &_planeVertexBuffer);
 
-	if (FAILED(hr))
-		return hr;
+	if (FAILED(hr)) return hr;
+	#pragma endregion
 
+	#pragma region Create & Bind Plane IB
 	// Create plane index buffer
 	WORD planeIndices[] =
 	{
@@ -391,8 +389,8 @@ HRESULT DX11PhysicsFramework::InitVertexIndexBuffers()
 	InitData.pSysMem = planeIndices;
 	hr = _device->CreateBuffer(&bd, &InitData, &_planeIndexBuffer);
 
-	if (FAILED(hr))
-		return hr;
+	if (FAILED(hr)) return hr;
+	#pragma endregion
 
 	return S_OK;
 }
@@ -400,17 +398,16 @@ HRESULT DX11PhysicsFramework::InitVertexIndexBuffers()
 
 HRESULT DX11PhysicsFramework::InitPipelineStates()
 {
-	HRESULT hr = S_OK;
-
 	_immediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	_immediateContext->IASetInputLayout(_inputLayout);
 
+	#pragma region Create & Bind Rasterizer States
 	// Rasterizer
 	D3D11_RASTERIZER_DESC cmdesc;
 	ZeroMemory(&cmdesc, sizeof(D3D11_RASTERIZER_DESC));
 	cmdesc.FillMode = D3D11_FILL_SOLID;
 	cmdesc.CullMode = D3D11_CULL_NONE;
-	hr = _device->CreateRasterizerState(&cmdesc, &_RSCullNone);
+	HRESULT hr = _device->CreateRasterizerState(&cmdesc, &_RSCullNone);
 
 	ZeroMemory(&cmdesc, sizeof(D3D11_RASTERIZER_DESC));
 	cmdesc.FillMode = D3D11_FILL_SOLID;
@@ -422,7 +419,9 @@ HRESULT DX11PhysicsFramework::InitPipelineStates()
 	hr = _device->CreateRasterizerState(&cmdesc, &_CWcullMode);
 
 	_immediateContext->RSSetState(_CWcullMode);
+	#pragma endregion
 
+	#pragma region Create & Bind Depth Stencil + Sampler
 	D3D11_DEPTH_STENCIL_DESC dssDesc;
 	ZeroMemory(&dssDesc, sizeof(D3D11_DEPTH_STENCIL_DESC));
 	dssDesc.DepthEnable = true;
@@ -443,6 +442,7 @@ HRESULT DX11PhysicsFramework::InitPipelineStates()
 
 	hr = _device->CreateSamplerState(&bilinearSamplerdesc, &_samplerLinear);
 	if (FAILED(hr)) return hr;
+	#pragma endregion
 
     return S_OK;
 }
@@ -514,18 +514,18 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	noSpecMaterial.specular = XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
 
 	GameObject* gameObject = new GameObject("Floor", planeGeometry, noSpecMaterial);
-	gameObject->SetPosition(0.0f, 0.0f, 0.0f);
+	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	gameObject->SetScale(15.0f, 15.0f, 15.0f);
 	gameObject->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
 	gameObject->SetTextureRV(_GroundTextureRV);
 
 	_gameObjects.push_back(gameObject);
 
-	for (auto i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		gameObject = new GameObject("Cube " + i, cubeGeometry, shinyMaterial);
 		gameObject->SetScale(1.0f, 1.0f, 1.0f);
-		gameObject->SetPosition(-2.0f + (i * 2.5f), 1.0f, 10.0f);
+		gameObject->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 2.5f), 1.0f, 10.0f);
 		gameObject->SetTextureRV(_StoneTextureRV);
 
 		_gameObjects.push_back(gameObject);
@@ -533,7 +533,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	gameObject = new GameObject("Donut", herculesGeometry, shinyMaterial);
 	gameObject->SetScale(1.0f, 1.0f, 1.0f);
-	gameObject->SetPosition(-5.0f, 0.5f, 10.0f);
+	gameObject->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
 	gameObject->SetTextureRV(_StoneTextureRV);
 	_gameObjects.push_back(gameObject);
 
@@ -603,19 +603,19 @@ void DX11PhysicsFramework::Update()
 	// Move gameobjects
 	if (GetAsyncKeyState('1'))
 	{
-		_gameObjects[1]->Move(XMFLOAT3(0, 0, -0.02f));
+		_gameObjects.at(1)->GetTransform()->SetPosition(0, 0, -0.02f);
 	}
 	if (GetAsyncKeyState('2'))
 	{
-		_gameObjects[1]->Move(XMFLOAT3(0, 0, 0.02f));
+		_gameObjects.at(1)->GetTransform()->SetPosition(0, 0, 0.02f);
 	}
 	if (GetAsyncKeyState('3'))
 	{
-		_gameObjects[2]->Move(XMFLOAT3(0, 0, -0.02f));
+		_gameObjects.at(2)->GetTransform()->SetPosition(0, 0, -0.02f);
 	}
 	if (GetAsyncKeyState('4'))
 	{
-		_gameObjects[2]->Move(XMFLOAT3(0, 0, 0.02f));
+		_gameObjects.at(2)->GetTransform()->SetPosition(0, 0, 0.02f);
 	}
 	// Update camera
 	float angleAroundZ = XMConvertToRadians(_cameraOrbitAngleXZ);
