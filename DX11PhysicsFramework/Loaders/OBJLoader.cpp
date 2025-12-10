@@ -45,9 +45,9 @@ void OBJLoader::CreateIndices(const std::vector<XMFLOAT3>& inVertices,
 		}
 		else //if not found, add it to the buffer
 		{
-			outVertices.push_back(vertex.Pos);
-			outTexCoords.push_back(vertex.TexC);
-			outNormals.push_back(vertex.Normal);
+			outVertices.push_back(vertex.pos);
+			outTexCoords.push_back(vertex.tex_coord);
+			outNormals.push_back(vertex.normal);
 			
 			unsigned short newIndex = (unsigned short)outVertices.size() - 1;
 			
@@ -198,9 +198,9 @@ MeshData OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, bool invertT
 			unsigned int numMeshVertices = meshVertices.size();
 			for(unsigned int i = 0; i < numMeshVertices; ++i)
 			{
-				finalVerts[i].Pos = meshVertices[i];
-				finalVerts[i].Normal = meshNormals[i];
-				finalVerts[i].TexC = meshTexCoords[i];
+				finalVerts[i].pos = meshVertices[i];
+				finalVerts[i].normal = meshNormals[i];
+				finalVerts[i].tex_coord = meshTexCoords[i];
 			}
 
 			//Put data into vertex and index buffers, then pass the relevant data to the MeshData object.
@@ -220,9 +220,9 @@ MeshData OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, bool invertT
 
 			_pd3dDevice->CreateBuffer(&bd, &InitData, &vertexBuffer);
 
-			meshData.VertexBuffer = vertexBuffer;
-			meshData.VBOffset = 0;
-			meshData.VBStride = sizeof(SimpleVertex);
+			meshData.vertex_buffer = vertexBuffer;
+			meshData.vb_offset = 0;
+			meshData.vb_stride = sizeof(SimpleVertex);
 
 			unsigned short* indicesArray = new unsigned short[meshIndices.size()];
 			unsigned int numMeshIndices = meshIndices.size();
@@ -251,8 +251,8 @@ MeshData OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, bool invertT
 			InitData.pSysMem = indicesArray;
 			_pd3dDevice->CreateBuffer(&bd, &InitData, &indexBuffer);
 
-			meshData.IndexCount = meshIndices.size();
-			meshData.IndexBuffer = indexBuffer;
+			meshData.index_count = meshIndices.size();
+			meshData.index_buffer = indexBuffer;
 
 			//This data has now been sent over to the GPU so we can delete this CPU-side stuff
 			delete [] indicesArray;
@@ -294,9 +294,9 @@ MeshData OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, bool invertT
 
 		_pd3dDevice->CreateBuffer(&bd, &InitData, &vertexBuffer);
 
-		meshData.VertexBuffer = vertexBuffer;
-		meshData.VBOffset = 0;
-		meshData.VBStride = sizeof(SimpleVertex);
+		meshData.vertex_buffer = vertexBuffer;
+		meshData.vb_offset = 0;
+		meshData.vb_stride = sizeof(SimpleVertex);
 
 		ID3D11Buffer* indexBuffer;
 
@@ -310,8 +310,8 @@ MeshData OBJLoader::Load(char* filename, ID3D11Device* _pd3dDevice, bool invertT
 		InitData.pSysMem = indices;
 		_pd3dDevice->CreateBuffer(&bd, &InitData, &indexBuffer);
 
-		meshData.IndexCount = numIndices;
-		meshData.IndexBuffer = indexBuffer;
+		meshData.index_count = numIndices;
+		meshData.index_buffer = indexBuffer;
 
 		//This data has now been sent over to the GPU so we can delete this CPU-side stuff
 		delete [] indices;

@@ -5,12 +5,17 @@
 #include <fstream>		//For loading in an external file
 #include <vector>		//For storing the XMFLOAT3/2 variables
 #include <map>			//For fast searching when re-creating the index buffer
+#include "../Structures/Structures.h"
+#include "../Structures/SimpleVertex.h"
 
-#include "Structures.h"
-
-using namespace DirectX;
-
-//
+struct MeshData
+{
+	ID3D11Buffer* vertex_buffer;
+	ID3D11Buffer* index_buffer;
+	UINT vb_stride;
+	UINT vb_offset;
+	UINT index_count;
+};
 
 namespace OBJLoader
 {

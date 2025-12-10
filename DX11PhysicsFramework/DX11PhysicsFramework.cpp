@@ -210,7 +210,7 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 	ID3DBlob* vsBlob;
 
     // Compile the vertex shader
-    hr = D3DCompileFromFile(L"SimpleShaders.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "VS_main", "vs_5_0", dwShaderFlags, 0, &vsBlob, &errorBlob);
+    hr = D3DCompileFromFile(L"Shaders/SimpleShaders.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "VS_main", "vs_5_0", dwShaderFlags, 0, &vsBlob, &errorBlob);
 	if (FAILED(hr))
 	{
 		MessageBoxA(_windowHandle, (char*)errorBlob->GetBufferPointer(), nullptr, ERROR);
@@ -229,7 +229,7 @@ HRESULT DX11PhysicsFramework::InitShadersAndInputLayout()
 
 	// Compile the pixel shader
 	ID3DBlob* psBlob;
-	hr = D3DCompileFromFile(L"SimpleShaders.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PS_main", "ps_5_0", dwShaderFlags, 0, &psBlob, &errorBlob);
+	hr = D3DCompileFromFile(L"Shaders/SimpleShaders.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PS_main", "ps_5_0", dwShaderFlags, 0, &psBlob, &errorBlob);
 	if (FAILED(hr))
 	{
 		MessageBoxA(_windowHandle, (char*)errorBlob->GetBufferPointer(), nullptr, ERROR);
@@ -463,8 +463,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	hr = _device->CreateBuffer(&constantBufferDesc, nullptr, &_constantBuffer);
 	if (FAILED(hr)) { return hr; }
 
-	hr = CreateDDSTextureFromFile(_device, L"Resources\\Textures\\stone.dds", nullptr, &_StoneTextureRV);
-	hr = CreateDDSTextureFromFile(_device, L"Resources\\Textures\\floor.dds", nullptr, &_GroundTextureRV);
+	hr = CreateDDSTextureFromFile(_device, L"Loaders\\Resources\\Textures\\stone.dds", nullptr, &_StoneTextureRV);
+	hr = CreateDDSTextureFromFile(_device, L"Loaders\\Resources\\Textures\\floor.dds", nullptr, &_GroundTextureRV);
 	if (FAILED(hr)) { return hr; }
 
 	// Setup Camera
@@ -475,19 +475,19 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	_camera = new Camera(eye, at, up, (float)_WindowWidth, (float)_WindowHeight, 0.01f, 200.0f);
 
 	// Setup the scene's light
-	basicLight.AmbientLight = XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
-	basicLight.DiffuseLight = XMFLOAT4(0.6f, 0.6f, 0.6f, 1.0f);
-	basicLight.SpecularLight = XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
-	basicLight.SpecularPower = 10.0f;
-	basicLight.LightVecW = XMFLOAT3(0.0f, 0.5f, -1.0f);
+	basicLight.ambient_light = XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
+	basicLight.diffuse_light = XMFLOAT4(0.6f, 0.6f, 0.6f, 1.0f);
+	basicLight.specular_light = XMFLOAT4(0.8f, 0.8f, 0.8f, 1.0f);
+	basicLight.specular_power = 10.0f;
+	basicLight.light_vec_w = XMFLOAT3(0.0f, 0.5f, -1.0f);
 
 	Geometry herculesGeometry;
-	_objMeshData = OBJLoader::Load("Resources\\OBJ\\donut.obj", _device);
-	herculesGeometry.indexBuffer = _objMeshData.IndexBuffer;
-	herculesGeometry.numberOfIndices = _objMeshData.IndexCount;
-	herculesGeometry.vertexBuffer = _objMeshData.VertexBuffer;
-	herculesGeometry.vertexBufferOffset = _objMeshData.VBOffset;
-	herculesGeometry.vertexBufferStride = _objMeshData.VBStride;
+	_objMeshData = OBJLoader::Load("Loaders\\Resources\\OBJ\\donut.obj", _device);
+	herculesGeometry.indexBuffer = _objMeshData.index_buffer;
+	herculesGeometry.numberOfIndices = _objMeshData.index_count;
+	herculesGeometry.vertexBuffer = _objMeshData.vertex_buffer;
+	herculesGeometry.vertexBufferOffset = _objMeshData.vb_offset;
+	herculesGeometry.vertexBufferStride = _objMeshData.vb_stride;
 
 	Geometry cubeGeometry;
 	cubeGeometry.indexBuffer = _cubeIndexBuffer;
@@ -552,21 +552,28 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 
 	if (_frameBufferView)_frameBufferView->Release();
 	if (_depthBufferView)_depthBufferView->Release();
+	
 	if (_depthStencilBuffer)_depthStencilBuffer->Release();
+	
 	if (_swapChain)_swapChain->Release();
+	
 	if (_CWcullMode)_CWcullMode->Release();
 	if (_CCWcullMode)_CCWcullMode->Release();
-	if (_vertexShader)_vertexShader->Release();
+	
 	if (_inputLayout)_inputLayout->Release();
+	
+	if (_vertexShader)_vertexShader->Release();
 	if (_pixelShader)_pixelShader->Release();
 	if (_constantBuffer)_constantBuffer->Release();
 
 	if (_cubeVertexBuffer)_cubeVertexBuffer->Release();
 	if (_cubeIndexBuffer)_cubeIndexBuffer->Release();
+	
 	if (_planeVertexBuffer)_planeVertexBuffer->Release();
 	if (_planeIndexBuffer)_planeIndexBuffer->Release();
-	if (_objMeshData.IndexBuffer) _objMeshData.IndexBuffer->Release();
-	if (_objMeshData.VertexBuffer)_objMeshData.VertexBuffer->Release();
+	
+	if (_objMeshData.index_buffer) _objMeshData.index_buffer->Release();
+	if (_objMeshData.vertex_buffer)_objMeshData.vertex_buffer->Release();
 
 	if (_DSLessEqual) _DSLessEqual->Release();
 	if (_RSCullNone) _RSCullNone->Release();
@@ -635,7 +642,7 @@ void DX11PhysicsFramework::Draw()
     //
     // Clear buffers
     //
-	float ClearColor[4] = { 0.25f, 0.25f, 0.75f, 1.0f }; // red,green,blue,alpha
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f }; // red,green,blue,alpha
 	_immediateContext->OMSetRenderTargets(1, &_frameBufferView, _depthBufferView);
     _immediateContext->ClearRenderTargetView(_frameBufferView, ClearColor);
 	_immediateContext->ClearDepthStencilView(_depthBufferView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
@@ -656,11 +663,11 @@ void DX11PhysicsFramework::Draw()
 	XMMATRIX view = XMLoadFloat4x4(&tempView);
 	XMMATRIX projection = XMLoadFloat4x4(&tempProjection);
 
-	_cbData.View = XMMatrixTranspose(view);
-	_cbData.Projection = XMMatrixTranspose(projection);
+	_cbData.view = XMMatrixTranspose(view);
+	_cbData.projection = XMMatrixTranspose(projection);
 	
 	_cbData.light = basicLight;
-	_cbData.EyePosW = _camera->GetPosition();
+	_cbData.eye_pow_w = _camera->GetPosition();
 
 	// Render all scene objects
 	for (auto gameObject : _gameObjects)
@@ -669,22 +676,22 @@ void DX11PhysicsFramework::Draw()
 		Material material = gameObject->GetMaterial();
 
 		// Copy material to shader
-		_cbData.surface.AmbientMtrl = material.ambient;
-		_cbData.surface.DiffuseMtrl = material.diffuse;
-		_cbData.surface.SpecularMtrl = material.specular;
+		_cbData.surface.ambient_mat = material.ambient;
+		_cbData.surface.diffuse_mat = material.diffuse;
+		_cbData.surface.specular_mat = material.specular;
 
 		// Set world matrix
-		_cbData.World = XMMatrixTranspose(gameObject->GetWorldMatrix());
+		_cbData.world = XMMatrixTranspose(gameObject->GetWorldMatrix());
 
 		// Set texture
 		if (gameObject->HasTexture())
 		{
 			_immediateContext->PSSetShaderResources(0, 1, gameObject->GetTextureRV());
-			_cbData.HasTexture = 1.0f;
+			_cbData.has_texture = 1.0f;
 		}
 		else
 		{
-			_cbData.HasTexture = 0.0f;
+			_cbData.has_texture = 0.0f;
 		}
 
 		//Write constant buffer data onto GPU

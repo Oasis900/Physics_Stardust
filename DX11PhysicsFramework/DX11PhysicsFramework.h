@@ -5,15 +5,14 @@
 #include <d3dcompiler.h>
 #include <directxmath.h>
 #include <directxcolors.h>
-#include "DDSTextureLoader.h"
+#include "Vec3MathLibrary.h"
 #include "resource.h"
-#include "Camera.h"
-#include "Structures.h"
-#include "OBJLoader.h"
+#include "Objects/Camera.h"
+#include "Objects/GameObject.h"
+#include "Loaders/OBJLoader.h"
+#include "Loaders/DDSTextureLoader.h"
+#include "Structures/Structures.h"
 
-#include <vector>
-
-#include "GameObject.h"
 
 using namespace DirectX;
 

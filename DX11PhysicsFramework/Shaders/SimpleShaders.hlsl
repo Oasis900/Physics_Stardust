@@ -12,22 +12,22 @@ SamplerState samLinear : register(s0);
 
 struct SurfaceInfo
 {
-	float4 AmbientMtrl;
-	float4 DiffuseMtrl;
-	float4 SpecularMtrl;
+	float4 amb_mat;
+	float4 diff_mat;
+	float4 spec_mat;
 };
 
 struct Light
 {
-	float4 AmbientLight;
-	float4 DiffuseLight;
-	float4 SpecularLight;
+	float4 amb_light;
+	float4 diff_light;
+	float4 spec_light;
 
-	float SpecularPower;
-	float3 LightVecW;
+	float spec_power;
+	float3 light_vec_w;
 };
 
-cbuffer ConstantBuffer : register( b0 )
+cbuffer ConstantBuffer_ : register( b0 )
 {
 	matrix World;
 	matrix View;
@@ -93,14 +93,14 @@ float4 PS_main(VS_OUTPUT input) : SV_Target
     float4 diffuse = float4(0.0f, 0.0f, 0.0f, 0.0f);
     float4 specular = float4(0.0f, 0.0f, 0.0f, 0.0f);
 
-	float3 lightLecNorm = normalize(light.LightVecW);
+	float3 lightLecNorm = normalize(light.light_vec_w);
 	// Compute Colour
 
 	// Compute the reflection vector.
 	float3 r = reflect(-lightLecNorm, normalW);
 
 	// Determine how much specular light makes it into the eye.
-	float specularAmount = pow(saturate(dot(r, toEye)), light.SpecularPower);
+	float specularAmount = pow(saturate(dot(r, toEye)), light.spec_power);
 
 	// Determine the diffuse light intensity that strikes the vertex.
     float diffuseAmount = saturate(dot(lightLecNorm, normalW));
@@ -116,22 +116,22 @@ float4 PS_main(VS_OUTPUT input) : SV_Target
 
 	if (HasTexture == 1.0f)
 	{
-        specular += specularAmount * (surface.SpecularMtrl * light.SpecularLight);
-        diffuse += diffuseAmount * (textureColour * light.DiffuseLight);
-        ambient += (textureColour * light.AmbientLight);
+        specular += specularAmount * (surface.spec_mat * light.spec_light);
+        diffuse += diffuseAmount * (textureColour * light.diff_light);
+        ambient += (textureColour * light.amb_light);
 		
 		finalColour = ambient + diffuse + specular;
     }
 	else
 	{
-        specular += specularAmount * (surface.SpecularMtrl * light.SpecularLight);
-        diffuse += diffuseAmount * (surface.DiffuseMtrl * light.DiffuseLight);
-        ambient += (surface.AmbientMtrl * light.AmbientLight);
+        specular += specularAmount * (surface.spec_mat * light.spec_light);
+        diffuse += diffuseAmount * (surface.diff_mat * light.diff_light);
+        ambient += (surface.amb_mat * light.amb_light);
 		
 		finalColour.rgb = ambient + diffuse + specular;
 	}
 
-	finalColour.a = surface.DiffuseMtrl.a;
+	finalColour.a = surface.diff_mat.a;
 
 	return finalColour;
 }
