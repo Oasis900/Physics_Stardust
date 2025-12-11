@@ -625,21 +625,54 @@ void DX11PhysicsFramework::Update()
 	#pragma endregion
 
 	#pragma region Keyboard Input for Objects
-	if (GetAsyncKeyState('1'))
+	static GameObject* current_object;
+	if (GetAsyncKeyState('1') & 0x8000)
 	{
-		game_object_.at(1)->GetTransform()->SetPosition(0, 0, -0.02f);
+		current_object = game_object_.at(1);
 	}
-	if (GetAsyncKeyState('2'))
+	if (GetAsyncKeyState('2') & 0x8000)
 	{
-		game_object_.at(1)->GetTransform()->SetPosition(0, 0, 0.02f);
+		current_object = game_object_.at(2);
 	}
-	if (GetAsyncKeyState('3'))
+	if (GetAsyncKeyState('3') & 0x8000)
 	{
-		game_object_.at(2)->GetTransform()->SetPosition(0, 0, -0.02f);
+		current_object = game_object_.at(3);
 	}
-	if (GetAsyncKeyState('4'))
+	if (GetAsyncKeyState('4') & 0x8000)
 	{
-		game_object_.at(2)->GetTransform()->SetPosition(0, 0, 0.02f);
+		current_object = game_object_.at(4);
+	}
+	if (GetAsyncKeyState('5') & 0x8000)
+	{
+		current_object = game_object_.at(5);
+	}
+	if (GetAsyncKeyState('W') & 0x8000)
+	{
+		if (current_object != nullptr)
+		{
+			current_object->GetTransform()->SetPosition(0, 0, -0.002f);
+		}
+	}
+	if (GetAsyncKeyState('S') & 0x8000)
+	{
+		if (current_object != nullptr)
+		{
+			current_object->GetTransform()->SetPosition(0, 0, 0.002f);
+		}
+	}
+	if (GetAsyncKeyState('A') & 0x8000)
+	{
+		if (current_object != nullptr)
+		{
+			current_object->GetTransform()->SetPosition(-0.002f, 0, 0);
+		}
+	}
+	if (GetAsyncKeyState('D') & 0x8000)
+	{
+		if (current_object != nullptr)
+		{
+			current_object->GetTransform()->SetPosition(0.002f, 0, 0);
+		}
 	}
 	#pragma endregion
 	
