@@ -692,6 +692,7 @@
     <ClInclude Include="Components\CRender.h" />
     <ClInclude Include="Components\CTransform.h" />
     <ClInclude Include="DX11PhysicsFramework.h" />
+    <ClInclude Include="Interface\IUpdateable.h" />
     <ClInclude Include="Loaders\DDSTextureLoader.h" />
     <ClInclude Include="Loaders\Loading.h" />
     <ClInclude Include="Loaders\OBJLoader.h" />

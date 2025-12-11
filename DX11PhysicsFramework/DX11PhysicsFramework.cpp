@@ -580,9 +580,9 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma region Initialise Floor Object
 	GameObject* gameObject = new GameObject("Floor", planeGeometry, noSpecMaterial);
 	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
-	gameObject->SetScale(15.0f, 15.0f, 15.0f);
-	gameObject->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
-	gameObject->SetTextureRV(ground_tex_rv_);
+	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
+	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
+	gameObject->GetRender()->SetTextureRV(ground_tex_rv_);
 	
 	game_object_.push_back(gameObject);
 	#pragma endregion
@@ -591,9 +591,9 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	for (int i = 0; i < 4; i++)
 	{
 		gameObject = new GameObject("Cube " + i, cubeGeometry, shinyMaterial);
-		gameObject->SetScale(1.0f, 1.0f, 1.0f);
+		gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		gameObject->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 2.5f), 1.0f, 10.0f);
-		gameObject->SetTextureRV(stone_tex_rv_);
+		gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
 
 		game_object_.push_back(gameObject);
 	}
@@ -601,9 +601,9 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	#pragma region Intialise Donut Object
 	gameObject = new GameObject("Donut", herculesGeometry, shinyMaterial);
-	gameObject->SetScale(1.0f, 1.0f, 1.0f);
+	gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 	gameObject->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
-	gameObject->SetTextureRV(stone_tex_rv_);
+	gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
 	
 	game_object_.push_back(gameObject);
 	#pragma endregion
@@ -697,18 +697,18 @@ void DX11PhysicsFramework::Draw()
 	for (auto gameObject : game_object_)
 	{
 		// Get render material
-		Material material = gameObject->GetMaterial();
+		Material material = gameObject->GetRender()->GetMaterial();
 
 		// Copy material to shader
 		cb_data_.SetSurfaceInfo(material.ambient, material.diffuse, material.specular);
 
 		// Set world matrix
-		cb_data_.SetWorldMatrix(XMMatrixTranspose(gameObject->GetWorldMatrix()));
+		cb_data_.SetWorldMatrix(XMMatrixTranspose(gameObject->GetTransform()->GetWorldMatrix()));
 
 		// Set texture
-		if (gameObject->HasTexture())
+		if (gameObject->GetRender()->HasTexture())
 		{
-			immediate_context_->PSSetShaderResources(0, 1, gameObject->GetTextureRV());
+			immediate_context_->PSSetShaderResources(0, 1, gameObject->GetRender()->GetTextureRV());
 			cb_data_.SetHasTexture(true);
 		}
 		else
@@ -723,7 +723,7 @@ void DX11PhysicsFramework::Draw()
 		immediate_context_->Unmap(constant_buffer_, 0);
 
 		// Draw object
-		gameObject->Draw(immediate_context_);
+		gameObject->GetRender()->Draw(immediate_context_);
 	}
 	#pragma endregion
 
