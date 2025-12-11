@@ -123,7 +123,8 @@ inline Vector3 operator-(const Vector3 u, const Vector3 v)
 //Vector3 cross product
 inline Vector3 operator^(const Vector3 u, const Vector3 v) 
 {
-    return Vector3(u.y * v.z - u.z * v.y,
+    return Vector3
+        (u.y * v.z - u.z * v.y,
         -u.x * v.z + u.z * v.x,
         u.x * v.y - u.y * v.x);
 }

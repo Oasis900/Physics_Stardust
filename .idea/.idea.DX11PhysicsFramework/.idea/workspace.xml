@@ -8,16 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2d6e757-45e1-4dcd-ade0-cebd0d3d712e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Structures/Structures.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Structures/Structures.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Vec3MathLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Vec3MathLibrary.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" afterDir="false" />
@@ -49,35 +53,17 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Oasis900/Physics_Stardust.git",
-    "accountId": "881d81da-9f0f-466e-a006-ac6e8698c8de"
+    "accountId": "2f23cf11-7a39-40f2-b215-3f96b1c80580"
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://11" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://17" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/ofree/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/ofree/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/ofree/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/Camera.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/ofree/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/Camera.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Structures/SimpleVertex.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Vec3MathLibrary.h" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -91,21 +77,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.DX11PhysicsFramework.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.DX11PhysicsFramework.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="DX11PhysicsFramework" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -138,6 +125,7 @@
       <workItem from="1765213265245" duration="26000" />
       <workItem from="1765322551221" duration="2897000" />
       <workItem from="1765383524695" duration="5003000" />
+      <workItem from="1765409326639" duration="7903000" />
     </task>
     <servers />
   </component>

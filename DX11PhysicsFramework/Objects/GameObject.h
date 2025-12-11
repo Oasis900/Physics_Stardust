@@ -22,15 +22,14 @@ using DirectX::XMMatrixScaling;
 
 using std::string;
 
-
 struct Geometry
 {
-	ID3D11Buffer* vertexBuffer;
-	ID3D11Buffer* indexBuffer;
-	int numberOfIndices;
+	ID3D11Buffer* vertex_buffer;
+	ID3D11Buffer* index_buffer;
+	int indices_num;
 
-	UINT vertexBufferStride;
-	UINT vertexBufferOffset;
+	UINT vb_stride;
+	UINT vb_offset;
 };
 
 struct Material
@@ -47,19 +46,19 @@ class GameObject
 	GameObject* parent_ = nullptr;
 	CTransform* transform_comp_ = nullptr;
 
-	XMFLOAT3 _rotation;
-	XMFLOAT3 _scale;
+	XMFLOAT3 rotation_;
+	XMFLOAT3 scale_;
 
 	string type_;
-	XMFLOAT4X4 _world;
+	XMFLOAT4X4 world_;
 
-	Geometry _geometry;
-	Material _material;
+	Geometry geometry_;
+	Material material_;
 
-	ID3D11ShaderResourceView* _textureRV = nullptr;
+	ID3D11ShaderResourceView* texture_rv_ = nullptr;
 	
 public:
-	GameObject(string type, Geometry geometry, Material material);
+	GameObject(const string& type, const Geometry& geometry, const Material& material);
 	~GameObject();
 	
 	CTransform* GetTransform() const { return transform_comp_; }
@@ -68,24 +67,24 @@ public:
 
 	void SetParent(GameObject * parent) { parent_ = parent; }
 	
-	void SetScale(XMFLOAT3 scale) { _scale = scale; }
-	void SetScale(float x, float y, float z) { _scale.x = x; _scale.y = y; _scale.z = z; }
+	void SetScale(XMFLOAT3 scale) { scale_ = scale; }
+	void SetScale(float x, float y, float z) { scale_.x = x; scale_.y = y; scale_.z = z; }
 
-	XMFLOAT3 GetScale() const { return _scale; }
+	XMFLOAT3 GetScale() const { return scale_; }
 
-	void SetRotation(XMFLOAT3 rotation) { _rotation = rotation; }
-	void SetRotation(float x, float y, float z) { _rotation.x = x; _rotation.y = y; _rotation.z = z; }
+	void SetRotation(XMFLOAT3 rotation) { rotation_ = rotation; }
+	void SetRotation(float x, float y, float z) { rotation_.x = x; rotation_.y = y; rotation_.z = z; }
 
-	XMFLOAT3 GetRotation() const { return _rotation; }
+	XMFLOAT3 GetRotation() const { return rotation_; }
 	
 	// Rendering information
-	Geometry GetGeometryData() const { return _geometry; }
-	Material GetMaterial() const { return _material; }
-	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&_world); }
+	Geometry GetGeometryData() const { return geometry_; }
+	Material GetMaterial() const { return material_; }
+	XMMATRIX GetWorldMatrix() const { return XMLoadFloat4x4(&world_); }
 
-	void SetTextureRV(ID3D11ShaderResourceView * textureRV) { _textureRV = textureRV; }
-	ID3D11ShaderResourceView* const* GetTextureRV() { return &_textureRV; }
-	bool HasTexture() const { return _textureRV ? true : false; }
+	void SetTextureRV(ID3D11ShaderResourceView * textureRV) { texture_rv_ = textureRV; }
+	ID3D11ShaderResourceView* const* GetTextureRV() { return &texture_rv_; }
+	bool HasTexture() const { return texture_rv_ ? true : false; }
 
 	void Update(const float& dt);
 	void Draw(ID3D11DeviceContext * pImmediateContext);

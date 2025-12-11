@@ -451,6 +451,7 @@
       <AdditionalOptions> </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Loaders\Loading.cpp" />
     <ClCompile Include="Loaders\OBJLoader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
@@ -692,6 +693,7 @@
     <ClInclude Include="Components\CTransform.h" />
     <ClInclude Include="DX11PhysicsFramework.h" />
     <ClInclude Include="Loaders\DDSTextureLoader.h" />
+    <ClInclude Include="Loaders\Loading.h" />
     <ClInclude Include="Loaders\OBJLoader.h" />
     <ClInclude Include="Objects\Camera.h" />
     <ClInclude Include="Objects\GameObject.h" />
