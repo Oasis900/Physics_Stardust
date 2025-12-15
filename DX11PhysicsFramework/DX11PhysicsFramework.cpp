@@ -1,4 +1,7 @@
 #include "DX11PhysicsFramework.h"
+using DirectX::XMFLOAT4;
+using DirectX::XMFLOAT3;
+using DirectX::XMFLOAT2;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -87,48 +90,53 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 DX11PhysicsFramework::~DX11PhysicsFramework()
 {
 	#pragma region Non-D3D11 Cleanup
-	if (light_) light_ = nullptr;
-	if (loading_) loading_ = nullptr;
-	if (obj_mesh_) obj_mesh_->index_buffer->Release(); obj_mesh_->vertex_buffer->Release(); obj_mesh_ = nullptr;
-	for each (GameObject * go in game_object_) {go = nullptr;}
-	if (camera_) camera_ = nullptr;
+	delete light_; light_ = nullptr;
+	delete loading_; loading_ = nullptr;
+	delete obj_mesh_; obj_mesh_ = nullptr;
+	for each (GameObject * go in game_object_) {delete go; go = nullptr;}
+	delete camera_; camera_ = nullptr;
 	#pragma endregion
 
-	if (immediate_context_)immediate_context_->Release();
+	if (immediate_context_) 
+	{
+		immediate_context_->ClearState();
+		immediate_context_->Flush();
+		immediate_context_ = nullptr;
+	}
 
-	if (frame_buffer_view_)frame_buffer_view_->Release();
-	if (depth_buffer_view_)depth_buffer_view_->Release();
-	
-	if (depth_stencil_buffer_)depth_stencil_buffer_->Release();
-	
-	if (swap_chain_)swap_chain_->Release();
-	
-	if (cw_cull_mode_)cw_cull_mode_->Release();
-	if (ccw_cull_mode_)ccw_cull_mode_->Release();
-	
-	if (input_layout_)input_layout_->Release();
-	
-	if (vertex_shader_)vertex_shader_->Release();
-	if (pixel_shader_)pixel_shader_->Release();
-	
-	if (constant_buffer_)constant_buffer_->Release();
-	if (cube_vb_)cube_vb_->Release();
-	if (plane_vb_)plane_vb_->Release();
-	if (cube_ib_)cube_ib_->Release();
-	if (plane_ib_)plane_ib_->Release();
+	if (frame_buffer_view_) frame_buffer_view_->Release(); frame_buffer_view_ = nullptr;
+	if (depth_buffer_view_) depth_buffer_view_->Release(); depth_buffer_view_ = nullptr;
 
-	if (ds_less_equal_) ds_less_equal_->Release();
-	if (rs_cull_none_) rs_cull_none_->Release();
+	if (depth_buffer_view_) depth_buffer_view_->Release(); depth_buffer_view_ = nullptr;
 
-	if (sampler_state_)sampler_state_->Release();
-	if (stone_tex_rv_)stone_tex_rv_->Release();
-	if (ground_tex_rv_)ground_tex_rv_->Release();
-	if (hercules_tex_rv_)hercules_tex_rv_->Release();
+	if (swap_chain_) swap_chain_->Release(); swap_chain_ = nullptr;
 
-	if (dxgi_device_)dxgi_device_->Release();
-	if (dxgi_factory_)dxgi_factory_->Release();
+	if (cw_cull_mode_) cw_cull_mode_->Release(); cw_cull_mode_ = nullptr;
+	if (ccw_cull_mode_) ccw_cull_mode_->Release(); ccw_cull_mode_ = nullptr;
+
+	if (input_layout_) input_layout_->Release(); input_layout_ = nullptr;
+
+	if (vertex_shader_) vertex_shader_->Release(); vertex_shader_ = nullptr;
+	if (pixel_shader_) pixel_shader_->Release(); pixel_shader_ = nullptr;
+
+	if (constant_buffer_) constant_buffer_->Release(); constant_buffer_ = nullptr;
+	if (cube_vb_) cube_vb_->Release(); cube_vb_ = nullptr;
+	if (cube_ib_) cube_ib_->Release(); cube_ib_ = nullptr;
+	if (plane_vb_) plane_vb_->Release(); plane_vb_ = nullptr;
+	if (plane_ib_) plane_ib_->Release(); plane_ib_ = nullptr;
+
+	if (ds_less_equal_) ds_less_equal_->Release(); ds_less_equal_ = nullptr;
+	if (rs_cull_none_) rs_cull_none_->Release(); rs_cull_none_ = nullptr;
+
+	if (sampler_state_) sampler_state_->Release(); sampler_state_ = nullptr;
+	if (stone_tex_rv_) stone_tex_rv_->Release(); stone_tex_rv_ = nullptr;
+	if (!ground_tex_rv_) ground_tex_rv_->Release(); ground_tex_rv_ = nullptr;
+	if (hercules_tex_rv_) hercules_tex_rv_->Release(); hercules_tex_rv_ = nullptr;
+
+	if (dxgi_device_) dxgi_device_->Release(); dxgi_device_ = nullptr;
+	if (dxgi_factory_) dxgi_factory_->Release(); dxgi_factory_ = nullptr;
 	
-	if (device_)device_->Release();
+	if (device_) device_->Release(); device_ = nullptr;
 }
 
 HRESULT DX11PhysicsFramework::CreateWindowHandle(HINSTANCE hInstance, int nCmdShow)
@@ -498,6 +506,10 @@ HRESULT DX11PhysicsFramework::InitPipelineStates()
 
 HRESULT DX11PhysicsFramework::InitRunTimeData()
 {
+	#pragma region DirectX Variables
+	using DirectX::XMConvertToRadians;
+	#pragma endregion
+	
 	HRESULT hr = S_OK;
 
 	D3D11_BUFFER_DESC constantBufferDesc = {};
@@ -611,9 +623,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	return S_OK;
 }
 
-void DX11PhysicsFramework::Update()
+float DX11PhysicsFramework::DeltaTime()
 {
-	#pragma region TimeStep Calculations  
 	static ULONGLONG frameStart = GetTickCount64();
 
 	ULONGLONG frameNow = GetTickCount64();
@@ -622,7 +633,13 @@ void DX11PhysicsFramework::Update()
 
 	static float simpleCount = 0.0f;
 	simpleCount += deltaTime;
-	#pragma endregion
+
+	return simpleCount;
+}
+
+void DX11PhysicsFramework::Update()
+{
+	static float dt {DeltaTime()};
 
 	#pragma region Keyboard Input for Objects
 	static GameObject* current_object;
@@ -677,7 +694,7 @@ void DX11PhysicsFramework::Update()
 	#pragma endregion
 	
 	#pragma region Camera Update
-	float angleAroundZ = XMConvertToRadians(cam_orbit_angle_xz_);
+	float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
 
 	float x = cam_orbit_radius_ * cos(angleAroundZ);
 	float z = cam_orbit_radius_ * sin(angleAroundZ);
@@ -692,12 +709,17 @@ void DX11PhysicsFramework::Update()
 	
 	for (auto gameObject : game_object_)
 	{
-		gameObject->Update(deltaTime);
+		gameObject->Update(dt);
 	}
 }
 
 void DX11PhysicsFramework::Draw()
 {
+	#pragma region DirectX Variables
+	using DirectX::XMMATRIX;
+	using DirectX::XMFLOAT4X4;
+	#pragma endregion
+	
 	#pragma region Clear Buffers
 	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f }; // red,green,blue,alpha
 	immediate_context_->OMSetRenderTargets(1, &frame_buffer_view_, depth_buffer_view_);
@@ -719,11 +741,11 @@ void DX11PhysicsFramework::Draw()
 	XMMATRIX view = XMLoadFloat4x4(&tempView);
 	XMMATRIX projection = XMLoadFloat4x4(&tempProjection);
 
-	cb_data_.SetViewMatrix(XMMatrixTranspose(view));
-	cb_data_.SetProjectionMatrix(XMMatrixTranspose(projection));
-
-	cb_data_.SetLight(*light_);
-	cb_data_.SetEyePowW(camera_->GetPosition());
+	ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(view));
+	ConstantBuffer::GetInstance().SetProjectionMatrix(XMMatrixTranspose(projection));
+	
+	ConstantBuffer::GetInstance().SetLight(*light_);
+	ConstantBuffer::GetInstance().SetEyePowW(camera_->GetPosition());
 	#pragma endregion
 
 	#pragma region Render Game Objects
@@ -733,26 +755,26 @@ void DX11PhysicsFramework::Draw()
 		Material material = gameObject->GetRender()->GetMaterial();
 
 		// Copy material to shader
-		cb_data_.SetSurfaceInfo(material.ambient, material.diffuse, material.specular);
+		ConstantBuffer::GetInstance().SetSurfaceInfo(material.ambient, material.diffuse, material.specular);
 
 		// Set world matrix
-		cb_data_.SetWorldMatrix(XMMatrixTranspose(gameObject->GetTransform()->GetWorldMatrix()));
+		ConstantBuffer::GetInstance().SetWorldMatrix(XMMatrixTranspose(gameObject->GetTransform()->GetWorldMatrix()));
 
 		// Set texture
 		if (gameObject->GetRender()->HasTexture())
 		{
 			immediate_context_->PSSetShaderResources(0, 1, gameObject->GetRender()->GetTextureRV());
-			cb_data_.SetHasTexture(true);
+			ConstantBuffer::GetInstance().SetHasTexture(true);
 		}
 		else
 		{
-			cb_data_.SetHasTexture(false);
+			ConstantBuffer::GetInstance().SetHasTexture(false);
 		}
 
 		//Write constant buffer data onto GPU
 		D3D11_MAPPED_SUBRESOURCE mappedSubresource;
 		immediate_context_->Map(constant_buffer_, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource);
-		memcpy(mappedSubresource.pData, &cb_data_, sizeof(cb_data_));
+		memcpy(mappedSubresource.pData, &ConstantBuffer::GetInstance(), sizeof(ConstantBuffer::GetInstance()));
 		immediate_context_->Unmap(constant_buffer_, 0);
 
 		// Draw object

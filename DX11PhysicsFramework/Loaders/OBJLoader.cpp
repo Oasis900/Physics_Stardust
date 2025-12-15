@@ -1,5 +1,7 @@
 #include "OBJLoader.h"
 #include <string>
+using DirectX::XMFLOAT3;
+using DirectX::XMFLOAT2;
 
 bool OBJLoader::FindSimilarVertex(const SimpleVertex& vertex, std::map<SimpleVertex, unsigned short>& vertToIndexMap, unsigned short& index)
 {

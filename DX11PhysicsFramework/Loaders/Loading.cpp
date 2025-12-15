@@ -1,9 +1,12 @@
 ﻿#include "Loading.h"
 
-MeshData* Loading::LoadMesh(ID3D11Device* device, const std::string& path)
+Loading::Loading()
 {
     mesh_ = new MeshData();
+}
 
+MeshData* Loading::LoadMesh(ID3D11Device* device, const std::string& path)
+{
     *mesh_ = OBJLoader::Load(path, device, true);
 
     if (mesh_->index_count == 0)
@@ -32,6 +35,6 @@ Texture* Loading::LoadTexture(ID3D11Device* device, const std::string& path)
 
 Loading::~Loading()
 {
-    if (mesh_) mesh_->vertex_buffer->Release(); mesh_->index_buffer->Release(); mesh_ = nullptr;
-    if (texture_) texture_->Release();
+    mesh_->vertex_buffer->Release(); mesh_->index_buffer->Release(); mesh_ = nullptr;
+    if (texture_) texture_->Release(); texture_ = nullptr;
 }

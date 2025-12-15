@@ -1,4 +1,5 @@
 ﻿#pragma once
+#define INTERFACE_UPDATE_HPP
 
 struct IUpdateable
 {

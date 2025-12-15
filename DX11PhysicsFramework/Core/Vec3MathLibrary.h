@@ -1,5 +1,4 @@
 ﻿#pragma once
-#ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
 
 #include <math.h>
@@ -157,4 +156,3 @@ inline float TripleScalarProduct(const Vector3 u, const Vector3 v, const Vector3
         (u.y * (-v.x * w.z + v.z * w.x)) +
         (u.z * (v.x * w.y - v.y * w.x)));
 }
-#endif

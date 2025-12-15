@@ -1,10 +1,21 @@
 ﻿#include "CTransform.h"
-
 #include "../Objects/GameObject.h"
+
+#pragma region DX11 Maths & Functions
+using DirectX::XMMATRIX;
+using DirectX::XMFLOAT4X4;
+using DirectX::XMFLOAT3;
+using DirectX::XMStoreFloat4x4;
+using DirectX::XMMatrixScaling;
+using DirectX::XMMatrixRotationX;
+using DirectX::XMMatrixRotationY;
+using DirectX::XMMatrixRotationZ;
+using DirectX::XMMatrixTranslation;
+#pragma endregion
 
 CTransform::~CTransform()
 {
-    if (parent_) parent_ = nullptr;
+    delete parent_; parent_ = nullptr;
 }
 
 void CTransform::Update(const float& dt)

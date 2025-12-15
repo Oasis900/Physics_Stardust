@@ -1,11 +1,7 @@
 ﻿#pragma once
-#ifndef COMP_RENDER_HPP
 #define COMP_RENDER_HPP
 #include <d3d11.h>
 #include <directxmath.h>
-using DirectX::XMFLOAT4;
-
-// TODO (Render Component) : Complete extraction of variables and logic responsiblity from game object
 
 struct Geometry
 {
@@ -19,15 +15,15 @@ struct Geometry
 
 struct Material
 {
-    XMFLOAT4 diffuse;
-    XMFLOAT4 ambient;
-    XMFLOAT4 specular;
+    DirectX::XMFLOAT4 diffuse;
+    DirectX::XMFLOAT4 ambient;
+    DirectX::XMFLOAT4 specular;
 };
 
 class CRender
 {
-    Geometry geometry_;
-    Material material_;
+    Geometry* geometry_ = nullptr;
+    Material* material_ = nullptr;
     //--------------------------------------------------//
     ID3D11ShaderResourceView* texture_rv_ = nullptr;
     //--------------------------------------------------//
@@ -36,8 +32,8 @@ class CRender
 public:
     CRender(const Geometry& geometry, const Material& material);
     //--------------------------------------------------//
-    Geometry GetGeometryData() const { return geometry_; }
-    Material GetMaterial() const { return material_; }
+    Geometry GetGeometryData() const { return *geometry_; }
+    Material GetMaterial() const { return *material_; }
     //--------------------------------------------------//
     void SetTextureRV(ID3D11ShaderResourceView * textureRV) { texture_rv_ = textureRV; }
     ID3D11ShaderResourceView* const* GetTextureRV() { return &texture_rv_; }
@@ -45,4 +41,3 @@ public:
     //--------------------------------------------------//
     void Draw(ID3D11DeviceContext * pImmediateContext) const;
 };
-#endif

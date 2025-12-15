@@ -1,5 +1,4 @@
 #pragma once
-#ifndef PHYSICS_FRAMEWORK_HPP
 #define PHYSICS_FRAMEWORK_HPP
 
 #include <windows.h>
@@ -7,14 +6,12 @@
 #include <d3dcompiler.h>
 #include <directxmath.h>
 #include <directxcolors.h>
-#include "Vec3MathLibrary.h"
-#include "resource.h"
+#include "Core/Vec3MathLibrary.h"
+#include "Core/resource.h"
 #include "Objects/Camera.h"
 #include "Objects/GameObject.h"
 #include "Loaders/Loading.h"
 #include "Structures/Structures.h"
-
-using std::vector;
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -50,7 +47,7 @@ class DX11PhysicsFramework
 	//--------------------------------------------------//
 	ID3D11SamplerState* sampler_state_ = nullptr;
 	//--------------------------------------------------//
-	vector<GameObject*> game_object_;
+	std::vector<GameObject*> game_object_;
 	Camera * camera_ = nullptr;
 	Loading* loading_ = nullptr;
 	Light* light_ = nullptr;
@@ -61,8 +58,6 @@ class DX11PhysicsFramework
 	float cam_orbit_radius_max_ = 50.0f;
 	float cam_orbit_angle_xz_ = -90.0f;
 	float cam_speed_ = 2.0f;
-	//--------------------------------------------------//
-	ConstantBuffer& cb_data_ = ConstantBuffer::GetInstance();
 	//--------------------------------------------------//
 	ID3D11DepthStencilState* ds_less_equal_ = nullptr;
 	ID3D11RasterizerState* rs_cull_none_ = nullptr;
@@ -78,6 +73,8 @@ class DX11PhysicsFramework
 	HRESULT InitVertexIndexBuffers();
 	HRESULT InitPipelineStates();
 	HRESULT InitRunTimeData();
+	//--------------------------------------------------//
+	float DeltaTime();
 
 public:
 	~DX11PhysicsFramework();
@@ -88,5 +85,4 @@ public:
 	void Update();
 	void Draw();
 };
-#endif
 

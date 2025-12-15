@@ -1,4 +1,9 @@
 #include "GameObject.h"
+#pragma region DirectX Variables & Functions
+using DirectX::XMMATRIX;
+using DirectX::XMFLOAT3;
+#pragma endregion
+using std::string;
 
 GameObject::GameObject(const string& type, const Geometry& geometry, const Material& material) : type_(type)
 {

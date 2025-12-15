@@ -1,4 +1,14 @@
 #include "Camera.h"
+#pragma region DirectX Variables & Functions
+using DirectX::XMMATRIX;
+using DirectX::XMFLOAT4X4;
+using DirectX::XMFLOAT4;
+using DirectX::XMVECTOR;
+using DirectX::XMFLOAT3;
+using DirectX::XM_PI;
+using DirectX::XMMatrixLookAtLH;
+using DirectX::XMMatrixPerspectiveFovLH;
+#pragma endregion
 
 Camera::Camera(XMFLOAT3 position, XMFLOAT3 at, XMFLOAT3 up, FLOAT window_width, FLOAT window_height, FLOAT near_depth, FLOAT far_depth)
 	: eye_(position), at_(at), up_(up), window_width_(window_width), window_height_(window_height), near_depth_(near_depth), far_depth_(far_depth)
