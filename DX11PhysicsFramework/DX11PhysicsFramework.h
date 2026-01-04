@@ -6,15 +6,22 @@
 #include <d3dcompiler.h>
 #include <directxmath.h>
 #include <directxcolors.h>
+
 #include "Core/Vec3MathLibrary.h"
 #include "Core/resource.h"
+#include "Core/Timer.h"
+#include "Core/Debug.h"
+
 #include "Objects/Camera.h"
 #include "Objects/GameObject.h"
+
 #include "Loaders/Loading.h"
+
 #include "Structures/Structures.h"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
+#define FPS60 (1.0f/60.0f)
 
 class DX11PhysicsFramework
 {
@@ -52,12 +59,15 @@ class DX11PhysicsFramework
 	Loading* loading_ = nullptr;
 	Light* light_ = nullptr;
 	MeshData* obj_mesh_ = nullptr;
+	Timer* timer_ = nullptr;
 	//--------------------------------------------------//
 	float cam_orbit_radius_ = 7.0f;
 	float cam_orbit_radius_min_ = 2.0f;
 	float cam_orbit_radius_max_ = 50.0f;
 	float cam_orbit_angle_xz_ = -90.0f;
 	float cam_speed_ = 2.0f;
+	//--------------------------------------------------//
+	float time_accumulation_ = 0.0f;
 	//--------------------------------------------------//
 	ID3D11DepthStencilState* ds_less_equal_ = nullptr;
 	ID3D11RasterizerState* rs_cull_none_ = nullptr;
@@ -73,8 +83,6 @@ class DX11PhysicsFramework
 	HRESULT InitVertexIndexBuffers();
 	HRESULT InitPipelineStates();
 	HRESULT InitRunTimeData();
-	//--------------------------------------------------//
-	float DeltaTime();
 
 public:
 	~DX11PhysicsFramework();
@@ -83,6 +91,8 @@ public:
 	//--------------------------------------------------//
 	bool HandleKeyboard(const MSG& msg);
 	void Update();
-	void Draw();
+	void Draw() const;
+	void KeyInput() const;
+	void CameraUpdate() const;
 };
 

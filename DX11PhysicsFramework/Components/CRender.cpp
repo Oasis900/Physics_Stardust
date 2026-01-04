@@ -11,8 +11,7 @@ CRender::CRender(const Geometry& geometry, const Material& material)
 
 CRender::~CRender()
 {
-    geometry_->vertex_buffer->Release(); geometry_->index_buffer->Release(); delete geometry_; geometry_ = nullptr;
-    texture_rv_->Release(); delete texture_rv_; texture_rv_ = nullptr;
+    delete geometry_; geometry_ = nullptr;
     delete material_; material_ = nullptr;
 }
 

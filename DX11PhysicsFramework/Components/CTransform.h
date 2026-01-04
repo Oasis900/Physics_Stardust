@@ -13,7 +13,6 @@ class CTransform
     Vector3 position_;
     GameObject* parent_ = nullptr;
     //--------------------------------------------------//
-    ~CTransform();
 public:
     void SetParent(GameObject * parent) { parent_ = parent; }
     //--------------------------------------------------//
@@ -35,4 +34,6 @@ public:
     void SetParentObject(GameObject* in_parent) {parent_ = in_parent;}
     //--------------------------------------------------//
     void Update(const float& dt);
+    //--------------------------------------------------//
+    ~CTransform();
 };

@@ -370,6 +370,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\CPhysics.cpp" />
     <ClCompile Include="Components\CRender.cpp" />
     <ClCompile Include="Components\CTransform.cpp" />
     <ClCompile Include="Core\Debug.cpp">
@@ -766,8 +767,10 @@
       <AdditionalOptions> </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Physics\Velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\CPhysics.h" />
     <ClInclude Include="Components\CRender.h" />
     <ClInclude Include="Components\CTransform.h" />
     <ClInclude Include="Core\Debug.h" />
@@ -781,6 +784,7 @@
     <ClInclude Include="Loaders\OBJLoader.h" />
     <ClInclude Include="Objects\Camera.h" />
     <ClInclude Include="Objects\GameObject.h" />
+    <ClInclude Include="Physics\Velocity.h" />
     <ClInclude Include="Structures\SimpleVertex.h" />
     <ClInclude Include="Structures\Structures.h" />
   </ItemGroup>

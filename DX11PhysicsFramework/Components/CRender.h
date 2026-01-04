@@ -27,7 +27,6 @@ class CRender
     //--------------------------------------------------//
     ID3D11ShaderResourceView* texture_rv_ = nullptr;
     //--------------------------------------------------//
-    ~CRender();
     
 public:
     CRender(const Geometry& geometry, const Material& material);
@@ -40,4 +39,6 @@ public:
     bool HasTexture() const { return texture_rv_ ? true : false; }
     //--------------------------------------------------//
     void Draw(ID3D11DeviceContext * pImmediateContext) const;
+    //--------------------------------------------------//
+    ~CRender();
 };

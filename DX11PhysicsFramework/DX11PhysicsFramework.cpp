@@ -53,6 +53,7 @@ bool DX11PhysicsFramework::HandleKeyboard(const MSG& msg)
 	}
 }
 
+
 HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 {
 	HRESULT hr = S_OK;
@@ -60,6 +61,7 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 	#pragma region Non-D3D11 Instantiation
 	light_ = new Light();
 	loading_ = new Loading();
+	timer_ = new Timer();
 	obj_mesh_ = new MeshData();
 	#pragma endregion
 
@@ -92,9 +94,10 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 	#pragma region Non-D3D11 Cleanup
 	delete light_; light_ = nullptr;
 	delete loading_; loading_ = nullptr;
+	delete camera_; camera_ = nullptr;
+	delete timer_; timer_ = nullptr;
 	delete obj_mesh_; obj_mesh_ = nullptr;
 	for each (GameObject * go in game_object_) {delete go; go = nullptr;}
-	delete camera_; camera_ = nullptr;
 	#pragma endregion
 
 	if (immediate_context_) 
@@ -185,8 +188,10 @@ HRESULT DX11PhysicsFramework::CreateD3DDevice()
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	hr = baseDevice->QueryInterface(__uuidof(ID3D11Device), reinterpret_cast<void**>(&device_));
+	if (FAILED(hr)) return hr;
 	hr = baseDeviceContext->QueryInterface(__uuidof(ID3D11DeviceContext), reinterpret_cast<void**>(&immediate_context_));
-
+	if (FAILED(hr)) return hr;
+	
 	baseDevice->Release();
 	baseDeviceContext->Release();
 
@@ -197,15 +202,15 @@ HRESULT DX11PhysicsFramework::CreateD3DDevice()
 
 	IDXGIAdapter* dxgiAdapter;
 	hr = dxgi_device_->GetAdapter(&dxgiAdapter);
+	if (FAILED(hr)) return hr;
 	hr = dxgiAdapter->GetParent(__uuidof(IDXGIFactory2), reinterpret_cast<void**>(&dxgi_factory_));
 	dxgiAdapter->Release();
 
-	return S_OK;
+	return hr;
 }
 
 HRESULT DX11PhysicsFramework::CreateSwapChainAndFrameBuffer()
 {
-	HRESULT hr = S_OK;
 	//--------------------------------------------------//
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc;
 	swapChainDesc.Width = 0; // Defer to WindowWidth
@@ -221,7 +226,7 @@ HRESULT DX11PhysicsFramework::CreateSwapChainAndFrameBuffer()
 	swapChainDesc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
 	swapChainDesc.Flags = 0;
 	//--------------------------------------------------//
-	hr = dxgi_factory_->CreateSwapChainForHwnd(device_, window_handle_, &swapChainDesc, nullptr, nullptr, &swap_chain_);
+	HRESULT hr = dxgi_factory_->CreateSwapChainForHwnd(device_, window_handle_, &swapChainDesc, nullptr, nullptr, &swap_chain_);
 	if (FAILED(hr)) return hr;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -623,97 +628,38 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	return S_OK;
 }
 
-float DX11PhysicsFramework::DeltaTime()
-{
-	static ULONGLONG frameStart = GetTickCount64();
-
-	ULONGLONG frameNow = GetTickCount64();
-	float deltaTime = static_cast<float>(frameNow - frameStart) / 1000.0f;
-	frameStart = frameNow;
-
-	static float simpleCount = 0.0f;
-	simpleCount += deltaTime;
-
-	return simpleCount;
-}
-
 void DX11PhysicsFramework::Update()
 {
-	static float dt {DeltaTime()};
+	// TODO (Timestep) : As of 29/12/25 the timestep should be fixed, requires testing on other devices
+	// TODO (Timestep : As of 31/12/25 the timestep is sort of fixed?
+	//time_accumulation_ += timer_->GetDeltaTime();
+	static float time_accumulation = 0.0f;
+	time_accumulation += timer_->GetDeltaTime();
 
-	#pragma region Keyboard Input for Objects
-	static GameObject* current_object;
-	if (GetAsyncKeyState('1') & 0x8000)
+	while (time_accumulation <= FPS60)
 	{
-		current_object = game_object_.at(1);
-	}
-	if (GetAsyncKeyState('2') & 0x8000)
-	{
-		current_object = game_object_.at(2);
-	}
-	if (GetAsyncKeyState('3') & 0x8000)
-	{
-		current_object = game_object_.at(3);
-	}
-	if (GetAsyncKeyState('4') & 0x8000)
-	{
-		current_object = game_object_.at(4);
-	}
-	if (GetAsyncKeyState('5') & 0x8000)
-	{
-		current_object = game_object_.at(5);
-	}
-	if (GetAsyncKeyState('W') & 0x8000)
-	{
-		if (current_object != nullptr)
+		for (const auto game_object : game_object_)
 		{
-			current_object->GetTransform()->SetPosition(0, 0, -0.002f);
+			game_object->GetPhysics()->SetTransform(game_object->GetTransform());
+			game_object->GetPhysics()->Update(FPS60);
 		}
+		time_accumulation += FPS60;
 	}
-	if (GetAsyncKeyState('S') & 0x8000)
-	{
-		if (current_object != nullptr)
-		{
-			current_object->GetTransform()->SetPosition(0, 0, 0.002f);
-		}
-	}
-	if (GetAsyncKeyState('A') & 0x8000)
-	{
-		if (current_object != nullptr)
-		{
-			current_object->GetTransform()->SetPosition(-0.002f, 0, 0);
-		}
-	}
-	if (GetAsyncKeyState('D') & 0x8000)
-	{
-		if (current_object != nullptr)
-		{
-			current_object->GetTransform()->SetPosition(0.002f, 0, 0);
-		}
-	}
-	#pragma endregion
+
+	const double alpha = time_accumulation / FPS60;
 	
-	#pragma region Camera Update
-	float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
+	KeyInput();
+	CameraUpdate();
 
-	float x = cam_orbit_radius_ * cos(angleAroundZ);
-	float z = cam_orbit_radius_ * sin(angleAroundZ);
-
-	XMFLOAT3 cameraPos = camera_->GetPosition();
-	cameraPos.x = x;
-	cameraPos.z = z;
-
-	camera_->SetPosition(cameraPos);
-	camera_->Update();
-	#pragma endregion
-	
-	for (auto gameObject : game_object_)
+	for (const auto game_object : game_object_)
 	{
-		gameObject->Update(dt);
+		game_object->GetTransform()->Update(alpha);
 	}
+	
+	timer_->TimeTick();
 }
 
-void DX11PhysicsFramework::Draw()
+void DX11PhysicsFramework::Draw() const
 {
 	#pragma region DirectX Variables
 	using DirectX::XMMATRIX;
@@ -735,11 +681,11 @@ void DX11PhysicsFramework::Draw()
 	immediate_context_->PSSetConstantBuffers(0, 1, &constant_buffer_);
 	immediate_context_->PSSetSamplers(0, 1, &sampler_state_);
 
-	XMFLOAT4X4 tempView = camera_->GetView();
-	XMFLOAT4X4 tempProjection = camera_->GetProjection();
+	XMFLOAT4X4 tempView {camera_->GetView()};
+	XMFLOAT4X4 tempProjection {camera_->GetProjection()};
 
-	XMMATRIX view = XMLoadFloat4x4(&tempView);
-	XMMATRIX projection = XMLoadFloat4x4(&tempProjection);
+	XMMATRIX view {XMLoadFloat4x4(&tempView)};
+	XMMATRIX projection {XMLoadFloat4x4(&tempProjection)};
 
 	ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(view));
 	ConstantBuffer::GetInstance().SetProjectionMatrix(XMMatrixTranspose(projection));
@@ -752,7 +698,7 @@ void DX11PhysicsFramework::Draw()
 	for (auto gameObject : game_object_)
 	{
 		// Get render material
-		Material material = gameObject->GetRender()->GetMaterial();
+		Material material {gameObject->GetRender()->GetMaterial()};
 
 		// Copy material to shader
 		ConstantBuffer::GetInstance().SetSurfaceInfo(material.ambient, material.diffuse, material.specular);
@@ -786,4 +732,73 @@ void DX11PhysicsFramework::Draw()
     // Present our back buffer to our front buffer
     //
     swap_chain_->Present(0, 0);
+}
+
+void DX11PhysicsFramework::KeyInput() const
+{
+	static GameObject* current_object;
+	if (GetAsyncKeyState('1') & 0x8000)
+	{
+		current_object = game_object_.at(1);
+	}
+	if (GetAsyncKeyState('2') & 0x8000)
+	{
+		current_object = game_object_.at(2);
+	}
+	if (GetAsyncKeyState('3') & 0x8000)
+	{
+		current_object = game_object_.at(3);
+	}
+	if (GetAsyncKeyState('4') & 0x8000)
+	{
+		current_object = game_object_.at(4);
+	}
+	if (GetAsyncKeyState('5') & 0x8000)
+	{
+		current_object = game_object_.at(5);
+	}
+	if (GetAsyncKeyState('W') & 0x8000)
+	{
+		if (current_object)
+		{
+			game_object_.at(1)->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.0f, 0.0f, -0.002f));
+			//current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.0f, 0.0f, -0.002f));
+		}
+	}
+	if (GetAsyncKeyState('S') & 0x8000)
+	{
+		if (current_object)
+		{
+			current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.0f, 0.0f, 0.002f));
+		}
+	}
+	if (GetAsyncKeyState('A') & 0x8000)
+	{
+		if (current_object)
+		{
+			current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(-0.002f, 0.0f, 0.0f));
+		}
+	}
+	if (GetAsyncKeyState('D') & 0x8000)
+	{
+		if (current_object)
+		{
+			current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.002f, 0.0f, 0.0f));
+		}
+	}
+}
+
+void DX11PhysicsFramework::CameraUpdate() const
+{
+	float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
+
+	float x = cam_orbit_radius_ * cos(angleAroundZ);
+	float z = cam_orbit_radius_ * sin(angleAroundZ);
+
+	XMFLOAT3 cameraPos = camera_->GetPosition();
+	cameraPos.x = x;
+	cameraPos.z = z;
+
+	camera_->SetPosition(cameraPos);
+	camera_->Update();
 }

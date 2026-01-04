@@ -8,33 +8,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2d6e757-45e1-4dcd-ade0-cebd0d3d712e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.rc" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.rc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Interface/IUpdateable.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Interface/IUpdateable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/Camera.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Structures/SimpleVertex.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Structures/SimpleVertex.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Structures/Structures.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Structures/Structures.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Vec3MathLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Vec3MathLibrary.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/resource.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/resource.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" afterDir="false" />
@@ -66,51 +57,39 @@
     &quot;assignee&quot;: &quot;Oasis900&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Oasis900/Physics_Stardust.git",
-    "accountId": "0f6ea165-99ca-48cf-b0a2-7f684f4b63be"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Oasis900/Physics_Stardust.git&quot;,
+    &quot;accountId&quot;: &quot;4c5f4c41-42a4-4f57-8cc3-d8c5fc466b12&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://32" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CRender.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CRender.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CRender.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CTransform.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CTransform.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Timer.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Timer.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Core/Vec3MathLibrary.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Structures/SimpleVertex.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -129,13 +108,17 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -175,6 +158,11 @@
       <workItem from="1765450571838" duration="5882000" />
       <workItem from="1765468033072" duration="3453000" />
       <workItem from="1765803927476" duration="6227000" />
+      <workItem from="1766856195602" duration="1800000" />
+      <workItem from="1767017736711" duration="15150000" />
+      <workItem from="1767109923596" duration="17494000" />
+      <workItem from="1767184529679" duration="2647000" />
+      <workItem from="1767547936352" duration="6965000" />
     </task>
     <servers />
   </component>
@@ -183,6 +171,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
