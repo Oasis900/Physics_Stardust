@@ -1,10 +1,10 @@
 #include "GameObject.h"
 
-GameObject::GameObject(const std::string& type, const Geometry& geometry, const Material& material) : type_(type)
+GameObject::GameObject(const std::string& type, const Geometry& geometry, const Material& material, const float& mass) : type_(type)
 {
 	transform_comp_ = new CTransform();
 	render_comp_ = new CRender(geometry, material);
-	physics_comp_ = new CPhysics(transform_comp_);
+	physics_comp_ = new CPhysics(transform_comp_, mass);
 }
 
 GameObject::~GameObject()

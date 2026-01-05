@@ -53,7 +53,6 @@ bool DX11PhysicsFramework::HandleKeyboard(const MSG& msg)
 	}
 }
 
-
 HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 {
 	HRESULT hr = S_OK;
@@ -595,7 +594,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma endregion
 
 	#pragma region Initialise Floor Object
-	GameObject* gameObject = new GameObject("Floor", planeGeometry, noSpecMaterial);
+	GameObject* gameObject = new GameObject("Floor", planeGeometry, noSpecMaterial, 10000);
 	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
 	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
@@ -607,7 +606,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma region Intialise Cube Objects
 	for (int i = 0; i < 4; i++)
 	{
-		gameObject = new GameObject("Cube " + i, cubeGeometry, shinyMaterial);
+		gameObject = new GameObject("Cube " + i, cubeGeometry, shinyMaterial, 10);
 		gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		gameObject->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 2.5f), 1.0f, 10.0f);
 		gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
@@ -617,7 +616,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma endregion
 
 	#pragma region Intialise Donut Object
-	gameObject = new GameObject("Donut", herculesGeometry, shinyMaterial);
+	gameObject = new GameObject("Donut", herculesGeometry, shinyMaterial, 5);
 	gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 	gameObject->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
 	gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
@@ -631,9 +630,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 void DX11PhysicsFramework::Update()
 {
 	using std::min;
-	// TODO (Timestep) : As of 29/12/25 the timestep should be fixed, requires testing on other devices
-	// TODO (Timestep : As of 31/12/25 the timestep is sort of fixed?
-	//time_accumulation_ += timer_->GetDeltaTime();
+	
 	static float time_accumulation = 0.0f;
 
 	time_accumulation += timer_->GetDeltaTime();
@@ -757,39 +754,39 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		current_object = game_object_.at(5);
 	}
-	if (GetAsyncKeyState('W') & 0x8000)
+	if (GetAsyncKeyState('W') & 0x8000) // Forward
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(0.0f, 0.0f, -0.002f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -0.02f));
 		}
 	}
-	if (GetAsyncKeyState('S') & 0x8000)
+	if (GetAsyncKeyState('S') & 0x8000) // Backward
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(0.0f, 0.0f, 0.002f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, 0.02f));
 		}
 	}
-	if (GetAsyncKeyState('A') & 0x8000)
+	if (GetAsyncKeyState('A') & 0x8000) // Left
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(0.002f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.02f, 0.0f, 0.0f));
 		}
 	}
-	if (GetAsyncKeyState('D') & 0x8000)
+	if (GetAsyncKeyState('D') & 0x8000) // Right
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(-0.002f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-0.02f, 0.0f, 0.0f));
 		}
 	}
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->ResetAcceleration();
+			//current_object->GetPhysics()->GetMotion()->ResetForce();
 		}
 	}
 }

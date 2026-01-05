@@ -1,3 +1,4 @@
+C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Components\CParticle.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\CParticle.obj
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Components\CPhysics.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\CPhysics.obj
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Components\CRender.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\CRender.obj
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Components\CTransform.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\CTransform.obj
@@ -10,4 +11,5 @@ C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Loaders\OB
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Main.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\Main.obj
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Objects\Camera.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\Camera.obj
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Objects\GameObject.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\GameObject.obj
+C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Physics\Gravity.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\Gravity.obj
 C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\Physics\Motion.cpp;C:\Users\f017956n\RiderProjects\Physics_Stardust\DX11PhysicsFramework\x64\Debug\Motion.obj

@@ -1,27 +1,26 @@
 ﻿#pragma once
-#include "../Components/CTransform.h"
+#include "Force.h"
+#include "Gravity.h"
 #include "../Interface/IUpdateable.h"
 
-class Motion : IUpdateable
+class Motion : public Force, public IUpdateable
 {
     Vector3 velocity_;
     Vector3 acceleration_;
     Vector3 position_;
-    CTransform* transform_ = nullptr;
+    Gravity* gravity_ = nullptr;
     
 public:
-    Motion(CTransform* transform);
+    Motion(CTransform* transform, const float& mass);
     //--------------------------------------------------//
     Vector3 GetVelocity() const {return velocity_;}
-    void SetVelocity(const Vector3& velocity) {velocity_ = velocity;}
+    //void SetVelocity(const Vector3& velocity) {velocity_ = velocity;}
     //--------------------------------------------------//
     Vector3 GetAcceleration() const {return acceleration_;}
-    void SetAcceleration(const Vector3& acceleration) {acceleration_ += acceleration;}
-    void IncrementAcceleration() {acceleration_ *= 1.1f;}
-    void DecrementAcceleration() {acceleration_ *= -1.1f;}
-    void ResetAcceleration() {acceleration_ = Vector3(0.0f, 0.0f, 0.0f);}
+    //void SetAcceleration(const Vector3& acceleration) {acceleration_ = acceleration;}
     //--------------------------------------------------//
     void Update(const float& dt) final;
+    void ResetForce();
     //--------------------------------------------------//
-    ~Motion();
+    ~Motion() override;
 };

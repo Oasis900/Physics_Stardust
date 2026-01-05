@@ -18,7 +18,7 @@ class GameObject
 	std::string type_;
 	
 public:
-	GameObject(const std::string& type, const Geometry& geometry, const Material& material);
+	GameObject(const std::string& type, const Geometry& geometry, const Material& material, const float& mass);
 	//--------------------------------------------------//
 	CRender* GetRender() const { return render_comp_; }
 	CTransform* GetTransform() const { return transform_comp_; }

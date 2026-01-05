@@ -370,6 +370,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\CParticle.cpp" />
     <ClCompile Include="Components\CPhysics.cpp" />
     <ClCompile Include="Components\CRender.cpp" />
     <ClCompile Include="Components\CTransform.cpp" />
@@ -767,9 +768,11 @@
       <AdditionalOptions> </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Physics\Gravity.cpp" />
     <ClCompile Include="Physics\Motion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\CParticle.h" />
     <ClInclude Include="Components\CPhysics.h" />
     <ClInclude Include="Components\CRender.h" />
     <ClInclude Include="Components\CTransform.h" />
@@ -784,6 +787,8 @@
     <ClInclude Include="Loaders\OBJLoader.h" />
     <ClInclude Include="Objects\Camera.h" />
     <ClInclude Include="Objects\GameObject.h" />
+    <ClInclude Include="Physics\Force.h" />
+    <ClInclude Include="Physics\Gravity.h" />
     <ClInclude Include="Physics\Motion.h" />
     <ClInclude Include="Structures\SimpleVertex.h" />
     <ClInclude Include="Structures\Structures.h" />
@@ -795,9 +800,6 @@
     <None Include="Shaders\SimpleShaders.hlsl">
       <FileType>Document</FileType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

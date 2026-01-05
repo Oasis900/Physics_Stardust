@@ -3,17 +3,17 @@
 
 class CPhysics : public IUpdateable
 {
+protected:
     Motion* motion_ = nullptr;
     
 public:
-    CPhysics(CTransform* transform);
+    CPhysics(CTransform* transform, const float& mass);
     //--------------------------------------------------//
-    //void SetTransform(CTransform* transform) {transform_ = transform;};
-    Motion* GetMotion() const { return motion_; }
+    Motion* GetMotion() const { return motion_;}
     //--------------------------------------------------//
-    //void ActivateModule();
+    //void ActivateModule(); - For later
     //--------------------------------------------------//
-    void Update(const float& dt) final;
+    void Update(const float& dt) override;
     //--------------------------------------------------//
     ~CPhysics();
     
