@@ -499,7 +499,7 @@ HRESULT DX11PhysicsFramework::InitPipelineStates()
 	bilinearSamplerdesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
 	bilinearSamplerdesc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
 	bilinearSamplerdesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
-	bilinearSamplerdesc.MaxLOD = INT_MAX;
+	bilinearSamplerdesc.MaxLOD = static_cast<float>(INT_MAX);
 	bilinearSamplerdesc.MinLOD = 0;
 
 	hr = device_->CreateSamplerState(&bilinearSamplerdesc, &sampler_state_);
@@ -630,33 +630,32 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 void DX11PhysicsFramework::Update()
 {
+	using std::min;
 	// TODO (Timestep) : As of 29/12/25 the timestep should be fixed, requires testing on other devices
 	// TODO (Timestep : As of 31/12/25 the timestep is sort of fixed?
 	//time_accumulation_ += timer_->GetDeltaTime();
 	static float time_accumulation = 0.0f;
+
 	time_accumulation += timer_->GetDeltaTime();
 
-	while (time_accumulation <= FPS60)
+	while (time_accumulation >= FPS60)
 	{
+		KeyInput();
 		for (const auto game_object : game_object_)
 		{
-			game_object->GetPhysics()->SetTransform(game_object->GetTransform());
 			game_object->GetPhysics()->Update(FPS60);
 		}
-		time_accumulation += FPS60;
+		time_accumulation -= FPS60;
 	}
 
-	const double alpha = time_accumulation / FPS60;
-	
-	KeyInput();
-	CameraUpdate();
+	const float alpha = time_accumulation / FPS60;
 
 	for (const auto game_object : game_object_)
 	{
 		game_object->GetTransform()->Update(alpha);
 	}
 	
-	timer_->TimeTick();
+	CameraUpdate();
 }
 
 void DX11PhysicsFramework::Draw() const
@@ -734,9 +733,10 @@ void DX11PhysicsFramework::Draw() const
     swap_chain_->Present(0, 0);
 }
 
-void DX11PhysicsFramework::KeyInput() const
+void DX11PhysicsFramework::KeyInput()
 {
 	static GameObject* current_object;
+	
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
 		current_object = game_object_.at(1);
@@ -761,34 +761,40 @@ void DX11PhysicsFramework::KeyInput() const
 	{
 		if (current_object)
 		{
-			game_object_.at(1)->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.0f, 0.0f, -0.002f));
-			//current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.0f, 0.0f, -0.002f));
+			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(0.0f, 0.0f, -0.002f));
 		}
 	}
 	if (GetAsyncKeyState('S') & 0x8000)
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.0f, 0.0f, 0.002f));
+			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(0.0f, 0.0f, 0.002f));
 		}
 	}
 	if (GetAsyncKeyState('A') & 0x8000)
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(-0.002f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(0.002f, 0.0f, 0.0f));
 		}
 	}
 	if (GetAsyncKeyState('D') & 0x8000)
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetVelocity()->SetVelocity(Vector3(0.002f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->SetAcceleration(Vector3(-0.002f, 0.0f, 0.0f));
+		}
+	}
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+	{
+		if (current_object)
+		{
+			current_object->GetPhysics()->GetMotion()->ResetAcceleration();
 		}
 	}
 }
 
-void DX11PhysicsFramework::CameraUpdate() const
+void DX11PhysicsFramework::CameraUpdate()
 {
 	float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
 

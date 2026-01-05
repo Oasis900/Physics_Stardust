@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <chrono>
+#include <vector>
 
 class Timer
 {
@@ -7,6 +8,6 @@ class Timer
     
 public:
     Timer();
-    float GetDeltaTime() const;
+    float GetDeltaTime();
     void TimeTick();
 };

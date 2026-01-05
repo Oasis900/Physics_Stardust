@@ -1,17 +1,16 @@
 ﻿#include "CPhysics.h"
 
-CPhysics::CPhysics()
+CPhysics::CPhysics(CTransform* transform)
 {
-    velocity_ = new Velocity();
+    motion_ = new Motion(transform);
 }
 
 void CPhysics::Update(const float& dt)
 {
-    if (velocity_) velocity_->Update(dt, transform_);
+    if (motion_) motion_->Update(dt);
 }
 
 CPhysics::~CPhysics()
 {
-    delete velocity_; velocity_ = nullptr;
-    transform_ = nullptr;
+    delete motion_; motion_ = nullptr;
 }

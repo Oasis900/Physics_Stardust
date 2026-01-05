@@ -8,13 +8,15 @@ Timer::Timer()
     TimeTick();
 }
 
-float Timer::GetDeltaTime() const 
+float Timer::GetDeltaTime()
 {
-    float dt = duration<float>(steady_clock::now() - last_frame_).count();
-
-    //if (static_cast<bool>(min(dt, 0.25f))) dt = 0.25f;
+    float frame_time = duration<float>(steady_clock::now() - last_frame_).count();
     
-    return dt;
+    if (frame_time > 0.25f) frame_time = 0.25f;
+    
+    TimeTick();
+    
+    return frame_time;
 }
 
 void Timer::TimeTick()

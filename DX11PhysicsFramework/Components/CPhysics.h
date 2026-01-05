@@ -1,16 +1,15 @@
 ﻿#pragma once
-#include "../Physics/Velocity.h"
+#include "../Physics/Motion.h"
 
 class CPhysics : public IUpdateable
 {
-    Velocity* velocity_ = nullptr;
-    CTransform* transform_ = nullptr;
+    Motion* motion_ = nullptr;
     
 public:
-    CPhysics();
+    CPhysics(CTransform* transform);
     //--------------------------------------------------//
-    void SetTransform(CTransform* transform) {transform_ = transform;};
-    Velocity* GetVelocity() const { return velocity_; }
+    //void SetTransform(CTransform* transform) {transform_ = transform;};
+    Motion* GetMotion() const { return motion_; }
     //--------------------------------------------------//
     //void ActivateModule();
     //--------------------------------------------------//

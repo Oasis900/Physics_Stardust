@@ -8,24 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2d6e757-45e1-4dcd-ade0-cebd0d3d712e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Motion.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CRender.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CTransform.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Debug.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Core/Timer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Loaders/OBJLoader.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Objects/GameObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/Physics/Motion.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" afterDir="false" />
@@ -35,9 +31,6 @@
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.secondary.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11PhysicsFramework.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11PhysicsFramework.exe.recipe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,39 +50,226 @@
     &quot;assignee&quot;: &quot;Oasis900&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Oasis900/Physics_Stardust.git&quot;,
-    &quot;accountId&quot;: &quot;4c5f4c41-42a4-4f57-8cc3-d8c5fc466b12&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Oasis900/Physics_Stardust.git",
+    "accountId": "f625b28b-e3fc-4202-9fd8-e2c5f7da2fdc"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://68" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/include/__msvc_chrono.hpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CPhysics.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CPhysics.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Components/CPhysics.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CRender.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CRender.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CRender.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CTransform.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Components/CTransform.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Debug.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Timer.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Timer.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Timer.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Core/Timer.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Core/Vec3MathLibrary.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Loaders/Loading.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Student/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Physics/Velocity.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/f017956n/RiderProjects/Physics_Stardust/DX11PhysicsFramework/Objects/GameObject.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Physics/Motion.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Physics/Motion.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/Structures/SimpleVertex.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -99,29 +279,31 @@
 }</component>
   <component name="ProjectId" id="36ZTnj8ERmaR6PPjPKouw8xnt4K" />
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.DX11PhysicsFramework.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.DX11PhysicsFramework.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="DX11PhysicsFramework" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -136,6 +318,30 @@
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
         <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" />
       </configuration_1>
+      <configuration_2 setup="1">
+        <option name="CONFIGURATION" value="Release" />
+        <option name="PLATFORM" value="x64" />
+        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
+        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
+        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
+        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
+        <option name="PASS_PARENT_ENVS" value="1" />
+        <option name="USE_EXTERNAL_CONSOLE" value="0" />
+        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" />
+      </configuration_2>
+      <configuration_3 setup="1">
+        <option name="CONFIGURATION" value="Profile" />
+        <option name="PLATFORM" value="x64" />
+        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
+        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
+        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
+        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
+        <option name="PASS_PARENT_ENVS" value="1" />
+        <option name="USE_EXTERNAL_CONSOLE" value="0" />
+        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" />
+      </configuration_3>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" />
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" />
       <option name="AUTO_SELECT_PRIORITY" value="0" />
@@ -163,6 +369,7 @@
       <workItem from="1767109923596" duration="17494000" />
       <workItem from="1767184529679" duration="2647000" />
       <workItem from="1767547936352" duration="6965000" />
+      <workItem from="1767606843789" duration="10279000" />
     </task>
     <servers />
   </component>

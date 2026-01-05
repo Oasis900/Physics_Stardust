@@ -31,7 +31,7 @@ void OBJLoader::CreateIndices(const std::vector<XMFLOAT3>& inVertices,
 
 	std::pair<SimpleVertex, unsigned short> pair;
 
-	int numVertices = inVertices.size();
+	int numVertices = static_cast<int>(inVertices.size());
 	
 	for(int i = 0; i < numVertices; ++i) //For each vertex
 	{
@@ -144,8 +144,8 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 					for(int i = 0; i < 3; ++i)
 					{
 						inFile >> input;
-						int slash = input.find("/"); //Find first forward slash
-						int secondSlash = input.find("/", slash + 1); //Find second forward slash
+						int slash = static_cast<int>(input.find("/")); //Find first forward slash
+						int secondSlash = static_cast<int>(input.find("/", slash + 1)); //Find second forward slash
 
 						//Extract from string
 						beforeFirstSlash = input.substr(0, slash); //The vertex position index
@@ -173,7 +173,7 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 			std::vector<XMFLOAT3> expandedVertices;
 			std::vector<XMFLOAT3> expandedNormals;
 			std::vector<XMFLOAT2> expandedTexCoords;
-			unsigned int numIndices = vertIndices.size();
+			unsigned int numIndices = static_cast<unsigned int>(vertIndices.size());
 			for(unsigned int i = 0; i < numIndices; i++)
 			{
 				expandedVertices.push_back(verts[vertIndices[i]]);
@@ -197,7 +197,7 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 
 			//Turn data from vector form to arrays
 			SimpleVertex* finalVerts = new SimpleVertex[meshVertices.size()];
-			unsigned int numMeshVertices = meshVertices.size();
+			unsigned int numMeshVertices = static_cast<unsigned int>(meshVertices.size());
 			for(unsigned int i = 0; i < numMeshVertices; ++i)
 			{
 				finalVerts[i].pos = meshVertices[i];
@@ -212,7 +212,7 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 			D3D11_BUFFER_DESC bd;
 			ZeroMemory(&bd, sizeof(bd));
 			bd.Usage = D3D11_USAGE_DEFAULT;
-			bd.ByteWidth = sizeof(SimpleVertex) * meshVertices.size();
+			bd.ByteWidth = static_cast<UINT>(sizeof(SimpleVertex) * meshVertices.size());
 			bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 			bd.CPUAccessFlags = 0;
 
@@ -227,7 +227,7 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 			meshData.vb_stride = sizeof(SimpleVertex);
 
 			unsigned short* indicesArray = new unsigned short[meshIndices.size()];
-			unsigned int numMeshIndices = meshIndices.size();
+			unsigned int numMeshIndices = static_cast<unsigned int>(meshIndices.size());
 			for(unsigned int i = 0; i < numMeshIndices; ++i)
 			{
 				indicesArray[i] = meshIndices[i];
@@ -245,7 +245,7 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 
 			ZeroMemory(&bd, sizeof(bd));
 			bd.Usage = D3D11_USAGE_DEFAULT;
-			bd.ByteWidth = sizeof(WORD) * meshIndices.size();     
+			bd.ByteWidth = static_cast<UINT>(sizeof(WORD) * meshIndices.size());     
 			bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
 			bd.CPUAccessFlags = 0;
 
@@ -253,7 +253,7 @@ MeshData OBJLoader::Load(const std::string& filename, ID3D11Device* _pd3dDevice,
 			InitData.pSysMem = indicesArray;
 			_pd3dDevice->CreateBuffer(&bd, &InitData, &indexBuffer);
 
-			meshData.index_count = meshIndices.size();
+			meshData.index_count = static_cast<UINT>(meshIndices.size());
 			meshData.index_buffer = indexBuffer;
 
 			//This data has now been sent over to the GPU so we can delete this CPU-side stuff

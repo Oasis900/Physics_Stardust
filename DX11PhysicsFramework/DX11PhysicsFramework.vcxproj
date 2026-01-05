@@ -767,7 +767,7 @@
       <AdditionalOptions> </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Physics\Velocity.cpp" />
+    <ClCompile Include="Physics\Motion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\CPhysics.h" />
@@ -784,7 +784,7 @@
     <ClInclude Include="Loaders\OBJLoader.h" />
     <ClInclude Include="Objects\Camera.h" />
     <ClInclude Include="Objects\GameObject.h" />
-    <ClInclude Include="Physics\Velocity.h" />
+    <ClInclude Include="Physics\Motion.h" />
     <ClInclude Include="Structures\SimpleVertex.h" />
     <ClInclude Include="Structures\Structures.h" />
   </ItemGroup>
@@ -795,6 +795,9 @@
     <None Include="Shaders\SimpleShaders.hlsl">
       <FileType>Document</FileType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

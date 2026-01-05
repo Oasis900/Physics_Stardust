@@ -92,7 +92,7 @@ public:
 	bool HandleKeyboard(const MSG& msg);
 	void Update();
 	void Draw() const;
-	void KeyInput() const;
-	void CameraUpdate() const;
+	void KeyInput();
+	void CameraUpdate();
 };
 
