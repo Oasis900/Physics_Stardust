@@ -17,44 +17,46 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DX11PhysicsFramework.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Structures.h" />
-    <ClInclude Include="OBJLoader.h">
-      <Filter>Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="DDSTextureLoader.h">
-      <Filter>Helpers</Filter>
-    </ClInclude>
+    <ClInclude Include="include\Application\DX11PhysicsFramework.h" />
+    <ClInclude Include="include\Components\CParticle.h" />
+    <ClInclude Include="include\Components\CPhysics.h" />
+    <ClInclude Include="include\Components\CRender.h" />
+    <ClInclude Include="include\Components\CTransform.h" />
+    <ClInclude Include="include\Core\Debug.h" />
+    <ClInclude Include="include\Core\resource.h" />
+    <ClInclude Include="include\Core\Timer.h" />
+    <ClInclude Include="include\Core\Vec3MathLibrary.h" />
+    <ClInclude Include="include\Loaders\DDSTextureLoader.h" />
+    <ClInclude Include="include\Loaders\Loading.h" />
+    <ClInclude Include="include\Loaders\OBJLoader.h" />
+    <ClInclude Include="include\Objects\Camera.h" />
+    <ClInclude Include="include\Physics\Force.h" />
+    <ClInclude Include="include\Physics\Gravity.h" />
+    <ClInclude Include="include\Physics\Motion.h" />
+    <ClInclude Include="include\Structures\SimpleVertex.h" />
+    <ClInclude Include="include\Structures\Structures.h" />
+    <ClInclude Include="src\Interface\IUpdateable.h" />
+    <ClInclude Include="include\Objects\GameObject.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DX11PhysicsFramework.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="OBJLoader.cpp">
-      <Filter>Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="DDSTextureLoader.cpp">
-      <Filter>Helpers</Filter>
-    </ClCompile>
+    <ClCompile Include="src\Application\DX11PhysicsFramework.cpp" />
+    <ClCompile Include="src\Application\Main.cpp" />
+    <ClCompile Include="src\Components\CParticle.cpp" />
+    <ClCompile Include="src\Components\CPhysics.cpp" />
+    <ClCompile Include="src\Components\CRender.cpp" />
+    <ClCompile Include="src\Components\CTransform.cpp" />
+    <ClCompile Include="src\Core\Debug.cpp" />
+    <ClCompile Include="src\Core\Timer.cpp" />
+    <ClCompile Include="src\Loaders\DDSTextureLoader.cpp" />
+    <ClCompile Include="src\Loaders\Loading.cpp" />
+    <ClCompile Include="src\Loaders\OBJLoader.cpp" />
+    <ClCompile Include="src\Objects\Camera.cpp" />
+    <ClCompile Include="src\Physics\Gravity.cpp" />
+    <ClCompile Include="src\Physics\Motion.cpp" />
+    <ClCompile Include="src\Objects\GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CLInclude Include="resource.h">
-      <Filter>Resource Files</Filter>
-    </CLInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\floor.dds">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-    <Image Include="Resources\stone.dds">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SimpleShaders.hlsl">
+    <None Include="Shaders\SimpleShaders.hlsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

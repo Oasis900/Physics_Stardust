@@ -177,7 +177,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;$(ProjectDir)include</AdditionalIncludeDirectories>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -257,7 +257,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;$(ProjectDir)include</AdditionalIncludeDirectories>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -338,8 +338,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;%(AdditionalIncludeDirectories)
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;$(ProjectDir)include</AdditionalIncludeDirectories>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>WIN32;NDEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -370,11 +369,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Components\CParticle.cpp" />
-    <ClCompile Include="Components\CPhysics.cpp" />
-    <ClCompile Include="Components\CRender.cpp" />
-    <ClCompile Include="Components\CTransform.cpp" />
-    <ClCompile Include="Core\Debug.cpp">
+    <ClCompile Include="src\Components\CParticle.cpp" />
+    <ClCompile Include="src\Components\CPhysics.cpp" />
+    <ClCompile Include="src\Components\CRender.cpp" />
+    <ClCompile Include="src\Components\CTransform.cpp" />
+    <ClCompile Include="src\Core\Debug.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
@@ -449,12 +448,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <OpenMPSupport>false</OpenMPSupport>
       <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;</AdditionalIncludeDirectories>
-      <AdditionalOptions> </AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Core\Timer.cpp" />
-    <ClCompile Include="DX11PhysicsFramework.cpp" />
-    <ClCompile Include="Loaders\DDSTextureLoader.cpp">
+    <ClCompile Include="src\Core\Timer.cpp" />
+    <ClCompile Include="src\Application\DX11PhysicsFramework.cpp" />
+    <ClCompile Include="src\Loaders\DDSTextureLoader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
@@ -529,11 +529,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <OpenMPSupport>false</OpenMPSupport>
       <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;</AdditionalIncludeDirectories>
-      <AdditionalOptions> </AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Loaders\Loading.cpp" />
-    <ClCompile Include="Loaders\OBJLoader.cpp">
+    <ClCompile Include="src\Loaders\Loading.cpp" />
+    <ClCompile Include="src\Loaders\OBJLoader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
@@ -608,11 +609,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <OpenMPSupport>false</OpenMPSupport>
       <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;</AdditionalIncludeDirectories>
-      <AdditionalOptions> </AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Objects\Camera.cpp">
+    <ClCompile Include="src\Application\Main.cpp" />
+    <ClCompile Include="src\Objects\Camera.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
@@ -687,111 +689,35 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <OpenMPSupport>false</OpenMPSupport>
       <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;</AdditionalIncludeDirectories>
-      <AdditionalOptions> </AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Objects\GameObject.cpp">
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <CompileAs>Default</CompileAs>
-      <UseDynamicDebugging>false</UseDynamicDebugging>
-      <ConformanceMode>Default</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <EnableVectorLength>NotSet</EnableVectorLength>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>Default</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <Optimization>Disabled</Optimization>
-      <ObjectFileName>x64\Debug\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>x64\Debug\DX11PhysicsFramework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <SupportJustMyCode>false</SupportJustMyCode>
-      <TrackerLogDirectory>x64\Debug\DX11Phys.B8FF81B5.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level4</WarningLevel>
-      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <BuildStlModules>false</BuildStlModules>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
-      <OpenMPSupport>false</OpenMPSupport>
-      <AdditionalIncludeDirectories>DXUT\Core;DXUT\Optional;</AdditionalIncludeDirectories>
-      <AdditionalOptions> </AdditionalOptions>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
-    <ClCompile Include="Physics\Gravity.cpp" />
-    <ClCompile Include="Physics\Motion.cpp" />
+    <ClCompile Include="src\Objects\GameObject.cpp" />
+    <ClCompile Include="src\Physics\Gravity.cpp" />
+    <ClCompile Include="src\Physics\Motion.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Components\CParticle.h" />
-    <ClInclude Include="Components\CPhysics.h" />
-    <ClInclude Include="Components\CRender.h" />
-    <ClInclude Include="Components\CTransform.h" />
-    <ClInclude Include="Core\Debug.h" />
-    <ClInclude Include="Core\resource.h" />
-    <ClInclude Include="Core\Timer.h" />
-    <ClInclude Include="Core\Vec3MathLibrary.h" />
-    <ClInclude Include="DX11PhysicsFramework.h" />
-    <ClInclude Include="Interface\IUpdateable.h" />
-    <ClInclude Include="Loaders\DDSTextureLoader.h" />
-    <ClInclude Include="Loaders\Loading.h" />
-    <ClInclude Include="Loaders\OBJLoader.h" />
-    <ClInclude Include="Objects\Camera.h" />
-    <ClInclude Include="Objects\GameObject.h" />
-    <ClInclude Include="Physics\Force.h" />
-    <ClInclude Include="Physics\Gravity.h" />
-    <ClInclude Include="Physics\Motion.h" />
-    <ClInclude Include="Structures\SimpleVertex.h" />
-    <ClInclude Include="Structures\Structures.h" />
+    <ClInclude Include="include\Components\CParticle.h" />
+    <ClInclude Include="include\Components\CPhysics.h" />
+    <ClInclude Include="include\Components\CRender.h" />
+    <ClInclude Include="include\Components\CTransform.h" />
+    <ClInclude Include="include\Core\Debug.h" />
+    <ClInclude Include="include\Core\resource.h" />
+    <ClInclude Include="include\Core\Timer.h" />
+    <ClInclude Include="include\Core\Vec3MathLibrary.h" />
+    <ClInclude Include="include\Application\DX11PhysicsFramework.h" />
+    <ClInclude Include="include\Loaders\DDSTextureLoader.h" />
+    <ClInclude Include="include\Loaders\Loading.h" />
+    <ClInclude Include="include\Loaders\OBJLoader.h" />
+    <ClInclude Include="include\Objects\Camera.h" />
+    <ClInclude Include="include\Objects\GameObject.h" />
+    <ClInclude Include="include\Physics\Force.h" />
+    <ClInclude Include="include\Physics\Gravity.h" />
+    <ClInclude Include="include\Physics\Motion.h" />
+    <ClInclude Include="src\Interface\IUpdateable.h" />
+    <ClInclude Include="include\Structures\SimpleVertex.h" />
+    <ClInclude Include="include\Structures\Structures.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DX11PhysicsFramework.rc" />
