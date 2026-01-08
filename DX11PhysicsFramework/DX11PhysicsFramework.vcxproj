@@ -715,7 +715,7 @@
     <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Gravity.h" />
     <ClInclude Include="include\Physics\Motion.h" />
-    <ClInclude Include="src\Interface\IUpdateable.h" />
+      <ClInclude Include="include\Interface\IUpdateable.h"/>
     <ClInclude Include="include\Structures\SimpleVertex.h" />
     <ClInclude Include="include\Structures\Structures.h" />
   </ItemGroup>
