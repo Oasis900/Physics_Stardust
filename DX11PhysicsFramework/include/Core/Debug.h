@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <Windows.h>
 
-// TODO (Debug) : Implemented 29/12/25
-
 class Debug
 {
 public:

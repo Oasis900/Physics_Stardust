@@ -61,7 +61,6 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 	light_ = new Light();
 	loading_ = new Loading();
 	timer_ = new Timer();
-	obj_mesh_ = new MeshData();
 	#pragma endregion
 
 	hr = CreateWindowHandle(hInstance, nShowCmd);
@@ -91,12 +90,12 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 DX11PhysicsFramework::~DX11PhysicsFramework()
 {
 	#pragma region Non-D3D11 Cleanup
-	delete light_; light_ = nullptr;
-	delete loading_; loading_ = nullptr;
-	delete camera_; camera_ = nullptr;
-	delete timer_; timer_ = nullptr;
-	delete obj_mesh_; obj_mesh_ = nullptr;
-	for each (GameObject * go in game_object_) {delete go; go = nullptr;}
+	if (light_) {delete light_; light_ = nullptr;}
+	if (loading_) {delete loading_; loading_ = nullptr;}
+	if (timer_) {delete timer_; timer_ = nullptr;}
+	if (camera_) {delete camera_; camera_ = nullptr;}
+	if (obj_mesh_) {obj_mesh_ = nullptr;}
+	for each (GameObject * thing in game_object_) {delete thing; thing = nullptr;}
 	#pragma endregion
 
 	if (immediate_context_) 
@@ -106,39 +105,39 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 		immediate_context_ = nullptr;
 	}
 
-	if (frame_buffer_view_) frame_buffer_view_->Release(); frame_buffer_view_ = nullptr;
-	if (depth_buffer_view_) depth_buffer_view_->Release(); depth_buffer_view_ = nullptr;
+	if (frame_buffer_view_) {frame_buffer_view_->Release(); frame_buffer_view_ = nullptr;}
+	if (depth_buffer_view_) {depth_buffer_view_->Release(); depth_buffer_view_ = nullptr;}
 
-	if (depth_buffer_view_) depth_buffer_view_->Release(); depth_buffer_view_ = nullptr;
+	if (depth_buffer_view_) {depth_buffer_view_->Release(); depth_buffer_view_ = nullptr;}
 
-	if (swap_chain_) swap_chain_->Release(); swap_chain_ = nullptr;
+	if (swap_chain_) {swap_chain_->Release(); swap_chain_ = nullptr;}
 
-	if (cw_cull_mode_) cw_cull_mode_->Release(); cw_cull_mode_ = nullptr;
-	if (ccw_cull_mode_) ccw_cull_mode_->Release(); ccw_cull_mode_ = nullptr;
+	if (cw_cull_mode_) {cw_cull_mode_->Release(); cw_cull_mode_ = nullptr;}
+	if (ccw_cull_mode_) {ccw_cull_mode_->Release(); ccw_cull_mode_ = nullptr;}
 
-	if (input_layout_) input_layout_->Release(); input_layout_ = nullptr;
+	if (input_layout_) {input_layout_->Release(); input_layout_ = nullptr;}
 
-	if (vertex_shader_) vertex_shader_->Release(); vertex_shader_ = nullptr;
-	if (pixel_shader_) pixel_shader_->Release(); pixel_shader_ = nullptr;
+	if (vertex_shader_) {vertex_shader_->Release(); vertex_shader_ = nullptr;}
+	if (pixel_shader_) {pixel_shader_->Release(); pixel_shader_ = nullptr;}
 
-	if (constant_buffer_) constant_buffer_->Release(); constant_buffer_ = nullptr;
-	if (cube_vb_) cube_vb_->Release(); cube_vb_ = nullptr;
-	if (cube_ib_) cube_ib_->Release(); cube_ib_ = nullptr;
-	if (plane_vb_) plane_vb_->Release(); plane_vb_ = nullptr;
-	if (plane_ib_) plane_ib_->Release(); plane_ib_ = nullptr;
+	if (constant_buffer_) {constant_buffer_->Release(); constant_buffer_ = nullptr;}
+	if (cube_vb_) {cube_vb_->Release(); cube_vb_ = nullptr;}
+	if (cube_ib_) {cube_ib_->Release(); cube_ib_ = nullptr;}
+	if (plane_vb_) {plane_vb_->Release(); plane_vb_ = nullptr;}
+	if (plane_ib_) {plane_ib_->Release(); plane_ib_ = nullptr;}
 
-	if (ds_less_equal_) ds_less_equal_->Release(); ds_less_equal_ = nullptr;
-	if (rs_cull_none_) rs_cull_none_->Release(); rs_cull_none_ = nullptr;
+	if (ds_less_equal_) {ds_less_equal_->Release(); ds_less_equal_ = nullptr;}
+	if (rs_cull_none_) {rs_cull_none_->Release(); rs_cull_none_ = nullptr;}
 
-	if (sampler_state_) sampler_state_->Release(); sampler_state_ = nullptr;
-	if (stone_tex_rv_) stone_tex_rv_->Release(); stone_tex_rv_ = nullptr;
-	if (!ground_tex_rv_) ground_tex_rv_->Release(); ground_tex_rv_ = nullptr;
-	if (hercules_tex_rv_) hercules_tex_rv_->Release(); hercules_tex_rv_ = nullptr;
+	if (sampler_state_) {sampler_state_->Release(); sampler_state_ = nullptr;}
+	if (stone_tex_rv_) {stone_tex_rv_->Release(); stone_tex_rv_ = nullptr;}
+	if (!ground_tex_rv_) {ground_tex_rv_->Release(); ground_tex_rv_ = nullptr;}
+	if (hercules_tex_rv_) {hercules_tex_rv_->Release(); hercules_tex_rv_ = nullptr;}
 
-	if (dxgi_device_) dxgi_device_->Release(); dxgi_device_ = nullptr;
-	if (dxgi_factory_) dxgi_factory_->Release(); dxgi_factory_ = nullptr;
+	if (dxgi_device_) {dxgi_device_->Release(); dxgi_device_ = nullptr;}
+	if (dxgi_factory_) {dxgi_factory_->Release(); dxgi_factory_ = nullptr;}
 	
-	if (device_) device_->Release(); device_ = nullptr;
+	if (device_) {device_->Release(); device_ = nullptr;}
 }
 
 HRESULT DX11PhysicsFramework::CreateWindowHandle(HINSTANCE hInstance, int nCmdShow)

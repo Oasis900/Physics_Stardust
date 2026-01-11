@@ -19,6 +19,11 @@ class GameObject
 public:
 	GameObject(const std::string& type, const Geometry& geometry, const Material& material, const float& mass);
 	//--------------------------------------------------//
+	GameObject(const GameObject& other) = delete;
+	GameObject& operator=(const GameObject&) = delete;
+	GameObject(GameObject&&) = delete;
+	GameObject& operator=(const GameObject&&) = delete;
+	//--------------------------------------------------//
 	CRender* GetRender() const { return render_comp_; }
 	CTransform* GetTransform() const { return transform_comp_; }
 	CPhysics* GetPhysics() const { return physics_comp_; }

@@ -3,28 +3,23 @@
 Motion::Motion(CTransform* transform, const float& mass) : Force(transform, mass)
 {
     gravity_ = new Gravity(transform, mass);
-    position_ = transform_->GetPosition();
+    position_ = GetTransform()->GetPosition();
 }
 
 void Motion::Update(const float& dt)
 {
-    acceleration_ += net_force_ / mass_ * dt;
+    acceleration_ += GetNetForce() / GetMass() * dt;
     
     velocity_ += acceleration_ * dt;
     position_ += velocity_ * dt;
     
-    transform_->SetPosition(position_);
+    GetTransform()->SetPosition(position_);
 
-    ResetForce();
-}
-
-void Motion::ResetForce()
-{
-    net_force_ = Vector3(0.0f, 0.0f, 0.0f);
+    SetNetForce(Vector3(0.0f, 0.0f, 0.0f));
     acceleration_ = Vector3(0.0f, 0.0f, 0.0f);
 }
 
 Motion::~Motion()
 {
-    delete gravity_; gravity_ = nullptr;
+    if (gravity_) {delete gravity_; gravity_ = nullptr;}
 }

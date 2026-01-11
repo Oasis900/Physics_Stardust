@@ -8,7 +8,7 @@ CTransform::CTransform(const std::string& type)
 
 CTransform::~CTransform()
 {
-    delete parent_; parent_ = nullptr;
+    if (parent_) {delete parent_; parent_ = nullptr;}
 }
 
 void CTransform::Update(const float& dt)

@@ -11,8 +11,8 @@ CRender::CRender(const Geometry& geometry, const Material& material)
 
 CRender::~CRender()
 {
-    delete geometry_; geometry_ = nullptr;
-    delete material_; material_ = nullptr;
+    if (geometry_) {delete geometry_; geometry_ = nullptr;}
+    if (material_) {delete material_; material_ = nullptr;}
 }
 
 void CRender::Draw(ID3D11DeviceContext* pImmediateContext) const

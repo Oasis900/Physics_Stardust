@@ -14,7 +14,7 @@ class Loading
     
 public:
     Loading();
-    MeshData* LoadMesh(ID3D11Device* device, const std::string& path);
+    MeshData* LoadMesh(ID3D11Device* device, const std::string& path) const;
     Texture* LoadTexture(ID3D11Device* device, const std::string& path);
     ~Loading();
 };

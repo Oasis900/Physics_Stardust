@@ -15,7 +15,12 @@ class CTransform
     std::string type_;
     GameObject* parent_ = nullptr;
 public:
-    CTransform(const std::string& type);
+    explicit CTransform(const std::string& type);
+    //--------------------------------------------------//
+    CTransform(const CTransform& other) = delete;
+    CTransform& operator=(const CTransform&) = delete;
+    CTransform(CTransform&&) = delete;
+    CTransform& operator=(const CTransform&&) = delete;
     //--------------------------------------------------//
     void SetParent(GameObject * parent) { parent_ = parent; }
     //--------------------------------------------------//

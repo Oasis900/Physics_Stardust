@@ -12,5 +12,5 @@ void CPhysics::Update(const float& dt)
 
 CPhysics::~CPhysics()
 {
-    delete motion_; motion_ = nullptr;
+    if (motion_) {delete motion_; motion_ = nullptr;}
 }

@@ -1,4 +1,5 @@
-﻿#include <Core\Debug.h>
+﻿#include <string>
+#include <Core\Debug.h>
 
 int Debug::VDebugPrintF(const char* format, va_list args)
 {
