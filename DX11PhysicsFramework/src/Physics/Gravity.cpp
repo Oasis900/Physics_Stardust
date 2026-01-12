@@ -1,8 +1,22 @@
 ﻿#include <Physics/Gravity.h>
 
-Vector3 Gravity::CalculateGravity() const
+void Gravity::ToggleGravity()
 {
-    Vector3 gravity = Vector3(0,0,0);
-    gravity.y = -earth_gravity_ * GetMass();
-    return gravity;
+    if (!toggle_gravity_)
+    {
+        toggle_gravity_ = true;
+    }
+    else
+    {
+        toggle_gravity_ = false;
+    }
+}
+
+Vector3 Gravity::CalculateGravity()
+{
+    if (!toggle_gravity_) {return {0,0,0};}
+
+    SetNetForce(Vector3(0,-EARTH_GRAVITY * GetMass(),0));
+    
+    return GetNetForce();
 }

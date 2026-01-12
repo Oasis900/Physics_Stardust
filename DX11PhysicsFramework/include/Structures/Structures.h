@@ -2,6 +2,14 @@
 #define STRUCTURES_HPP
 #include <directxmath.h>
 
+enum ObjectType
+{
+	FLOOR,
+	CUBE,
+	DONUT,
+	SPHERE
+};
+
 struct SurfaceInfo
 {
 	DirectX::XMFLOAT4 ambient_mat;

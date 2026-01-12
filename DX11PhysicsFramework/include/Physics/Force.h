@@ -4,7 +4,7 @@
 class Force
 {
     CTransform* transform_ = nullptr;
-    Vector3 net_force_;
+    Vector3 net_force_ = Vector3(0.0f, 0.0f, 0.0f);
     float mass_ = 0.0f;
     
 protected:
@@ -31,8 +31,8 @@ public:
 
 inline Force::Force(CTransform* transform, const float& mass)
 {
-    mass_ = mass;
     transform_ = transform; 
+    mass_ = mass;
 }
 
 inline Force::~Force()

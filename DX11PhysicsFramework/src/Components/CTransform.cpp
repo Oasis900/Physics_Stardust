@@ -1,7 +1,7 @@
 ﻿#include <Components/CTransform.h>
 #include <Objects/GameObject.h>
 
-CTransform::CTransform(const std::string& type)
+CTransform::CTransform(const ObjectType& type)
 {
     type_ = type;
 }
@@ -29,7 +29,7 @@ void CTransform::Update(const float& dt)
     XMMATRIX rotation = XMMatrixRotationX(rotation_.x) * XMMatrixRotationY(rotation_.y) * XMMatrixRotationZ(rotation_.z);
     XMMATRIX translation = XMMatrixTranslation(position_.x, position_.y, position_.z);
 
-    if (type_ != "Floor" && type_ != "floor")
+    if (type_ != FLOOR)
     {
         XMMATRIX old_position = DirectX::XMLoadFloat4x4(&world_);
         translation = old_position + (translation - old_position) * dt;

@@ -3,6 +3,7 @@
 #include <DirectXMath.h>
 #include <string>
 #include <Core/Vec3MathLibrary.h>
+#include <Structures/Structures.h>
 
 class GameObject;
 
@@ -12,10 +13,10 @@ class CTransform
     DirectX::XMFLOAT3 rotation_ = DirectX::XMFLOAT3();
     DirectX::XMFLOAT3 scale_ = DirectX::XMFLOAT3();
     Vector3 position_;
-    std::string type_;
+    ObjectType type_;
     GameObject* parent_ = nullptr;
 public:
-    explicit CTransform(const std::string& type);
+    explicit CTransform(const ObjectType& type);
     //--------------------------------------------------//
     CTransform(const CTransform& other) = delete;
     CTransform& operator=(const CTransform&) = delete;

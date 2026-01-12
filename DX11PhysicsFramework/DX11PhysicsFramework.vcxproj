@@ -372,6 +372,7 @@
     <ClCompile Include="src\Components\CParticle.cpp" />
     <ClCompile Include="src\Components\CPhysics.cpp" />
     <ClCompile Include="src\Components\CRender.cpp" />
+    <ClCompile Include="src\Components\CRigidBody.cpp" />
     <ClCompile Include="src\Components\CTransform.cpp" />
     <ClCompile Include="src\Core\Debug.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
@@ -701,12 +702,14 @@
     <ClInclude Include="include\Components\CParticle.h" />
     <ClInclude Include="include\Components\CPhysics.h" />
     <ClInclude Include="include\Components\CRender.h" />
+    <ClInclude Include="include\Components\CRigidBody.h" />
     <ClInclude Include="include\Components\CTransform.h" />
     <ClInclude Include="include\Core\Debug.h" />
     <ClInclude Include="include\Core\resource.h" />
     <ClInclude Include="include\Core\Timer.h" />
     <ClInclude Include="include\Core\Vec3MathLibrary.h" />
     <ClInclude Include="include\Application\DX11PhysicsFramework.h" />
+    <ClInclude Include="include\Interface\ICollidable.h" />
     <ClInclude Include="include\Loaders\DDSTextureLoader.h" />
     <ClInclude Include="include\Loaders\Loading.h" />
     <ClInclude Include="include\Loaders\OBJLoader.h" />
