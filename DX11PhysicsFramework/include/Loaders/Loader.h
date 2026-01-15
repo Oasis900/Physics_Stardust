@@ -7,14 +7,14 @@
 
 typedef ID3D11ShaderResourceView Texture;
 
-class Loading
+class Loader
 {
     MeshData* mesh_ = nullptr;
     Texture* texture_ = nullptr;
     
 public:
-    Loading();
+    Loader();
     MeshData* LoadMesh(ID3D11Device* device, const std::string& path) const;
     Texture* LoadTexture(ID3D11Device* device, const std::string& path);
-    ~Loading();
+    ~Loader();
 };

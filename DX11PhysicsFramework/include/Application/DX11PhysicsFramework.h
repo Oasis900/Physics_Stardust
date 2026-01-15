@@ -13,7 +13,7 @@
 #include <Core/Debug.h>
 #include <Objects/Camera.h>
 #include <Objects/GameObject.h>
-#include <Loaders/Loading.h>
+#include <Loaders/Loader.h>
 #include <Structures/Structures.h>
 
 constexpr int WINDOW_WIDTH = 1280;
@@ -53,8 +53,8 @@ class DX11PhysicsFramework
 	//--------------------------------------------------//
 	std::vector<GameObject*> game_object_;
 	Camera * camera_ = nullptr;
-	Loading* loading_ = nullptr;
-	Light* light_ = nullptr;
+	Loader* load_ = nullptr;
+	LightInfo* light_ = nullptr;
 	MeshData* obj_mesh_ = nullptr;
 	Timer* timer_ = nullptr;
 	//--------------------------------------------------//

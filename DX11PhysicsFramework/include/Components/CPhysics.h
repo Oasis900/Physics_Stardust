@@ -23,12 +23,12 @@ public:
     Gravity* GetGravity() const { return gravity_;}
     void ToggleGravity() const {gravity_->ToggleGravity();}
     //--------------------------------------------------//
-    bool IsCollideable() const {return collider_ != nullptr;}
+    bool IsCollidable() const {return collider_ != nullptr;}
     ICollidable::Collider* GetCollider() const { return collider_;}
     //--------------------------------------------------//
     //void ActivateModule(); - For later
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//
-    ~CPhysics() override;
+    ~CPhysics();
 };

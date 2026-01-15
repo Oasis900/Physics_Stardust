@@ -1,11 +1,11 @@
-﻿#include <Loaders/Loading.h>
+﻿#include <Loaders/Loader.h>
 
-Loading::Loading()
+Loader::Loader()
 {
     mesh_ = new MeshData();
 }
 
-MeshData* Loading::LoadMesh(ID3D11Device* device, const std::string& path) const
+MeshData* Loader::LoadMesh(ID3D11Device* device, const std::string& path) const
 {
     *mesh_ = OBJLoader::Load(path, device, true);
 
@@ -17,7 +17,7 @@ MeshData* Loading::LoadMesh(ID3D11Device* device, const std::string& path) const
     return mesh_;
 }
 
-Texture* Loading::LoadTexture(ID3D11Device* device, const std::string& path)
+Texture* Loader::LoadTexture(ID3D11Device* device, const std::string& path)
 {
     std::wstring ws_path = std::wstring(path.begin(), path.end());
 
@@ -33,7 +33,7 @@ Texture* Loading::LoadTexture(ID3D11Device* device, const std::string& path)
     return texture_;
 }
 
-Loading::~Loading()
+Loader::~Loader()
 {
     if (mesh_)
     {

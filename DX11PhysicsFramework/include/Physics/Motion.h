@@ -10,11 +10,15 @@ class Motion : public Force, public IUpdateable
     Vector3 velocity_;
     Vector3 acceleration_;
     Vector3 position_;
-    const float dampening_ = 0.499f;
-    Gravity* gravity_ = nullptr;
+    const float dampening_ = 0.899f;
+    Gravity* gravity_comp_ = nullptr;
     
 public:
-    Motion(CTransform* transform, const float& mass, Gravity* gravity);
+    Motion(CTransform* transform, const float& mass, Gravity* gravity) : Force(transform, mass)
+    {
+        gravity_comp_ = gravity;
+        position_ = transform->GetPosition();
+    }
     //--------------------------------------------------//
     Motion(const Motion& other) = delete;
     Motion& operator=(const Motion&) = delete;

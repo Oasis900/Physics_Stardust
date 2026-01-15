@@ -17,7 +17,7 @@ struct SurfaceInfo
 	DirectX::XMFLOAT4 specular_mat;
 };
 
-struct Light
+struct LightInfo
 {
 	DirectX::XMFLOAT4 ambient_light;
 	DirectX::XMFLOAT4 diffuse_light;
@@ -27,7 +27,6 @@ struct Light
 	DirectX::XMFLOAT3 light_vec_w;
 };
 
-// TODO (Constant Buffer Data) : Has been set as a singleton. 11/12/25 (00:50)
 class ConstantBuffer
 {
 	ConstantBuffer() = default;
@@ -38,9 +37,9 @@ class ConstantBuffer
 	//--------------------------------------------------//
 	SurfaceInfo surface_;
 	//--------------------------------------------------//
-	Light light_;
+	LightInfo light_;
 	//--------------------------------------------------//
-	DirectX::XMFLOAT3 eye_pow_w_;
+	DirectX::XMFLOAT3 eye_pos_w_;
 	float has_texture_;
 
 public:
@@ -65,14 +64,13 @@ public:
 	void SetProjectionMatrix(const DirectX::XMMATRIX& projection) { projection_ = projection; }
 	//--------------------------------------------------//
 	SurfaceInfo GetSurfaceInfo() const { return surface_; }
-	void SetSurfaceInfo(const SurfaceInfo& surface) { surface_ = surface; }
 	void SetSurfaceInfo(const DirectX::XMFLOAT4& ambient, const DirectX::XMFLOAT4& diffuse, const DirectX::XMFLOAT4& specular) { surface_.ambient_mat = ambient; surface_.diffuse_mat = diffuse; surface_.specular_mat = specular; }
 	//--------------------------------------------------//
-	Light GetLight() const { return light_; }
-	void SetLight(const Light& light) { light_ = light; }
+	LightInfo GetLightInfo() const { return light_; }
+	void SetLightInfo(const LightInfo& light) { light_ = light; }
 	//--------------------------------------------------//
-	DirectX::XMFLOAT3 GetEyePowW() const { return eye_pow_w_; }
-	void SetEyePowW(const DirectX::XMFLOAT3& pow) { eye_pow_w_ = pow; }
+	DirectX::XMFLOAT3 GetEyePosW() const { return eye_pos_w_; }
+	void SetEyePosW(const DirectX::XMFLOAT3& pos) { eye_pos_w_ = pos; }
 	//--------------------------------------------------//
 	float GetHasTexture() const { return has_texture_; }
 	void SetHasTexture(const bool& has_texture) { has_texture_ = has_texture; }

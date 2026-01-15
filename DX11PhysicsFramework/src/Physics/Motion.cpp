@@ -1,19 +1,13 @@
 ﻿#include <Physics/Motion.h>
 
-Motion::Motion(CTransform* transform, const float& mass, Gravity* gravity) : Force(transform, mass)
-{
-    gravity_ = gravity;
-    position_ = GetTransform()->GetPosition();
-}
-
 void Motion::Update(const float& dt)
 {
-    if (GetMass() <= 0.0f) {return;}
+    if (GetMass() <= 0.0f) { return; }
 
     assert(dt > 0.0f);
     
     acceleration_ += GetNetForce() / GetMass();
-    acceleration_ += gravity_->CalculateGravity();
+    acceleration_ += gravity_comp_->CalculateGravity();
     acceleration_ *= dt;
     
     velocity_ += acceleration_ * dt * 0.5f;
@@ -28,5 +22,5 @@ void Motion::Update(const float& dt)
 
 Motion::~Motion()
 {
-    if (gravity_) {gravity_ = nullptr;}
+    if (gravity_comp_) {gravity_comp_ = nullptr;}
 }

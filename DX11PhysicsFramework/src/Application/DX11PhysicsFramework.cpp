@@ -58,8 +58,8 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 	HRESULT hr = S_OK;
 
 	#pragma region Non-D3D11 Instantiation
-	light_ = new Light();
-	loading_ = new Loading();
+	light_ = new LightInfo();
+	load_ = new Loader();
 	timer_ = new Timer();
 	#pragma endregion
 
@@ -91,7 +91,7 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 {
 	#pragma region Non-D3D11 Cleanup
 	if (light_) {delete light_; light_ = nullptr;}
-	if (loading_) {delete loading_; loading_ = nullptr;}
+	if (load_) {delete load_; load_ = nullptr;}
 	if (timer_) {delete timer_; timer_ = nullptr;}
 	if (camera_) {delete camera_; camera_ = nullptr;}
 	if (obj_mesh_) {obj_mesh_ = nullptr;}
@@ -530,8 +530,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	if (FAILED(hr)) { return hr; }
 
 	#pragma region Load & Bind Stone + Floor texture
-	stone_tex_rv_ = loading_->LoadTexture(device_, R"(Resources\\Textures\\stone.dds)");
-	ground_tex_rv_ = loading_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
+	stone_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\stone.dds)");
+	ground_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
 	#pragma endregion
 
 	#pragma region Setup Camera
@@ -552,7 +552,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	#pragma region Setup Sphere Geometry
 	Geometry sphereGeometry;
-	obj_mesh_ = loading_->LoadMesh(device_, R"(Resources\\OBJ\\sphere.obj)");
+	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\sphere.obj)");
 	sphereGeometry.index_buffer = obj_mesh_->index_buffer;
 	sphereGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
 	sphereGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
@@ -562,7 +562,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	
 	#pragma region Setup Hercules Geometry
 	Geometry herculesGeometry;
-	obj_mesh_ = loading_->LoadMesh(device_, R"(Resources\\OBJ\\donut.obj)");
+	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\donut.obj)");
 	herculesGeometry.index_buffer = obj_mesh_->index_buffer;
 	herculesGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
 	herculesGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
@@ -704,15 +704,15 @@ void DX11PhysicsFramework::Draw() const
 	ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(view));
 	ConstantBuffer::GetInstance().SetProjectionMatrix(XMMatrixTranspose(projection));
 	
-	ConstantBuffer::GetInstance().SetLight(*light_);
-	ConstantBuffer::GetInstance().SetEyePowW(camera_->GetPosition());
+	ConstantBuffer::GetInstance().SetLightInfo(*light_);
+	ConstantBuffer::GetInstance().SetEyePosW(camera_->GetPosition());
 	#pragma endregion
 
 	#pragma region Render Game Objects
 	for (auto gameObject : game_object_)
 	{
 		// Get render material
-		Material material {gameObject->GetRender()->GetMaterial()};
+		Material material {gameObject->GetRender()->GetMaterialData()};
 
 		// Copy material to shader
 		ConstantBuffer::GetInstance().SetSurfaceInfo(material.ambient, material.diffuse, material.specular);

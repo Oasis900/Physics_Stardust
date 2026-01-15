@@ -534,7 +534,7 @@
       </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="src\Loaders\Loading.cpp" />
+    <ClCompile Include="src\Loaders\Loader.cpp" />
     <ClCompile Include="src\Loaders\OBJLoader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
@@ -711,7 +711,7 @@
     <ClInclude Include="include\Application\DX11PhysicsFramework.h" />
     <ClInclude Include="include\Interface\ICollidable.h" />
     <ClInclude Include="include\Loaders\DDSTextureLoader.h" />
-    <ClInclude Include="include\Loaders\Loading.h" />
+    <ClInclude Include="include\Loaders\Loader.h" />
     <ClInclude Include="include\Loaders\OBJLoader.h" />
     <ClInclude Include="include\Objects\Camera.h" />
     <ClInclude Include="include\Objects\GameObject.h" />

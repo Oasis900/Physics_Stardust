@@ -32,10 +32,10 @@ public:
     CRender(const Geometry& geometry, const Material& material);
     //--------------------------------------------------//
     Geometry GetGeometryData() const { return *geometry_; }
-    Material GetMaterial() const { return *material_; }
+    Material GetMaterialData() const { return *material_; }
     //--------------------------------------------------//
     void SetTextureRV(ID3D11ShaderResourceView * textureRV) { texture_rv_ = textureRV; }
-    ID3D11ShaderResourceView* const* GetTextureRV() { return &texture_rv_; }
+    ID3D11ShaderResourceView* const* GetTextureRV() const { return &texture_rv_; }
     bool HasTexture() const { return texture_rv_ ? true : false; }
     //--------------------------------------------------//
     void Draw(ID3D11DeviceContext * pImmediateContext) const;

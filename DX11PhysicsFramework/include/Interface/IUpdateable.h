@@ -4,5 +4,4 @@
 struct IUpdateable
 {
     virtual void Update(const float& dt) = 0;
-    virtual ~IUpdateable() = default;
 };

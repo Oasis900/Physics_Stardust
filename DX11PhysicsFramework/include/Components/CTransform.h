@@ -4,10 +4,11 @@
 #include <string>
 #include <Core/Vec3MathLibrary.h>
 #include <Structures/Structures.h>
+#include <Interface/IUpdateable.h>
 
 class GameObject;
 
-class CTransform
+class CTransform : IUpdateable
 {
     DirectX::XMFLOAT4X4 world_ = DirectX::XMFLOAT4X4();
     DirectX::XMFLOAT3 rotation_ = DirectX::XMFLOAT3();
@@ -42,7 +43,7 @@ public:
     //--------------------------------------------------//
     void SetParentObject(GameObject* in_parent) {parent_ = in_parent;}
     //--------------------------------------------------//
-    void Update(const float& dt);
+    void Update(const float& dt) override;
     //--------------------------------------------------//
     ~CTransform();
 };

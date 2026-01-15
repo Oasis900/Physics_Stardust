@@ -17,7 +17,7 @@ struct SurfaceInfo
 	float4 spec_mat;
 };
 
-struct Light
+struct LightInfo
 {
 	float4 amb_light;
 	float4 diff_light;
@@ -34,7 +34,7 @@ cbuffer ConstantBuffer_ : register( b0 )
 	matrix Projection;
 
 	SurfaceInfo surface;
-	Light light;
+	LightInfo light;
 
 	float3 EyePosW;
 	float HasTexture;

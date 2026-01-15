@@ -30,6 +30,5 @@ public:
 	//void Update(const float& dt) final;
 	//--------------------------------------------------//
 	~GameObject();
-	
 };
 
