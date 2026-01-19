@@ -6,6 +6,7 @@
 
 class CPhysics : public IUpdateable
 {
+    float mass_ = 0.0f;
     Motion* motion_ = nullptr;
     Gravity* gravity_ = nullptr;
     ICollidable::Collider* collider_ = nullptr;
@@ -22,6 +23,8 @@ public:
     //--------------------------------------------------//
     Gravity* GetGravity() const { return gravity_;}
     void ToggleGravity() const {gravity_->ToggleGravity();}
+    //--------------------------------------------------//
+    float GetMass() const { return mass_;}
     //--------------------------------------------------//
     bool IsCollidable() const {return collider_ != nullptr;}
     ICollidable::Collider* GetCollider() const { return collider_;}

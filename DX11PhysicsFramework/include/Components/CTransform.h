@@ -24,6 +24,7 @@ public:
     CTransform(CTransform&&) = delete;
     CTransform& operator=(const CTransform&&) = delete;
     //--------------------------------------------------//
+    GameObject* GetParent() const {return parent_;};
     void SetParent(GameObject * parent) { parent_ = parent; }
     //--------------------------------------------------//
     DirectX::XMMATRIX GetWorldMatrix() const { return DirectX::XMLoadFloat4x4(&world_); }
@@ -40,8 +41,6 @@ public:
     void SetRotation(DirectX::XMFLOAT3 rotation) { rotation_ = rotation; }
     void SetRotation(float x, float y, float z) { rotation_.x = x; rotation_.y = y; rotation_.z = z; }
     DirectX::XMFLOAT3 GetRotation() const { return rotation_; }
-    //--------------------------------------------------//
-    void SetParentObject(GameObject* in_parent) {parent_ = in_parent;}
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//

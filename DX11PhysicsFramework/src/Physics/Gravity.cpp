@@ -14,7 +14,18 @@ void Gravity::ToggleGravity()
 
 Vector3 Gravity::CalculateGravity()
 {
-    SetNetForce(Vector3(0,-EARTH_GRAVITY * GetMass(),0));
+    float distance = Vector3(0,0,0).Magnitude() - GetTransform()->GetPosition().Magnitude();
+    
+    float gravity = G_CONSTANT * (GetMass() * GetMass()) / (distance * distance);
+    
+    Vector3 force = Vector3(gravity * GetMass(), gravity * GetMass(), gravity * GetMass());
+    
+    SetNetForce(force);
     
     return GetNetForce();
+}
+
+Gravity::~Gravity()
+{
+    
 }

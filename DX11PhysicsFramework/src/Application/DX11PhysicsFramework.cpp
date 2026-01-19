@@ -602,44 +602,49 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	noSpecMaterial.specular = XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
 	#pragma endregion
 
+	GameObject* game_object = nullptr;
+
 	#pragma region Initialise Floor Object
-	GameObject* gameObject = new GameObject(FLOOR, planeGeometry, noSpecMaterial, 0.0f);
+	/*GameObject* gameObject = new GameObject(FLOOR, planeGeometry, noSpecMaterial, 0.0f);
 	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
 	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
 	gameObject->GetRender()->SetTextureRV(ground_tex_rv_);
 	
-	game_object_.push_back(gameObject);
+	game_object_.push_back(gameObject);*/
 	#pragma endregion
 
 	#pragma region Intialise Cube Objects
-	for (int i = 0; i < 4; i++)
+	/*for (int i = 0; i < 4; i++)
 	{
-		gameObject = new GameObject(CUBE, cubeGeometry, shinyMaterial, 5);
-		gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
-		gameObject->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 2.5f), 1.0f, 10.0f);
-		gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
+		game_object = new GameObject(CUBE, cubeGeometry, shinyMaterial, 5);
+		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
+		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 2.5f), 1.0f, 10.0f);
+		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
 
-		game_object_.push_back(gameObject);
-	}
+		game_object_.push_back(game_object);
+	}*/
 	#pragma endregion
 
 	#pragma region Intialise Donut Object
-	gameObject = new GameObject(DONUT, herculesGeometry, shinyMaterial, 2);
-	gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
-	gameObject->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
-	gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
+	/*game_object = new GameObject(DONUT, herculesGeometry, shinyMaterial, 2);
+	game_object->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
+	game_object->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
+	game_object->GetRender()->SetTextureRV(stone_tex_rv_);
 	
-	game_object_.push_back(gameObject);
+	game_object_.push_back(game_object);*/
 	#pragma endregion
 
 	#pragma region Intialise Sphere Object
-	gameObject = new GameObject(SPHERE, sphereGeometry, shinyMaterial, 1);
-	gameObject->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
-	gameObject->GetTransform()->SetPosition(-5.0f, 1.0f, 5.0f);
-	gameObject->GetRender()->SetTextureRV(stone_tex_rv_);
-	
-	game_object_.push_back(gameObject);
+	for (int i = 0; i < 2; i++)
+	{
+		game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial, 100);
+		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
+		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 10.0f), 1.0f, 10.0f);
+		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
+		
+		game_object_.push_back(game_object);
+	}
 	#pragma endregion
 	
 	return S_OK;
@@ -751,31 +756,56 @@ void DX11PhysicsFramework::Draw() const
 void DX11PhysicsFramework::KeyInput()
 {
 	static GameObject* current_object;
-	
+
+	if (GetAsyncKeyState('0') & 0x8000)
+	{
+		if (game_object_.at(0))
+		{
+			current_object = game_object_.at(0);
+		}
+	}
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
-		current_object = game_object_.at(1);
+		if (game_object_.at(1))
+		{
+			current_object = game_object_.at(1);
+		}
 	}
 	if (GetAsyncKeyState('2') & 0x8000)
 	{
-		current_object = game_object_.at(2);
+		if (game_object_.at(2))
+		{
+			current_object = game_object_.at(2);
+		}
 	}
-	if (GetAsyncKeyState('3') & 0x8000)
+	/*if (GetAsyncKeyState('3') & 0x8000)
 	{
-		current_object = game_object_.at(3);
+		if (game_object_.at(3))
+		{
+			current_object = game_object_.at(3);
+		}
 	}
 	if (GetAsyncKeyState('4') & 0x8000)
 	{
-		current_object = game_object_.at(4);
+		if (game_object_.at(4))
+		{
+			current_object = game_object_.at(4);
+		}
 	}
 	if (GetAsyncKeyState('5') & 0x8000)
 	{
-		current_object = game_object_.at(5);
+		if (game_object_.at(5))
+		{
+			current_object = game_object_.at(5);
+		}
 	}
 	if (GetAsyncKeyState('6') & 0x8000)
 	{
-		current_object = game_object_.at(6);
-	}
+		if (game_object_.at(6))
+		{
+			current_object = game_object_.at(6);
+		}
+	}*/
 	if (GetAsyncKeyState('W') & 0x8000) // Forward
 	{
 		if (current_object)

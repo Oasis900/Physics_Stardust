@@ -11,7 +11,7 @@ void Motion::Update(const float& dt)
     acceleration_ += GetNetForce() / GetMass();
     acceleration_ *= dt;
 
-    RungeKuttaK4(dt);
+    VelocityVerlet(dt);
     
     GetTransform()->SetPosition(position_);
 

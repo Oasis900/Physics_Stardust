@@ -8,7 +8,7 @@ CTransform::CTransform(const ObjectType& type)
 
 CTransform::~CTransform()
 {
-    if (parent_) {delete parent_; parent_ = nullptr;}
+    if (parent_) {parent_ = nullptr;}
 }
 
 void CTransform::Update(const float& dt)
@@ -28,12 +28,6 @@ void CTransform::Update(const float& dt)
     XMMATRIX scale = XMMatrixScaling(scale_.x, scale_.y, scale_.z);
     XMMATRIX rotation = XMMatrixRotationX(rotation_.x) * XMMatrixRotationY(rotation_.y) * XMMatrixRotationZ(rotation_.z);
     XMMATRIX translation = XMMatrixTranslation(position_.x, position_.y, position_.z);
-
-    if (type_ != FLOOR)
-    {
-        XMMATRIX old_position = DirectX::XMLoadFloat4x4(&world_);
-        translation = old_position + (translation - old_position) * dt;
-    }
 
     XMStoreFloat4x4(&world_, scale * rotation * translation);
 
