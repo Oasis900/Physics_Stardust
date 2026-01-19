@@ -780,7 +780,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -1.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -5.0f));
 			Debug::DebugPrintF("acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 	}
@@ -788,7 +788,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, 1.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, 5.0f));
 			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 	}
@@ -796,7 +796,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(1.0f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(5.0f, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude());
 		}
 	}
@@ -804,7 +804,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-1.0f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-5.0f, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 	}

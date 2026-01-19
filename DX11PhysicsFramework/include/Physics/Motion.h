@@ -3,7 +3,7 @@
 #include <Physics/Gravity.h>
 #include <Interface/IUpdateable.h>
 
-// TODO (Motion) [12/01/26] : Implemented dampening, come back to tweak motion
+constexpr float TIME = 1.0f/60.0f;
 
 class Motion : public Force, public IUpdateable
 {
@@ -32,6 +32,15 @@ public:
     //void SetAcceleration(const Vector3& acceleration) {acceleration_ = acceleration;}
     //--------------------------------------------------//
     void Update(const float& dt) final;
+    //--------------------------------------------------//
+    void MyAttempt(const float& dt);
+    void SemiImplicitEuler(const float& dt);
+    void StormerVerlet(const float& dt);
+    void VelocityVerlet(const float& dt);
+    Vector3 RungeKuttaK1(const float& dt);
+    Vector3 RungeKuttaK2(const float& dt);
+    Vector3 RungeKuttaK3(const float& dt);
+    void RungeKuttaK4(const float& dt);
     //--------------------------------------------------//
     ~Motion() override;
 };
