@@ -638,7 +638,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma region Intialise Sphere Object
 	for (int i = 0; i < 2; i++)
 	{
-		game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial, 100);
+		game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial, 2);
 		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 10.0f), 1.0f, 10.0f);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
@@ -810,7 +810,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -5.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, SPEED));
 			Debug::DebugPrintF("acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 	}
@@ -818,7 +818,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, 5.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -SPEED));
 			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 	}
@@ -826,7 +826,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(5.0f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-SPEED, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude());
 		}
 	}
@@ -834,7 +834,7 @@ void DX11PhysicsFramework::KeyInput()
 	{
 		if (current_object)
 		{
-			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-5.0f, 0.0f, 0.0f));
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(SPEED, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 	}

@@ -19,6 +19,7 @@
 constexpr int WINDOW_WIDTH = 1280;
 constexpr int WINDOW_HEIGHT = 720;
 constexpr float FPS60 = 1.0f/60.0f;
+constexpr float SPEED = 100.0f;
 
 class DX11PhysicsFramework
 {
