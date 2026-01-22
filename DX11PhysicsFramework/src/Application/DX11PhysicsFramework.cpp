@@ -636,12 +636,21 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma endregion
 
 	#pragma region Intialise Sphere Object
+	game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial);
+	game_object->GetTransform()->SetScale(2.0f, 2.0f, 2.0f);
+	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
+	game_object->GetRender()->SetTextureRV(stone_tex_rv_);
+	game_object->GetPhysics()->SetMass(0);
+	game_object_.push_back(game_object);
+	
+	
 	for (int i = 0; i < 2; i++)
 	{
-		game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial, 2);
+		game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial);
 		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 10.0f), 1.0f, 10.0f);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
+		game_object->GetPhysics()->SetMass(10);
 		
 		game_object_.push_back(game_object);
 	}
@@ -819,7 +828,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -SPEED));
-			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
+			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 	}
 	if (GetAsyncKeyState('A') & 0x8000) // Left
@@ -827,7 +836,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-SPEED, 0.0f, 0.0f));
-			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude());
+			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude());
 		}
 	}
 	if (GetAsyncKeyState('D') & 0x8000) // Right
@@ -835,14 +844,23 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(SPEED, 0.0f, 0.0f));
-			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
+			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 	}
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
-		for (auto object : game_object_)
+		if (current_object)
 		{
-			object->GetPhysics()->ToggleGravity();
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, SPEED, 0.0f));
+			Debug::DebugPrintF("acceleration ip is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+		}
+	}
+	if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
+	{
+		if (current_object)
+		{
+			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, -SPEED, 0.0f));
+			Debug::DebugPrintF("acceleration down is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 	}
 }

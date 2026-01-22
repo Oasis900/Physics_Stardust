@@ -15,7 +15,7 @@ class GameObject
 	CPhysics* physics_comp_ = nullptr;
 	
 public:
-	GameObject(const ObjectType& type, const Geometry& geometry, const Material& material, const float& mass);
+	GameObject(const ObjectType& type, const Geometry& geometry, const Material& material);
 	//--------------------------------------------------//
 	GameObject(const GameObject& other) = delete;
 	GameObject& operator=(const GameObject&) = delete;

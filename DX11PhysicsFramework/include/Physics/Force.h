@@ -12,27 +12,27 @@ protected:
     //--------------------------------------------------//
     Vector3 GetNetForce() const {return net_force_;}
     void SetNetForce(const Vector3& other) {net_force_ = other;}
-    //--------------------------------------------------//
-    float GetMass() const {return mass_;}
-    void SetMass(const float& mass) {mass_ = mass;}
     
 public:
-    Force(CTransform* transform, const float& mass);
+    Force(CTransform* transform);
     //--------------------------------------------------//
     Force(const Force& other) = delete;
     Force& operator=(const Force&) = delete;
     Force(Force&&) = delete;
     Force& operator=(const Force&&) = delete;
     //--------------------------------------------------//
+    float GetMass() const {return mass_;}
+    void SetMass(const float& mass) {mass_ = mass;}
+    float GetInverseMass() const {return 1/mass_;}
+    //--------------------------------------------------//
     void AddForce(const Vector3& force) {net_force_ += force;}
     //--------------------------------------------------//
     virtual ~Force();
 };
 
-inline Force::Force(CTransform* transform, const float& mass)
+inline Force::Force(CTransform* transform)
 {
-    transform_ = transform; 
-    mass_ = mass;
+    transform_ = transform;
 }
 
 inline Force::~Force()

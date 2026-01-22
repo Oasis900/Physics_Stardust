@@ -3,20 +3,17 @@
 
 // TODO (Gravity) [12/01/26] : Review class when attempting General Relativity
 
-constexpr float G_CONSTANT = 0.000000000006743f;
+constexpr float G_CONSTANT = 6.6743f;
 
 class Gravity : public Force
 {
-    bool toggle_gravity_;
+    //bool toggle_gravity_;
 public:
-    Gravity(CTransform* transform, const float& mass) : Force(transform, mass)
-    {
-        toggle_gravity_ = false;
-    }
+    explicit Gravity(CTransform* transform) : Force(transform) {}
     //--------------------------------------------------//
-    bool GetToggleGravity() const {return toggle_gravity_;}
+    //bool GetToggleGravity() const {return toggle_gravity_;}
     //--------------------------------------------------//
-    void ToggleGravity();
+    //void ToggleGravity();
     //--------------------------------------------------//
     Vector3 CalculateGravity();
     //--------------------------------------------------//

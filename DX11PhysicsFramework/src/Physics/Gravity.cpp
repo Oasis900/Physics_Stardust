@@ -1,6 +1,6 @@
 ﻿#include <Physics/Gravity.h>
 
-void Gravity::ToggleGravity()
+/*void Gravity::ToggleGravity()
 {
     if (!toggle_gravity_)
     {
@@ -10,15 +10,23 @@ void Gravity::ToggleGravity()
     {
         toggle_gravity_ = false;
     }
-}
+}*/
 
 Vector3 Gravity::CalculateGravity()
 {
-    float distance = Vector3(0,0,0).Magnitude() - GetTransform()->GetPosition().Magnitude();
+    Vector3 distance = GetTransform()->GetPosition() - Vector3(0,0,0);
+
+    //distance.Normalize();
     
-    float gravity = G_CONSTANT * (GetMass() * GetMass()) / (distance * distance);
+    float gravity_x = G_CONSTANT * (GetInverseMass() * 0.1f) / (distance.x * distance.x);
+    float gravity_y = G_CONSTANT * (GetInverseMass() * 0.1f) / (distance.y * distance.y);
+    float gravity_z = G_CONSTANT * (GetInverseMass() * 0.1f) / (distance.z * distance.z);
+
+    Vector3 gravity = Vector3(gravity_x, gravity_y, gravity_z);
+
+    gravity.Normalize();
     
-    Vector3 force = Vector3(gravity * GetMass(), gravity * GetMass(), gravity * GetMass());
+    Vector3 force = gravity - GetTransform()->GetPosition();
     
     SetNetForce(force);
     

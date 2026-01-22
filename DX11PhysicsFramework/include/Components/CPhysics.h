@@ -6,13 +6,12 @@
 
 class CPhysics : public IUpdateable
 {
-    float mass_ = 0.0f;
     Motion* motion_ = nullptr;
     Gravity* gravity_ = nullptr;
     ICollidable::Collider* collider_ = nullptr;
     
 public:
-    CPhysics(CTransform* transform, const float& mass);
+    CPhysics(CTransform* transform);
     //--------------------------------------------------//
     CPhysics(const CPhysics& other) = delete;
     CPhysics& operator=(const CPhysics&) = delete;
@@ -22,9 +21,9 @@ public:
     Motion* GetMotion() const { return motion_;}
     //--------------------------------------------------//
     Gravity* GetGravity() const { return gravity_;}
-    void ToggleGravity() const {gravity_->ToggleGravity();}
+    //void ToggleGravity() const {gravity_->ToggleGravity();}
     //--------------------------------------------------//
-    float GetMass() const { return mass_;}
+    void SetMass(const float& mass) const { GetMotion()->SetMass(mass); GetGravity()->SetMass(mass);}
     //--------------------------------------------------//
     bool IsCollidable() const {return collider_ != nullptr;}
     ICollidable::Collider* GetCollider() const { return collider_;}
