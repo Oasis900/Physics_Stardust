@@ -1,7 +1,6 @@
 ﻿#pragma once
 #define COMP_TRANSFORM_HPP
 #include <DirectXMath.h>
-#include <string>
 #include <Core/Vec3MathLibrary.h>
 #include <Structures/Structures.h>
 #include <Interface/IUpdateable.h>
@@ -17,7 +16,7 @@ class CTransform : IUpdateable
     ObjectType type_;
     GameObject* parent_ = nullptr;
 public:
-    explicit CTransform(const ObjectType& type);
+    explicit CTransform(const ObjectType& type) : type_(type) {}
     //--------------------------------------------------//
     CTransform(const CTransform& other) = delete;
     CTransform& operator=(const CTransform&) = delete;

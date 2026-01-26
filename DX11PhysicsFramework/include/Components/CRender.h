@@ -29,7 +29,7 @@ class CRender
     //--------------------------------------------------//
     
 public:
-    CRender(const Geometry& geometry, const Material& material);
+    CRender(const Geometry& geometry, const Material& material) : geometry_(new Geometry(geometry)), material_(new Material(material)) {}
     //--------------------------------------------------//
     Geometry GetGeometryData() const { return *geometry_; }
     Material GetMaterialData() const { return *material_; }

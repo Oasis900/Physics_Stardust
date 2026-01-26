@@ -132,7 +132,7 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 	if (sampler_state_) {sampler_state_->Release(); sampler_state_ = nullptr;}
 	if (stone_tex_rv_) {stone_tex_rv_->Release(); stone_tex_rv_ = nullptr;}
 	if (!ground_tex_rv_) {ground_tex_rv_->Release(); ground_tex_rv_ = nullptr;}
-	if (hercules_tex_rv_) {hercules_tex_rv_->Release(); hercules_tex_rv_ = nullptr;}
+	if (sun_tex_rv) {sun_tex_rv->Release(); sun_tex_rv = nullptr;}
 
 	if (dxgi_device_) {dxgi_device_->Release(); dxgi_device_ = nullptr;}
 	if (dxgi_factory_) {dxgi_factory_->Release(); dxgi_factory_ = nullptr;}
@@ -529,9 +529,10 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	hr = device_->CreateBuffer(&constantBufferDesc, nullptr, &constant_buffer_);
 	if (FAILED(hr)) { return hr; }
 
-	#pragma region Load & Bind Stone + Floor texture
+	#pragma region Load & Bind textures
 	stone_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\stone.dds)");
 	ground_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
+	sun_tex_rv = load_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
 	#pragma endregion
 
 	#pragma region Setup Camera
@@ -550,33 +551,24 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	light_->light_vec_w = XMFLOAT3(0.0f, 0.5f, -1.0f);
 	#pragma endregion
 
-	#pragma region Setup Sphere Geometry
-	Geometry sphereGeometry;
-	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\sphere.obj)");
-	sphereGeometry.index_buffer = obj_mesh_->index_buffer;
-	sphereGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
-	sphereGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
-	sphereGeometry.vb_offset = obj_mesh_->vb_offset;
-	sphereGeometry.vb_stride = obj_mesh_->vb_stride;
-	#pragma endregion
-	
-	#pragma region Setup Hercules Geometry
-	Geometry herculesGeometry;
-	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\donut.obj)");
-	herculesGeometry.index_buffer = obj_mesh_->index_buffer;
-	herculesGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
-	herculesGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
-	herculesGeometry.vb_offset = obj_mesh_->vb_offset;
-	herculesGeometry.vb_stride = obj_mesh_->vb_stride;
+	#pragma region Setup Sun Geometry
+	Geometry sunGeometry;
+	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\sun.obj)");
+	sunGeometry.index_buffer = obj_mesh_->index_buffer;
+	sunGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
+	sunGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
+	sunGeometry.vb_offset = obj_mesh_->vb_offset;
+	sunGeometry.vb_stride = obj_mesh_->vb_stride;
 	#pragma endregion
 
-	#pragma region Setup Cube Geometry
-	Geometry cubeGeometry;
-	cubeGeometry.index_buffer = cube_ib_;
-	cubeGeometry.vertex_buffer = cube_vb_;
-	cubeGeometry.indices_num = 36;
-	cubeGeometry.vb_offset = 0;
-	cubeGeometry.vb_stride = sizeof(SimpleVertex);
+	#pragma region Setup Planet Geometry
+	Geometry planetGeometry;
+	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\planet.obj)");
+	planetGeometry.index_buffer = obj_mesh_->index_buffer;
+	planetGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
+	planetGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
+	planetGeometry.vb_offset = obj_mesh_->vb_offset;
+	planetGeometry.vb_stride = obj_mesh_->vb_stride;
 	#pragma endregion
 
 	#pragma region Setup Plane Geometry
@@ -604,14 +596,14 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	GameObject* game_object = nullptr;
 
-	#pragma region Initialise Floor Object
-	/*GameObject* gameObject = new GameObject(FLOOR, planeGeometry, noSpecMaterial, 0.0f);
-	gameObject->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
-	gameObject->GetTransform()->SetScale(15.0f, 15.0f, 15.0f);
-	gameObject->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
-	gameObject->GetRender()->SetTextureRV(ground_tex_rv_);
-	
-	game_object_.push_back(gameObject);*/
+	#pragma region Initialise PARABOLOID Object
+	game_object = new GameObject(PARABOLOID, planeGeometry, noSpecMaterial);
+	game_object->GetTransform()->SetPosition(0.0f, -5.0f, 0.0f);
+	game_object->GetTransform()->SetScale(100.0f, 100.0f, 100.0f);
+	game_object->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
+	game_object->GetRender()->SetTextureRV(ground_tex_rv_);
+	game_object->GetPhysics()->SetMass(0);
+	game_object_.push_back(game_object);
 	#pragma endregion
 
 	#pragma region Intialise Cube Objects
@@ -626,27 +618,19 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	}*/
 	#pragma endregion
 
-	#pragma region Intialise Donut Object
-	/*game_object = new GameObject(DONUT, herculesGeometry, shinyMaterial, 2);
-	game_object->GetTransform()->SetScale(0.2f, 0.2f, 0.2f);
-	game_object->GetTransform()->SetPosition(-5.0f, 0.5f, 10.0f);
-	game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-	
-	game_object_.push_back(game_object);*/
-	#pragma endregion
-
-	#pragma region Intialise Sphere Object
-	game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial);
-	game_object->GetTransform()->SetScale(2.0f, 2.0f, 2.0f);
-	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
-	game_object->GetRender()->SetTextureRV(stone_tex_rv_);
+	#pragma region Intialise Sun Object
+	game_object = new GameObject(SUN, sunGeometry, shinyMaterial);
+	game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
+	game_object->GetTransform()->SetPosition(0.0f, 7.0f, 0.0f);
+	game_object->GetRender()->SetTextureRV(sun_tex_rv);
 	game_object->GetPhysics()->SetMass(0);
 	game_object_.push_back(game_object);
+	#pragma endregion
 	
-	
+	#pragma region Intialise Planet Object
 	for (int i = 0; i < 2; i++)
 	{
-		game_object = new GameObject(SPHERE, sphereGeometry, shinyMaterial);
+		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
 		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 10.0f), 1.0f, 10.0f);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
@@ -787,14 +771,14 @@ void DX11PhysicsFramework::KeyInput()
 			current_object = game_object_.at(2);
 		}
 	}
-	/*if (GetAsyncKeyState('3') & 0x8000)
+	if (GetAsyncKeyState('3') & 0x8000)
 	{
 		if (game_object_.at(3))
 		{
 			current_object = game_object_.at(3);
 		}
 	}
-	if (GetAsyncKeyState('4') & 0x8000)
+	/*if (GetAsyncKeyState('4') & 0x8000)
 	{
 		if (game_object_.at(4))
 		{

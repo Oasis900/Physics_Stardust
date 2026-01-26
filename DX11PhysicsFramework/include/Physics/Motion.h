@@ -3,20 +3,17 @@
 #include <Physics/Gravity.h>
 #include <Interface/IUpdateable.h>
 
+constexpr float DAMPENING = 0.99f;
+
 class Motion final : public Force, public IUpdateable
 {
     Vector3 velocity_;
     Vector3 acceleration_;
     Vector3 position_;
-    const float dampening_ = 0.99f;
     Gravity* gravity_comp_ = nullptr;
     
 public:
-    Motion(CTransform* transform, Gravity* gravity) : Force(transform)
-    {
-        gravity_comp_ = gravity;
-        position_ = transform->GetPosition();
-    }
+    Motion(CTransform* transform, Gravity* gravity) : Force(transform), position_(transform->GetPosition()), gravity_comp_(gravity) {}
     //--------------------------------------------------//
     Motion(const Motion& other) = delete;
     Motion& operator=(const Motion&) = delete;
@@ -27,7 +24,7 @@ public:
     //--------------------------------------------------//
     Vector3 GetAcceleration() const {return acceleration_;}
     //--------------------------------------------------//
-    void Update(const float& dt) final;
+    void Update(const float& dt) override;
     //--------------------------------------------------//
     void MyAttempt(const float& dt);
     void SemiImplicitEuler(const float& dt);

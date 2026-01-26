@@ -1,8 +1,4 @@
 #pragma once
-#include <directxmath.h>
-#include <d3d11_1.h>
-#include <string>
-#include <Interface/IUpdateable.h>
 #include <Components/CPhysics.h>
 #include <Components/CRender.h>
 #include <Components/CTransform.h>
@@ -10,12 +6,15 @@
 
 class GameObject
 {
-	CRender* render_comp_ = nullptr;
 	CTransform* transform_comp_ = nullptr;
+	CRender* render_comp_ = nullptr;
 	CPhysics* physics_comp_ = nullptr;
 	
 public:
-	GameObject(const ObjectType& type, const Geometry& geometry, const Material& material);
+	GameObject(const ObjectType& type, const Geometry& geometry, const Material& material) : transform_comp_(new CTransform(type)), render_comp_(new CRender(geometry, material))
+	{
+		physics_comp_ = new CPhysics(transform_comp_);
+	} 
 	//--------------------------------------------------//
 	GameObject(const GameObject& other) = delete;
 	GameObject& operator=(const GameObject&) = delete;

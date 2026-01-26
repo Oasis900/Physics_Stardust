@@ -6,6 +6,6 @@
 class CParticle : public CPhysics
 {
 public:
-    CParticle(CTransform* transform, const float& mass) : CPhysics(transform) {}
+    explicit CParticle(CTransform* transform) : CPhysics(transform) {}
     void Update(const float& dt) final;
 };

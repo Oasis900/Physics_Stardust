@@ -14,7 +14,7 @@ protected:
     void SetNetForce(const Vector3& other) {net_force_ = other;}
     
 public:
-    Force(CTransform* transform);
+    explicit Force(CTransform* transform) : transform_(transform) {}
     //--------------------------------------------------//
     Force(const Force& other) = delete;
     Force& operator=(const Force&) = delete;
@@ -29,11 +29,6 @@ public:
     //--------------------------------------------------//
     virtual ~Force();
 };
-
-inline Force::Force(CTransform* transform)
-{
-    transform_ = transform;
-}
 
 inline Force::~Force()
 {

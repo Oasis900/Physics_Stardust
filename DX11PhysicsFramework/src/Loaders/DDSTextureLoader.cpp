@@ -21,7 +21,6 @@
 #include <assert.h>
 #include <algorithm>
 #include <memory>
-
 #include <Loaders/DDSTextureLoader.h>
 
 #if !defined(NO_D3D11_DEBUG_NAME) && ( defined(_DEBUG) || defined(PROFILE) )

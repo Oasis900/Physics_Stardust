@@ -3,12 +3,7 @@
 
 #include <windows.h>
 #include <d3d11_1.h>
-#include <d3dcompiler.h>
-#include <directxmath.h>
-#include <directxcolors.h>
 
-#include <Core/Vec3MathLibrary.h>
-#include <Core/resource.h>
 #include <Core/Timer.h>
 #include <Core/Debug.h>
 #include <Objects/Camera.h>
@@ -48,7 +43,7 @@ class DX11PhysicsFramework
 	//--------------------------------------------------//
 	ID3D11ShaderResourceView* stone_tex_rv_ = nullptr;
 	ID3D11ShaderResourceView* ground_tex_rv_ = nullptr;
-	ID3D11ShaderResourceView* hercules_tex_rv_ = nullptr;
+	ID3D11ShaderResourceView* sun_tex_rv = nullptr;
 	//--------------------------------------------------//
 	ID3D11SamplerState* sampler_state_ = nullptr;
 	//--------------------------------------------------//

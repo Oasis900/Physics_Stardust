@@ -4,10 +4,9 @@
 
 enum ObjectType
 {
-	FLOOR,
-	CUBE,
-	DONUT,
-	SPHERE
+	SUN,
+	PLANET,
+	PARABOLOID
 };
 
 struct SurfaceInfo

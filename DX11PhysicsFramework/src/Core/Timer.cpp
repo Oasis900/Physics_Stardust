@@ -1,4 +1,4 @@
-﻿#include <Core\Timer.h>
+﻿#include <Core/Timer.h>
 using std::chrono::steady_clock;
 using std::chrono::duration;
 

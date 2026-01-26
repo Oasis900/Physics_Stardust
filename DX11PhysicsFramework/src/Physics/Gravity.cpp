@@ -15,12 +15,10 @@
 Vector3 Gravity::CalculateGravity()
 {
     Vector3 distance = GetTransform()->GetPosition() - Vector3(0,0,0);
-
-    //distance.Normalize();
     
-    float gravity_x = G_CONSTANT * (GetInverseMass() * 0.1f) / (distance.x * distance.x);
-    float gravity_y = G_CONSTANT * (GetInverseMass() * 0.1f) / (distance.y * distance.y);
-    float gravity_z = G_CONSTANT * (GetInverseMass() * 0.1f) / (distance.z * distance.z);
+    float gravity_x = G_CONSTANT * (GetInverseMass() * 0.9f) / (distance.x * distance.x);
+    float gravity_y = G_CONSTANT * (GetInverseMass() * 0.9f) / (distance.y * distance.y);
+    float gravity_z = G_CONSTANT * (GetInverseMass() * 0.9f) / (distance.z * distance.z);
 
     Vector3 gravity = Vector3(gravity_x, gravity_y, gravity_z);
 

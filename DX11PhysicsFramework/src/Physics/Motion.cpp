@@ -8,8 +8,8 @@ void Motion::Update(const float& dt)
     
     //if (gravity_comp_->GetToggleGravity()) { acceleration_ += gravity_comp_->CalculateGravity(); }
 
-    acceleration_ += gravity_comp_->CalculateGravity();
     acceleration_ += GetNetForce() / GetMass();
+    acceleration_ += gravity_comp_->CalculateGravity();
     acceleration_ *= dt;
 
     VelocityVerlet(dt);
@@ -24,7 +24,7 @@ void Motion::MyAttempt(const float& dt)
 {
     velocity_ += acceleration_ * dt;
     position_ += velocity_ * dt;
-    position_ *= powf(dampening_, dt);
+    position_ *= powf(DAMPENING, dt);
 }
 
 void Motion::SemiImplicitEuler(const float& dt)

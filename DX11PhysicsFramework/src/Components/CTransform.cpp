@@ -1,11 +1,6 @@
 ﻿#include <Components/CTransform.h>
 #include <Objects/GameObject.h>
 
-CTransform::CTransform(const ObjectType& type)
-{
-    type_ = type;
-}
-
 CTransform::~CTransform()
 {
     if (parent_) {parent_ = nullptr;}
