@@ -1,7 +1,7 @@
-﻿#include "DebugCamera.h"
-
+﻿#include <Objects/DebugCamera.h>
 #include <random>
 
+/*
 // TODO (Debug camera) : Continue the process of implementing a functional camera.
 
 DebugCamera::DebugCamera()
@@ -128,3 +128,4 @@ void DebugCamera::Update(const float& delta_time)
     cb_data_.SetView(XMMatrixTranspose(XMLoadFloat4x4(&view_)));
     cb_data_.SetCameraPosition(data_->at);
 }
+*/

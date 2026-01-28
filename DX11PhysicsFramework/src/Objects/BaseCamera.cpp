@@ -1,5 +1,6 @@
-﻿#include <Objects\BaseCamera.h>
+﻿#include <Objects/BaseCamera.h>
 
+/*
 void BaseCamera::SetLens()
 {
     // -- Matrix used for arithmetic calculations -- //
@@ -24,4 +25,5 @@ BaseCamera::~BaseCamera()
 {
     if (data_) data_ = nullptr;
 }
+*/
 

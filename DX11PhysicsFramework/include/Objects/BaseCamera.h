@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿/*
+#pragma once
 #ifndef BASE_CAMERA_H
 #define BASE_CAMERA_H
 #include "../../Structures/ConstantBufferData.h"
@@ -63,3 +64,4 @@ public:
     ~BaseCamera();
 };
 #endif
+*/

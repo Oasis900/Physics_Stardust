@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿/*
+#pragma once
 #ifndef OBJ_CAM_DEBUGCAMERA_H
 #define OBJ_CAM_DEBUGCAMERA_H
 #include "BaseCamera.h"
@@ -38,4 +39,4 @@ public:
     XMFLOAT4X4 SetView() final;
     void Update(const float& delta_time) final;
 };
-#endif
+*/
