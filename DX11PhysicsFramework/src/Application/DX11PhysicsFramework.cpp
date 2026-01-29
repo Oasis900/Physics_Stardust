@@ -1,4 +1,6 @@
 #include <Application/DX11PhysicsFramework.h>
+#include <Objects/DebugCamera.h>
+
 using DirectX::XMFLOAT4;
 using DirectX::XMFLOAT3;
 using DirectX::XMFLOAT2;
@@ -28,18 +30,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 bool DX11PhysicsFramework::HandleKeyboard(const MSG& msg)
 {
-	XMFLOAT3 cameraPosition = camera_->GetPosition();
+	/*//XMFLOAT3 cameraPosition = camera_->GetPosition();
 
 	switch (msg.wParam)
 	{
 		case VK_UP:
-			cam_orbit_radius_ = max(cam_orbit_radius_min_, cam_orbit_radius_ - (cam_speed_ * 0.2f));
+			b_camera_->Walk(cam_speed_);
 			return true;
 
 		case VK_DOWN:
-			cam_orbit_radius_ = min(cam_orbit_radius_max_, cam_orbit_radius_ + (cam_speed_ * 0.2f));
+			b_camera_->Walk(-cam_speed_);
 			return true;
-
+		
 		case VK_RIGHT:
 			cam_orbit_angle_xz_ -= cam_speed_;
 			return true;
@@ -50,7 +52,8 @@ bool DX11PhysicsFramework::HandleKeyboard(const MSG& msg)
 
 		default:
 		return false;
-	}
+	}*/
+	return false;
 }
 
 HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
@@ -58,6 +61,7 @@ HRESULT DX11PhysicsFramework::Initialise(HINSTANCE hInstance, int nShowCmd)
 	HRESULT hr = S_OK;
 
 	#pragma region Non-D3D11 Instantiation
+	b_camera_ = new DebugCamera();
 	light_ = new LightInfo();
 	load_ = new Loader();
 	timer_ = new Timer();
@@ -93,7 +97,8 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 	if (light_) {delete light_; light_ = nullptr;}
 	if (load_) {delete load_; load_ = nullptr;}
 	if (timer_) {delete timer_; timer_ = nullptr;}
-	if (camera_) {delete camera_; camera_ = nullptr;}
+	if (b_camera_) {delete b_camera_; b_camera_ = nullptr;}
+	//if (camera_) {delete camera_; camera_ = nullptr;}
 	if (obj_mesh_) {obj_mesh_ = nullptr;}
 	for each (GameObject * thing in game_object_) {delete thing; thing = nullptr;}
 	#pragma endregion
@@ -536,11 +541,11 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma endregion
 
 	#pragma region Setup Camera
-	XMFLOAT3 eye = XMFLOAT3(0.0f, 2.0f, -1.0f);
+	/*XMFLOAT3 eye = XMFLOAT3(0.0f, 2.0f, -1.0f);
 	XMFLOAT3 at = XMFLOAT3(0.0f, 2.0f, 0.0f);
 	XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
 
-	camera_ = new Camera(eye, at, up, static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT), 0.01f, 200.0f);
+	camera_ = new Camera(eye, at, up, static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT), 0.01f, 200.0f);*/
 	#pragma endregion
 
 	#pragma region Setup Scene Light
@@ -668,7 +673,7 @@ void DX11PhysicsFramework::Update()
 		game_object->GetTransform()->Update(alpha);
 	}
 	
-	CameraUpdate();
+	b_camera_->Update(alpha);
 }
 
 void DX11PhysicsFramework::Draw() const
@@ -693,17 +698,17 @@ void DX11PhysicsFramework::Draw() const
 	immediate_context_->PSSetConstantBuffers(0, 1, &constant_buffer_);
 	immediate_context_->PSSetSamplers(0, 1, &sampler_state_);
 
-	XMFLOAT4X4 tempView {camera_->GetView()};
-	XMFLOAT4X4 tempProjection {camera_->GetProjection()};
+	//XMFLOAT4X4 tempView {camera_->GetView()};
+	//XMFLOAT4X4 tempProjection {camera_->GetProjection()};
 
-	XMMATRIX view {XMLoadFloat4x4(&tempView)};
-	XMMATRIX projection {XMLoadFloat4x4(&tempProjection)};
+	//XMMATRIX view {XMLoadFloat4x4(&tempView)};
+	//XMMATRIX projection {XMLoadFloat4x4(&tempProjection)};
 
-	ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(view));
-	ConstantBuffer::GetInstance().SetProjectionMatrix(XMMatrixTranspose(projection));
+	//ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(view));
+	//ConstantBuffer::GetInstance().SetProjectionMatrix(XMMatrixTranspose(projection));
 	
 	ConstantBuffer::GetInstance().SetLightInfo(*light_);
-	ConstantBuffer::GetInstance().SetEyePosW(camera_->GetPosition());
+	//ConstantBuffer::GetInstance().SetEyePosW(camera_->GetPosition());
 	#pragma endregion
 
 	#pragma region Render Game Objects
@@ -752,10 +757,7 @@ void DX11PhysicsFramework::KeyInput()
 
 	if (GetAsyncKeyState('0') & 0x8000)
 	{
-		if (game_object_.at(0))
-		{
-			current_object = game_object_.at(0);
-		}
+		current_object = nullptr;
 	}
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
@@ -806,6 +808,10 @@ void DX11PhysicsFramework::KeyInput()
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, SPEED));
 			Debug::DebugPrintF("acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
+		else if (current_object == nullptr)
+		{
+			b_camera_->Walk(cam_speed_);
+		}
 	}
 	if (GetAsyncKeyState('S') & 0x8000) // Backward
 	{
@@ -813,6 +819,10 @@ void DX11PhysicsFramework::KeyInput()
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -SPEED));
 			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+		}
+		else if (current_object == nullptr)
+		{
+			b_camera_->Walk(-cam_speed_);
 		}
 	}
 	if (GetAsyncKeyState('A') & 0x8000) // Left
@@ -822,6 +832,10 @@ void DX11PhysicsFramework::KeyInput()
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-SPEED, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude());
 		}
+		else if (current_object == nullptr)
+		{
+			b_camera_->Strafe(-cam_speed_);
+		}
 	}
 	if (GetAsyncKeyState('D') & 0x8000) // Right
 	{
@@ -830,6 +844,26 @@ void DX11PhysicsFramework::KeyInput()
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(SPEED, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
+		else if (current_object == nullptr)
+		{
+			b_camera_->Strafe(cam_speed_);
+		}
+	}
+	if (GetAsyncKeyState('H') & 0x8000 || GetAsyncKeyState(VK_RIGHT) & 0x8000)
+	{
+		b_camera_->Yaw(cam_speed_ * 0.2f);
+	}
+	if (GetAsyncKeyState('F') & 0x8000 || GetAsyncKeyState(VK_LEFT) & 0x8000)
+	{
+		b_camera_->Yaw(-cam_speed_ * 0.2f);
+	}
+	if (GetAsyncKeyState('G') & 0x8000 || GetAsyncKeyState(VK_DOWN) & 0x8000)
+	{
+		b_camera_->Pitch(cam_speed_ * 0.2f);
+	}
+	if (GetAsyncKeyState('T') & 0x8000 || GetAsyncKeyState(VK_UP) & 0x8000)
+	{
+		b_camera_->Pitch(-cam_speed_ * 0.2f);
 	}
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
@@ -837,6 +871,10 @@ void DX11PhysicsFramework::KeyInput()
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, SPEED, 0.0f));
 			Debug::DebugPrintF("acceleration ip is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+		}
+		else
+		{
+			b_camera_->Elevation(cam_speed_);
 		}
 	}
 	if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
@@ -846,12 +884,16 @@ void DX11PhysicsFramework::KeyInput()
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, -SPEED, 0.0f));
 			Debug::DebugPrintF("acceleration down is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
+		else
+		{
+			b_camera_->Elevation(-cam_speed_);
+		}
 	}
 }
 
 void DX11PhysicsFramework::CameraUpdate()
 {
-	float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
+	/*float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
 
 	float x = cam_orbit_radius_ * cos(angleAroundZ);
 	float z = cam_orbit_radius_ * sin(angleAroundZ);
@@ -861,5 +903,5 @@ void DX11PhysicsFramework::CameraUpdate()
 	cameraPos.z = z;
 
 	camera_->SetPosition(cameraPos);
-	camera_->Update();
+	camera_->Update();*/
 }

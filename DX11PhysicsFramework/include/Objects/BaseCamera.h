@@ -1,21 +1,16 @@
-﻿/*
-#pragma once
-#ifndef BASE_CAMERA_H
+﻿#pragma once
 #define BASE_CAMERA_H
-#include "../../Structures/ConstantBufferData.h"
-#include "../../Structures/Interfaces.h"
+#include <Interface/IUpdateable.h>
 #include <DirectXMath.h>
-#include <algorithm>
-using namespace DirectX;
 
 struct CameraData
 {
-    XMFLOAT3 eye;
-    XMFLOAT3 at;
-    XMFLOAT3 up;
+    DirectX::XMFLOAT3 eye;
+    DirectX::XMFLOAT3 at;
+    DirectX::XMFLOAT3 up;
 };
 
-class BaseCamera : IUpdatable
+class BaseCamera : IUpdateable
 {
     // -- Window related variables to calculate project matrix -- //
     float window_width_ = 1280.0f;
@@ -27,13 +22,9 @@ class BaseCamera : IUpdatable
 
 protected:
     // -- Member variables for inheritance -- //
-    ConstantBufferData& cb_data_ = ConstantBufferData::GetInstance();
     CameraData* data_ = nullptr;
-    XMFLOAT4X4 projection_;
-    XMFLOAT4X4 view_;
-    //--------------------------------------------------//
-    float GetFOV() const {return fov_;}
-    void SetFOV(const float& fov){fov_ = fov;}
+    DirectX::XMFLOAT4X4 projection_;
+    DirectX::XMFLOAT4X4 view_;
     //--------------------------------------------------//
     // -- Calculates projection and stores to Constant Buffer -- //
     void SetLens();
@@ -41,12 +32,12 @@ protected:
 public:
     BaseCamera();
     //--------------------------------------------------//
-    XMVECTOR GetEyeVec() const {return XMLoadFloat3(&data_->eye);}
-    XMFLOAT3 GetEye() const {return data_->eye;}
-    XMVECTOR GetAtVec() const {return XMLoadFloat3(&data_->at);}
-    XMFLOAT3 GetAt() const {return data_->at;}
-    XMVECTOR GetUpVec() const {return XMLoadFloat3(&data_->up);}
-    XMFLOAT3 GetUp() const {return data_->up;}
+    DirectX::XMVECTOR GetEyeVec() const {return XMLoadFloat3(&data_->eye);}
+    DirectX::XMFLOAT3 GetEye() const {return data_->eye;}
+    DirectX::XMVECTOR GetAtVec() const {return XMLoadFloat3(&data_->at);}
+    DirectX::XMFLOAT3 GetAt() const {return data_->at;}
+    DirectX::XMVECTOR GetUpVec() const {return XMLoadFloat3(&data_->up);}
+    DirectX::XMFLOAT3 GetUp() const {return data_->up;}
     //--------------------------------------------------//
     float GetNearDepth() const {return near_depth_;}
     float GetFarDepth() const {return far_depth_;}
@@ -55,13 +46,11 @@ public:
     float GetWindowWidth() const {return window_width_;}
     float GetWindowHeight() const {return window_height_;}
     //--------------------------------------------------//
-    XMFLOAT4X4* GetView() {return &view_;}
-    XMFLOAT4X4* GetProjection() {return &projection_;}
+    DirectX::XMFLOAT4X4* GetView() {return &view_;}
+    DirectX::XMFLOAT4X4* GetProjection() {return &projection_;}
     //--------------------------------------------------//
-    virtual XMFLOAT4X4 SetView() = 0;
+    virtual DirectX::XMFLOAT4X4 SetView() = 0;
     void Update(const float& delta_time) override = 0;
     
-    ~BaseCamera();
+    virtual ~BaseCamera();
 };
-#endif
-*/

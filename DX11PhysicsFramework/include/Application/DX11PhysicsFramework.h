@@ -7,6 +7,7 @@
 #include <Core/Timer.h>
 #include <Core/Debug.h>
 #include <Objects/Camera.h>
+#include <Objects/DebugCamera.h>
 #include <Objects/GameObject.h>
 #include <Loaders/Loader.h>
 #include <Structures/Structures.h>
@@ -48,7 +49,8 @@ class DX11PhysicsFramework
 	ID3D11SamplerState* sampler_state_ = nullptr;
 	//--------------------------------------------------//
 	std::vector<GameObject*> game_object_;
-	Camera * camera_ = nullptr;
+	DebugCamera* b_camera_ = nullptr;
+	//Camera * camera_ = nullptr;
 	Loader* load_ = nullptr;
 	LightInfo* light_ = nullptr;
 	MeshData* obj_mesh_ = nullptr;
@@ -58,7 +60,7 @@ class DX11PhysicsFramework
 	float cam_orbit_radius_min_ = 2.0f;
 	float cam_orbit_radius_max_ = 50.0f;
 	float cam_orbit_angle_xz_ = -90.0f;
-	float cam_speed_ = 2.0f;
+	float cam_speed_ = 1.0f * 0.2f;
 	//--------------------------------------------------//
 	float time_accumulation_ = 0.0f;
 	//--------------------------------------------------//

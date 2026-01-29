@@ -1,11 +1,15 @@
 ﻿#include <Objects/DebugCamera.h>
+#include <Structures/Structures.h>
 #include <random>
-
-/*
-// TODO (Debug camera) : Continue the process of implementing a functional camera.
+using DirectX::XMFLOAT4X4;
 
 DebugCamera::DebugCamera()
 {
+    using DirectX::XMVECTOR;
+    using DirectX::XMVector3Normalize;
+    using DirectX::XMVectorSubtract;
+    using DirectX::XMVector3Cross;
+    
     // -- Converting XMFLOAT3 into XMVECTOR for calculations -- //
     XMVECTOR eye = XMLoadFloat3(&data_->eye);
     XMVECTOR at = XMLoadFloat3(&data_->at);
@@ -20,33 +24,51 @@ DebugCamera::DebugCamera()
 
 DebugCamera::~DebugCamera()
 {
-    motion_ = nullptr;
+    delete motion_; motion_ = nullptr;
 }
 
 void DebugCamera::Walk(const float& velocity)
 {
-    pos_ += velocity * look_;
+    using DirectX::XMVECTOR;
+    using DirectX::XMVectorReplicate;
+    using DirectX::XMVectorMultiplyAdd;
+
+    
     XMVECTOR v = XMVectorReplicate(velocity);
+    pos_ = XMVectorMultiplyAdd(v, look_, pos_);
     XMStoreFloat3(&motion_->position, XMVectorMultiplyAdd(pos_, look_, v));
 }
 
 void DebugCamera::Strafe(const float& velocity)
 {
-    pos_ += velocity * right_;
+    using DirectX::XMVECTOR;
+    using DirectX::XMVectorReplicate;
+    using DirectX::XMVectorMultiplyAdd;
+    
     XMVECTOR v = XMVectorReplicate(velocity);
+    pos_ = XMVectorMultiplyAdd(v, right_, pos_);
     XMStoreFloat3(&motion_->position, XMVectorMultiplyAdd(pos_, right_, v));
 }
 
 void DebugCamera::Elevation(const float& velocity)
 {
-    pos_ += velocity * up_;
+    using DirectX::XMVECTOR;
+    using DirectX::XMVectorReplicate;
+    using DirectX::XMVectorMultiplyAdd;
+    
     XMVECTOR v = XMVectorReplicate(velocity);
+    pos_ = XMVectorMultiplyAdd(v, up_, pos_);
     XMStoreFloat3(&motion_->position, XMVectorMultiplyAdd(pos_, up_, v));
 }
 
 
 void DebugCamera::Yaw(const float& rotation)
 {
+    using DirectX::XMVECTOR;
+    using DirectX::XMMATRIX;
+    using DirectX::XMQuaternionRotationAxis;
+    using DirectX::XMMatrixRotationQuaternion;
+    
     XMVECTOR q_rotation = XMQuaternionRotationAxis(up_, rotation); 
     XMMATRIX rotate = XMMatrixRotationQuaternion(q_rotation); 
     up_ = XMVector3TransformNormal(up_, rotate);
@@ -56,6 +78,11 @@ void DebugCamera::Yaw(const float& rotation)
 
 void DebugCamera::Pitch(const float& rotation)
 {
+    using DirectX::XMVECTOR;
+    using DirectX::XMMATRIX;
+    using DirectX::XMQuaternionRotationAxis;
+    using DirectX::XMMatrixRotationQuaternion;
+    
     XMVECTOR q_rotation = XMQuaternionRotationAxis(right_, rotation);
     XMMATRIX rotate = XMMatrixRotationQuaternion(q_rotation);
     right_ = XMVector3TransformNormal(right_, rotate);
@@ -64,6 +91,14 @@ void DebugCamera::Pitch(const float& rotation)
 
 XMFLOAT4X4 DebugCamera::SetView()
 {
+    using DirectX::XMVECTOR;
+    using DirectX::XMMATRIX;
+    using DirectX::XMLoadFloat4x4;
+    using DirectX::XMVector3Normalize;
+    using DirectX::XMVector3Cross;
+    using DirectX::XMMatrixLookToLH;
+    using DirectX::XMMatrixTranspose;
+    
     XMVECTOR look = XMVector3Normalize(look_);
     XMVECTOR up = XMVector3Normalize(XMVector3Cross(look_, right_));
     XMVECTOR right = XMVector3Cross(look_, up_);
@@ -78,54 +113,9 @@ XMFLOAT4X4 DebugCamera::SetView()
     return view_;
 }
 
-void DebugCamera::Update(const float& delta_time)
+void DebugCamera::Update(const float& dt)
 {
-    #pragma region User Input Handling 
-    if (GetAsyncKeyState('W') & 0x8000)
-    {
-        Walk(speed_);
-    }
-    if (GetAsyncKeyState('S') & 0x8000)
-    {
-        Walk(-speed_);
-    }
-    if (GetAsyncKeyState('A') & 0x8000)
-    {
-        Strafe(-speed_);
-    }
-    if (GetAsyncKeyState('D') & 0x8000)
-    {
-        Strafe(speed_);
-    }
-    if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-    {
-        Elevation(speed_);
-    }
-    if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
-    {
-        Elevation(-speed_);
-    }
-    if (GetAsyncKeyState('H') & 0x8000 || GetAsyncKeyState(VK_RIGHT) & 0x8000)
-    {
-        Yaw(rotation_);
-    }
-    if (GetAsyncKeyState('F') & 0x8000 || GetAsyncKeyState(VK_LEFT) & 0x8000)
-    {
-        Yaw(-rotation_);
-    }
-    if (GetAsyncKeyState('G') & 0x8000 || GetAsyncKeyState(VK_DOWN) & 0x8000)
-    {
-        Pitch(rotation_);
-    }
-    if (GetAsyncKeyState('T') & 0x8000 || GetAsyncKeyState(VK_UP) & 0x8000)
-    {
-        Pitch(-rotation_);
-    }
-    #pragma endregion
-    
     view_ = SetView();
-    // --- 16 | 12 - 4 | 3 --- //
-    cb_data_.SetView(XMMatrixTranspose(XMLoadFloat4x4(&view_)));
-    cb_data_.SetCameraPosition(data_->at);
+    ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(XMLoadFloat4x4(&view_)));
+    ConstantBuffer::GetInstance().SetEyePosW(GetAt());
 }
-*/
