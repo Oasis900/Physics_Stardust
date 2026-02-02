@@ -1,10 +1,7 @@
 ﻿#pragma once
-#include <vector>
 #include <Physics/Force.h>
 
 // TODO (Gravity) [12/01/26] : Review class when attempting General Relativity
-
-constexpr float G_CONSTANT = 6.6743e-11f;
 
 class Gravity : public Force
 {

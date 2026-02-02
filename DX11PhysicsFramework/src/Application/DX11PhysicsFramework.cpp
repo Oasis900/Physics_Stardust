@@ -1,4 +1,5 @@
 #include <Application/DX11PhysicsFramework.h>
+#include <Core/constants.h>
 #include <Objects/DebugCamera.h>
 
 using DirectX::XMFLOAT4;
@@ -518,6 +519,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	using DirectX::XMConvertToRadians;
 	#pragma endregion
 	
+	srand(timer_->GetDeltaTime());
+	
 	HRESULT hr = S_OK;
 
 	D3D11_BUFFER_DESC constantBufferDesc = {};
@@ -608,7 +611,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	game_object->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(ground_tex_rv_);
 	game_object->GetPhysics()->SetMass(0);
-	game_object_.push_back(game_object);
+	//game_object_.push_back(game_object);
 	#pragma endregion
 
 	#pragma region Intialise Cube Objects
@@ -628,18 +631,22 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	game_object->GetTransform()->SetScale(3.0f, 3.0f, 3.0f);
 	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(sun_tex_rv);
-	game_object->GetPhysics()->SetMass(1000);
+	game_object->GetPhysics()->SetMass(k_Solar_Mass);
 	game_object_.push_back(game_object);
 	#pragma endregion
 	
 	#pragma region Intialise Planet Object
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 2; i++)
 	{
+		float random_x = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
+		float random_y = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
+		float random_z = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
+		
 		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
-		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
-		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 10.0f), 1.0f, 10.0f);
+		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
+		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(100);
+		game_object->GetPhysics()->SetMass(2.0f);
 		
 		game_object_.push_back(game_object);
 	}

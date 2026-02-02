@@ -860,6 +860,7 @@
     <ClInclude Include="include\Components\CRender.h" />
     <ClInclude Include="include\Components\CRigidBody.h" />
     <ClInclude Include="include\Components\CTransform.h" />
+    <ClInclude Include="include\Core\constants.h" />
     <ClInclude Include="include\Core\Debug.h" />
     <ClInclude Include="include\Core\resource.h" />
     <ClInclude Include="include\Core\Timer.h" />
