@@ -5,8 +5,6 @@ void Motion::Update(const float& dt)
     if (GetMass() <= 0.0f) { return; }
 
     assert(dt > 0.0f);
-    
-    //if (gravity_comp_->GetToggleGravity()) { acceleration_ += gravity_comp_->CalculateGravity(); }
 
     acceleration_ += GetNetForce() / GetMass();
     acceleration_ += gravity_comp_->CalculateGravity();
@@ -44,7 +42,6 @@ void Motion::VelocityVerlet(const float& dt)
     velocity_ = (velocity_ + acceleration_ + acceleration_ * dt) / 2 * dt;
     position_ += velocity_ * dt + acceleration_ * 0.5f * (dt * dt);
 }
-
 
 Motion::~Motion()
 {

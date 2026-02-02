@@ -14,7 +14,7 @@ class GameObject
 	CPhysics* physics_comp_ = nullptr;
 	
 public:
-	GameObject(const ObjectType& type, const Geometry& geometry, const Material& material) : transform_comp_(new CTransform(type)), render_comp_(new CRender(geometry, material))
+	GameObject(const ObjectType& type, const Geometry& geometry, const Material& material) : transform_comp_(new CTransform()), render_comp_(new CRender(geometry, material))
 	{
 		if (type == PLANET)
 		{

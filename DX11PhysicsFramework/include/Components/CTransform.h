@@ -1,6 +1,7 @@
 ﻿#pragma once
 #define COMP_TRANSFORM_HPP
 #include <DirectXMath.h>
+#include <vector>
 #include <Core/Vec3MathLibrary.h>
 #include <Structures/Structures.h>
 #include <Interface/IUpdateable.h>
@@ -13,18 +14,17 @@ class CTransform : IUpdateable
     DirectX::XMFLOAT3 rotation_ = DirectX::XMFLOAT3();
     DirectX::XMFLOAT3 scale_ = DirectX::XMFLOAT3();
     Vector3 position_;
-    ObjectType type_;
-    GameObject* parent_ = nullptr;
+    std::vector<GameObject*> objects_;
 public:
-    explicit CTransform(const ObjectType& type) : type_(type) {}
+    explicit CTransform() = default;
     //--------------------------------------------------//
     CTransform(const CTransform& other) = delete;
     CTransform& operator=(const CTransform&) = delete;
     CTransform(CTransform&&) = delete;
     CTransform& operator=(const CTransform&&) = delete;
     //--------------------------------------------------//
-    GameObject* GetParent() const {return parent_;};
-    void SetParent(GameObject * parent) { parent_ = parent; }
+    void AddGameObject(GameObject* game_object) { objects_.push_back(game_object); }
+    std::vector<GameObject*> GetObjects() const { return objects_; }
     //--------------------------------------------------//
     DirectX::XMMATRIX GetWorldMatrix() const { return DirectX::XMLoadFloat4x4(&world_); }
     void SetWorldMatrix(const DirectX::XMMATRIX& world) { XMStoreFloat4x4(&world_, world); }
@@ -43,5 +43,5 @@ public:
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//
-    ~CTransform();
+    virtual ~CTransform();
 };

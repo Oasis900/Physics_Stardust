@@ -21,11 +21,12 @@ public:
     Force(Force&&) = delete;
     Force& operator=(const Force&&) = delete;
     //--------------------------------------------------//
-    float GetMass() const {return mass_;}
     void SetMass(const float& mass) {mass_ = mass;}
-    float GetInverseMass() const {return 1/mass_;}
+    float GetMass() const {return mass_;}
+    float GetInverseMass() const {if (mass_ <= 0) {return 0;} return 1/mass_;}
     //--------------------------------------------------//
     void AddForce(const Vector3& force) {net_force_ += force;}
+    void SubtractForce(const Vector3& force) {net_force_ -= force;}
     //--------------------------------------------------//
     virtual ~Force();
 };

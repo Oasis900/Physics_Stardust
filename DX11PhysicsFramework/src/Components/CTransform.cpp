@@ -3,7 +3,11 @@
 
 CTransform::~CTransform()
 {
-    if (parent_) {parent_ = nullptr;}
+    for (auto element : objects_)
+    {
+        element = nullptr;
+        objects_.pop_back();
+    }
 }
 
 void CTransform::Update(const float& dt)
@@ -26,8 +30,8 @@ void CTransform::Update(const float& dt)
 
     XMStoreFloat4x4(&world_, scale * rotation * translation);
 
-    if (parent_ != nullptr)
+    /*if (parent_ != nullptr)
     {
         XMStoreFloat4x4(&world_, this->GetWorldMatrix() * parent_->GetTransform()->GetWorldMatrix());
-    }
+    }*/
 }

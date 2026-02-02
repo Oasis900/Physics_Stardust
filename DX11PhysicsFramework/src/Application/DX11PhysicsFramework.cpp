@@ -537,7 +537,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma region Load & Bind textures
 	stone_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\stone.dds)");
 	ground_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
-	sun_tex_rv = load_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
+	sun_tex_rv = load_->LoadTexture(device_, R"(Resources\\Textures\\sun.dds)");
 	#pragma endregion
 
 	#pragma region Setup Camera
@@ -558,7 +558,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	#pragma region Setup Sun Geometry
 	Geometry sunGeometry;
-	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\sun.obj)");
+	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\planet.obj)");
 	sunGeometry.index_buffer = obj_mesh_->index_buffer;
 	sunGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
 	sunGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
@@ -625,25 +625,36 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	#pragma region Intialise Sun Object
 	game_object = new GameObject(SUN, sunGeometry, shinyMaterial);
-	game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
-	game_object->GetTransform()->SetPosition(0.0f, 7.0f, 0.0f);
+	game_object->GetTransform()->SetScale(3.0f, 3.0f, 3.0f);
+	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(sun_tex_rv);
-	game_object->GetPhysics()->SetMass(0);
+	game_object->GetPhysics()->SetMass(1000);
 	game_object_.push_back(game_object);
 	#pragma endregion
 	
 	#pragma region Intialise Planet Object
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
 		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 10.0f), 1.0f, 10.0f);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(10);
+		game_object->GetPhysics()->SetMass(100);
 		
 		game_object_.push_back(game_object);
 	}
 	#pragma endregion
+
+	for (auto element : game_object_)
+	{
+		if (element->GetPhysics()->GetMass() > 0.0f)
+		{
+			for (auto thing : game_object_)
+			{
+				element->GetTransform()->AddGameObject(thing);
+			}
+		}
+	}
 	
 	return S_OK;
 }

@@ -1,5 +1,4 @@
 ﻿#include <Components/CPhysics.h>
-
 void CPhysics::Update(const float& dt)
 {
     if (motion_) motion_->Update(dt);
