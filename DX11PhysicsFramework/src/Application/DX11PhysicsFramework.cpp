@@ -1,3 +1,4 @@
+#include <d3dcompiler.h>
 #include <Application/DX11PhysicsFramework.h>
 #include <Core/constants.h>
 #include <Objects/DebugCamera.h>
@@ -519,7 +520,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	using DirectX::XMConvertToRadians;
 	#pragma endregion
 	
-	srand(timer_->GetDeltaTime());
+	srand(static_cast<unsigned int>(timer_->GetDeltaTime()));
 	
 	HRESULT hr = S_OK;
 
@@ -694,7 +695,7 @@ void DX11PhysicsFramework::Update()
 	b_camera_->Update(alpha);
 }
 
-void DX11PhysicsFramework::Draw() const
+void DX11PhysicsFramework::Draw()
 {
 	#pragma region DirectX Variables
 	using DirectX::XMMATRIX;

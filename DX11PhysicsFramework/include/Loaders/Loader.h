@@ -14,7 +14,14 @@ class Loader
     
 public:
     Loader();
+    //--------------------------------------------------//
+    Loader(const Loader& other) = delete;
+    Loader& operator=(const Loader&) = delete;
+    Loader(Loader&&) = delete;
+    Loader& operator=(const Loader&&) = delete;
+    //--------------------------------------------------//
     MeshData* LoadMesh(ID3D11Device* device, const std::string& path) const;
     Texture* LoadTexture(ID3D11Device* device, const std::string& path);
+    //--------------------------------------------------//
     ~Loader();
 };

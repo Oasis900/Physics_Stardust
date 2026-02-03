@@ -15,15 +15,17 @@ class DebugCamera : public BaseCamera
 {
     MotionData* motion_ = nullptr;
     //--------------------------------------------------//
-    float speed_ = 0.005f;
-    float rotation_ = speed_/8.0f;
-    //--------------------------------------------------//
     DirectX::XMVECTOR pos_;
     DirectX::XMVECTOR look_;
     DirectX::XMVECTOR right_;
     DirectX::XMVECTOR up_;
 public:
     DebugCamera();
+    //--------------------------------------------------//
+    DebugCamera(const DebugCamera& other) = delete;
+    DebugCamera& operator=(const DebugCamera&) = delete;
+    DebugCamera(DebugCamera&&) = delete;
+    DebugCamera& operator=(const DebugCamera&&) = delete;
     //--------------------------------------------------//
     void Walk(const float& velocity);
     void Strafe(const float& velocity);

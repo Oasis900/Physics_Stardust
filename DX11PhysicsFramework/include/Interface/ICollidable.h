@@ -14,10 +14,10 @@ namespace ICollidable
         public:
         Collider(CTransform* transform) : transform_(transform) {}
         //--------------------------------------------------//
-        Collider(const Collider& other) = default;
-        Collider& operator=(const Collider&) = default;
-        Collider(Collider&&) = default;
-        Collider& operator=(Collider&&) = default;
+        Collider(const Collider& other) = delete;
+        Collider& operator=(const Collider&) = delete;
+        Collider(Collider&&) = delete;
+        Collider& operator=(Collider&&) = delete;
         //--------------------------------------------------//
         virtual bool CollidesWith (Collider& other) = 0;
         virtual bool CollidesWith (SphereCollider& other) = 0;

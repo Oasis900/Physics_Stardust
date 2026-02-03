@@ -3,7 +3,7 @@
 #include <Physics/Gravity.h>
 #include <Interface/IUpdateable.h>
 
-constexpr float DAMPENING = 0.99f;
+static constexpr float DAMPENING = 0.99f;
 
 class Motion final : public Force, public IUpdateable
 {

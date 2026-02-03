@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------
 
 //Minimum tolerance before treating the value as 0
-float constexpr tol = 0.0001f;
+static constexpr float tol = 0.0001f;
 
 class Vector3
 {

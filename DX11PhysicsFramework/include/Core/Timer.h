@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <chrono>
 
-constexpr float MAX_FRAME_TIME = 0.25f;
+static constexpr float MAX_FRAME_TIME = 0.25f;
 
 class Timer
 {

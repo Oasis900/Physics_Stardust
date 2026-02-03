@@ -49,8 +49,8 @@ public:
 	};
 	//--------------------------------------------------//
 	ConstantBuffer(const ConstantBuffer&) = delete;
-	ConstantBuffer(ConstantBuffer&&) = delete;
 	ConstantBuffer& operator=(const ConstantBuffer&) = delete;
+	ConstantBuffer(ConstantBuffer&&) = delete;
 	ConstantBuffer& operator=(ConstantBuffer&&) = delete;
 	//--------------------------------------------------//
 	DirectX::XMMATRIX GetWorldMatrix() const { return world_; }

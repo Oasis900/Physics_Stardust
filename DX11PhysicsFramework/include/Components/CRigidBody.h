@@ -7,5 +7,11 @@ class CRigidBody : public CPhysics
 {
 public:
     CRigidBody(CTransform* transform) : CPhysics(transform) {}
+    //--------------------------------------------------//
+    CRigidBody(const CRigidBody& other) = delete;
+    CRigidBody& operator=(const CRigidBody&) = delete;
+    CRigidBody(CRigidBody&&) = delete;
+    CRigidBody& operator=(const CRigidBody&&) = delete;
+    //--------------------------------------------------//
     ~CRigidBody() override;
 };

@@ -32,6 +32,11 @@ protected:
 public:
     BaseCamera();
     //--------------------------------------------------//
+    BaseCamera(const BaseCamera& other) = delete;
+    BaseCamera& operator=(const BaseCamera&) = delete;
+    BaseCamera(BaseCamera&&) = delete;
+    BaseCamera& operator=(const BaseCamera&&) = delete;
+    //--------------------------------------------------//
     DirectX::XMVECTOR GetEyeVec() const {return XMLoadFloat3(&data_->eye);}
     DirectX::XMFLOAT3 GetEye() const {return data_->eye;}
     DirectX::XMVECTOR GetAtVec() const {return XMLoadFloat3(&data_->at);}

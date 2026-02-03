@@ -6,16 +6,15 @@
 
 #include <Core/Timer.h>
 #include <Core/Debug.h>
-#include <Objects/Camera.h>
 #include <Objects/DebugCamera.h>
 #include <Objects/GameObject.h>
 #include <Loaders/Loader.h>
 #include <Structures/Structures.h>
 
-constexpr int WINDOW_WIDTH = 1280;
-constexpr int WINDOW_HEIGHT = 720;
-constexpr float FPS60 = 1.0f/60.0f;
-constexpr float SPEED = 100.0f;
+static constexpr int WINDOW_WIDTH = 1280;
+static constexpr int WINDOW_HEIGHT = 720;
+static constexpr float FPS60 = 1.0f/60.0f;
+static constexpr float SPEED = 100.0f;
 
 class DX11PhysicsFramework
 {
@@ -50,19 +49,12 @@ class DX11PhysicsFramework
 	//--------------------------------------------------//
 	std::vector<GameObject*> game_object_;
 	DebugCamera* b_camera_ = nullptr;
-	//Camera * camera_ = nullptr;
 	Loader* load_ = nullptr;
 	LightInfo* light_ = nullptr;
 	MeshData* obj_mesh_ = nullptr;
 	Timer* timer_ = nullptr;
 	//--------------------------------------------------//
-	float cam_orbit_radius_ = 7.0f;
-	float cam_orbit_radius_min_ = 2.0f;
-	float cam_orbit_radius_max_ = 50.0f;
-	float cam_orbit_angle_xz_ = -90.0f;
-	float cam_speed_ = 1.0f * 0.2f;
-	//--------------------------------------------------//
-	float time_accumulation_ = 0.0f;
+	const float cam_speed_ = 1.0f * 0.2f;
 	//--------------------------------------------------//
 	ID3D11DepthStencilState* ds_less_equal_ = nullptr;
 	ID3D11RasterizerState* rs_cull_none_ = nullptr;
@@ -86,7 +78,7 @@ public:
 	//--------------------------------------------------//
 	bool HandleKeyboard(const MSG& msg);
 	void Update();
-	void Draw() const;
+	void Draw();
 	void KeyInput();
 	void CameraUpdate();
 };

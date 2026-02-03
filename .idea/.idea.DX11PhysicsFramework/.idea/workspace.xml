@@ -8,19 +8,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2d6e757-45e1-4dcd-ade0-cebd0d3d712e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/constants.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Changes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Changes/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Uncommitted_changes_before_Update_at_01_02_2026_23_51_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Uncommitted_changes_before_Update_at_01_02_2026_23_51__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Uncommitted_changes_before_Update_at_02_02_2026_23_34_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Uncommitted_changes_before_Update_at_02_02_2026_23_34__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Uncommitted_changes_before_Update_at_28_01_2026_22_57_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/shelf/Uncommitted_changes_before_Update_at_28_01_2026_22_57__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/DX11PhysicsFramework.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Physics/Gravity.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Physics/Gravity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Application/DX11PhysicsFramework.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Application/DX11PhysicsFramework.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CParticle.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CParticle.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CRender.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CRender.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CRigidBody.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CRigidBody.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/Timer.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/Timer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/Vec3MathLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/Vec3MathLibrary.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/constants.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Core/constants.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Interface/ICollidable.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Interface/ICollidable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Loaders/Loader.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Loaders/Loader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/BaseCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/BaseCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/Camera.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/DebugCamera.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/DebugCamera.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/GameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/GameObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Physics/Motion.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Physics/Motion.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Structures/Structures.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Structures/Structures.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/src/Application/DX11PhysicsFramework.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/src/Application/DX11PhysicsFramework.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/src/Objects/Camera.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Gravity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Gravity.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/Cl.items.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/DX11PhysicsFramework.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/DX11PhysicsFramework.lastbuildstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/rc.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.secondary.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11PhysicsFramework.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11PhysicsFramework.exe.recipe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,18 +69,21 @@
     &quot;assignee&quot;: &quot;Oasis900&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Oasis900/Physics_Stardust.git",
-    "accountId": "89e288fd-ea74-4bca-a0d2-84604fbcb719"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Oasis900/Physics_Stardust.git&quot;,
+    &quot;accountId&quot;: &quot;d8ec0361-73ff-4ebe-8d7e-d932934ff37c&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://82" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/minwindef.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um/WinUser.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/include/Core/constants.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.vs/DX11PhysicsFramework/v17/DocumentLayout.backup.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.vs/DX11PhysicsFramework/v17/DocumentLayout.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.vs/Physics_Stardust/v17/DocumentLayout.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.vs/VSWorkspaceState.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/BaseCamera.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/ofree/RiderProjects/Physics_Stardust/DX11PhysicsFramework/include/Objects/BaseCamera.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/DebugCamera.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/src/Objects/BaseCamera.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/src/Objects/DebugCamera.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -71,29 +99,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ Project.DX11PhysicsFramework.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ Project.DX11PhysicsFramework.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="DX11PhysicsFramework" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -169,8 +196,6 @@
       <workItem from="1769075284317" duration="7346000" />
       <workItem from="1769641501191" duration="357000" />
       <workItem from="1769684812215" duration="5155000" />
-      <workItem from="1770037392988" duration="6973000" />
-      <workItem from="1770051679777" duration="5831000" />
     </task>
     <task id="LOCAL-00001" summary="Log #1.1&#10;---------------------------------------------------------&#10;&quot;My Cabbages!&quot;&#10;----------------------------------------------------------&#10;What did I do?&#10;&#10;- Project Structure | Major project architecture restructing occurred, the structure attempts to follow industry / open source practices. | The restructure has allowed for removal of relative includes, includes are now allocated at the project level for portability and extenability. | The restructure in project Architecture has resulted in a major improvement in build speed.&#10;&#10;- Timer Class | New definition, containing a float value used to prevent sprial of death from occurring. | Frame time is evaluated before returning, minimum value is returned, should frame time exceed max frame time, max frame time value is assigned to frame time.&#10;&#10;- Motion Class | Acceleration formula is scaled by delta time value.&#10;&#10;- CTransform Class | Lerp has been incorporated, with this the object type defined string was required to prevent the &quot;floor&quot; from being transformed from it's position. The inspiration for this implementation was Holmer (2024). &#10;&#10;----------------------------------------------------------&#10;What are the next steps?&#10;&#10;[Things to fix]&#10;&#10;- Without collision, gravity isn't represented well in the simulation. Here it may be time to consider te modification of the simulation to align with desired plan of space sim.&#10;&#10;[Next steps]&#10;&#10;- Refer to reading from prior commit.&#10;&#10;- Begin production of project UML diagram.&#10;&#10;- Continue implementation of gravity (maybe drag too) and particle component.&#10;&#10;- Investigate Texture and Obj loader, find out why they are causing errors that prevents the project from being built in release mode.&#10;&#10;----------------------------------------------------------&#10;Resources&#10;&#10;- Holmer, F. (2024) Lerp smoothing is broken. 29 May. Available at: https://www.youtube.com/watch?v=LSNQuFEDOyQ (Accessed: 8 January 2026)&#10;&#10;- https://learn.microsoft.com/en-us/cpp/build/reference/c-cpp-prop-page?view=msvc-170&#10;&#10;----------------------------------------------------------&#10;signing off, till next time,&#10;﹒ ﹒   '     ﹒✦ ╰┈ ✈︎">
       <option name="closed" value="true" />
