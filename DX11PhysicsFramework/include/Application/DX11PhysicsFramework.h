@@ -80,6 +80,5 @@ public:
 	void Update();
 	void Draw();
 	void KeyInput();
-	void CameraUpdate();
 };
 

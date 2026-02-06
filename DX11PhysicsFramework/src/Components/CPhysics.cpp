@@ -8,4 +8,5 @@ CPhysics::~CPhysics()
 {
     if (motion_) {delete motion_; motion_ = nullptr;}
     if (gravity_) {delete gravity_; gravity_ = nullptr;}
+    if (collider_) {collider_ = nullptr;}
 }

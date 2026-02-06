@@ -13,7 +13,7 @@ public:
     Gravity(Gravity&&) = delete;
     Gravity& operator=(const Gravity&&) = delete;
     //--------------------------------------------------//
-    Vector3 CalculateGravity();
+    Vector3 CalculateGravity(const GameObject* other);
     //--------------------------------------------------//
     ~Gravity() override = default;
 };

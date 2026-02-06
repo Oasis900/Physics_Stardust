@@ -633,7 +633,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(sun_tex_rv);
 	game_object->GetPhysics()->SetMass(k_Solar_Mass);
-	game_object_.push_back(game_object);
+	//game_object_.push_back(game_object);
 	#pragma endregion
 	
 	#pragma region Intialise Planet Object
@@ -647,22 +647,16 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(2.0f);
+		game_object->GetPhysics()->SetMass(100.0f);
+		if (i % 2 == 0)
+		{
+			game_object->GetPhysics()->SetMass(200.0f);
+			game_object->GetRender()->SetTextureRV(sun_tex_rv);
+		}
 		
 		game_object_.push_back(game_object);
 	}
 	#pragma endregion
-
-	for (auto element : game_object_)
-	{
-		if (element->GetPhysics()->GetMass() > 0.0f)
-		{
-			for (auto thing : game_object_)
-			{
-				element->GetTransform()->AddGameObject(thing);
-			}
-		}
-	}
 	
 	return S_OK;
 }
@@ -679,6 +673,17 @@ void DX11PhysicsFramework::Update()
 		
 		for (const auto game_object : game_object_)
 		{
+			for (auto element : game_object_)
+			{
+				if (element->GetPhysics()->GetMass() <= 0.0f) {continue;}
+		
+				for (auto thing : game_object_)
+				{
+					if (thing == element) {continue;}
+					element->GetTransform()->AddGameObject(thing);
+				}
+			}
+			
 			game_object->GetPhysics()->Update(FPS60);
 		}
 		
@@ -908,19 +913,4 @@ void DX11PhysicsFramework::KeyInput()
 			b_camera_->Elevation(-cam_speed_);
 		}
 	}
-}
-
-void DX11PhysicsFramework::CameraUpdate()
-{
-	/*float angleAroundZ = DirectX::XMConvertToRadians(cam_orbit_angle_xz_);
-
-	float x = cam_orbit_radius_ * cos(angleAroundZ);
-	float z = cam_orbit_radius_ * sin(angleAroundZ);
-
-	XMFLOAT3 cameraPos = camera_->GetPosition();
-	cameraPos.x = x;
-	cameraPos.z = z;
-
-	camera_->SetPosition(cameraPos);
-	camera_->Update();*/
 }

@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <Physics/Motion.h>
-#include <Interface/ICollidable.h>
+#include <Core/Collidable.h>
 
 // TODO (CPhysics) [12/01/26] : Review for implementation of collision detection
 
@@ -8,7 +8,7 @@ class CPhysics : public IUpdateable
 {
     Gravity* gravity_ = nullptr;
     Motion* motion_ = nullptr;
-    ICollidable::Collider* collider_ = nullptr;
+    Colliders::Collider* collider_ = nullptr;
     float mass_ = 0.0f;
     
 public:
@@ -27,8 +27,9 @@ public:
     float GetMass() const {return mass_;}
     float GetInverseMass() const {if (mass_ <= 0) {return 0;} return 1/mass_;}
     //--------------------------------------------------//
+    void SetCollider(Colliders::Collider* collider) {collider_ = collider;} 
     bool IsCollidable() const {return collider_ != nullptr;}
-    ICollidable::Collider* GetCollider() const { return collider_;}
+    Colliders::Collider* GetCollider() const { return collider_;}
     //--------------------------------------------------//
     //void ActivateModule(); - For later
     //--------------------------------------------------//
