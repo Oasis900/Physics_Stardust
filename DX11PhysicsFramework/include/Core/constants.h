@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 /* Universal Gravitational Constant */
-static constexpr double k_G = 6.67f;
+static constexpr double k_G = 6.67E-10;
 
 /* Number of bodies to be run in the simulation */
 static constexpr int k_Body_Count = 500;

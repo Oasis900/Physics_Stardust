@@ -647,10 +647,10 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(100.0f);
+		game_object->GetPhysics()->SetMass(1);
 		if (i % 2 == 0)
 		{
-			game_object->GetPhysics()->SetMass(200.0f);
+			game_object->GetPhysics()->SetMass(k_Solar_Mass);
 			game_object->GetRender()->SetTextureRV(sun_tex_rv);
 		}
 		
@@ -785,16 +785,16 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
-		if (game_object_.at(1))
+		if (game_object_.at(0))
 		{
-			current_object = game_object_.at(1);
+			current_object = game_object_.at(0);
 		}
 	}
 	if (GetAsyncKeyState('2') & 0x8000)
 	{
-		if (game_object_.at(2))
+		if (game_object_.at(1))
 		{
-			current_object = game_object_.at(2);
+			current_object = game_object_.at(1);
 		}
 	}
 	if (GetAsyncKeyState('3') & 0x8000)

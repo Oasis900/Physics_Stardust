@@ -54,7 +54,7 @@ class DX11PhysicsFramework
 	MeshData* obj_mesh_ = nullptr;
 	Timer* timer_ = nullptr;
 	//--------------------------------------------------//
-	const float cam_speed_ = 1.0f * 0.2f;
+	const float cam_speed_ = 0.6f * 0.2f;
 	//--------------------------------------------------//
 	ID3D11DepthStencilState* ds_less_equal_ = nullptr;
 	ID3D11RasterizerState* rs_cull_none_ = nullptr;
