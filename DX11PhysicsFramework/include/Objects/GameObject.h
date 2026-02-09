@@ -5,7 +5,6 @@
 #include <Components/CTransform.h>
 #include <Structures/Structures.h>
 
-
 class GameObject
 {
 	CTransform* transform_comp_ = nullptr;
@@ -18,7 +17,7 @@ public:
 		if (type == PLANET || type == SUN)
 		{
 			physics_comp_ = new CRigidBody(transform_comp_);
-			physics_comp_->SetCollider(new Colliders::SphereCollider(transform_comp_, 10));
+			physics_comp_->SetCollider(new Colliders::SphereCollider(transform_comp_, 0.245f));
 		}
 		else
 		{
@@ -34,9 +33,6 @@ public:
 	CRender* GetRender() const { return render_comp_; }
 	CTransform* GetTransform() const { return transform_comp_; }
 	CPhysics* GetPhysics() const { return physics_comp_; }
-	//--------------------------------------------------//
-	//void Render(const float& dt, ID3D11DeviceContext * pImmediateContext) const;
-	//void Update(const float& dt) final;
 	//--------------------------------------------------//
 	~GameObject();
 };

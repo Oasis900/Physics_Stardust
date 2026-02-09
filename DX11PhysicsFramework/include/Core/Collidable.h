@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <Components/CTransform.h>
+#include <cmath>
 
 namespace Colliders
 {
@@ -41,11 +42,9 @@ namespace Colliders
     inline bool SphereCollider::CollidesWith(SphereCollider& other)
     {
         float combined_radius = other.GetRadius() + GetRadius();
+        float distance = abs(other.GetPosition().Magnitude() - GetPosition().Magnitude());
 
-        if (other.GetPosition().Magnitude() < combined_radius)
-        {
-            return other.CollidesWith(*this);
-        }
+        if (distance <= combined_radius) { return true; }
 
         return false;
     }

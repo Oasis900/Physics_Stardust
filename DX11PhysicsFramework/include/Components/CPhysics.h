@@ -8,20 +8,27 @@ class CPhysics : public IUpdateable
 {
     Gravity* gravity_ = nullptr;
     Motion* motion_ = nullptr;
+    CTransform* transform_ = nullptr;
     Colliders::Collider* collider_ = nullptr;
+    GameObject* object_ = nullptr;
     float mass_ = 0.0f;
+
+protected:
+    CTransform* GetTransform() const { return transform_; }
+    //--------------------------------------------------//
+    Gravity* GetGravity() const { return gravity_;}
     
 public:
-    CPhysics(CTransform* transform) : gravity_(new Gravity(transform)), motion_(new Motion(transform, gravity_)) {}
+    CPhysics(CTransform* transform) : gravity_(new Gravity(transform)), motion_(new Motion(transform, gravity_)), transform_(transform) {}
     //--------------------------------------------------//
     CPhysics(const CPhysics& other) = delete;
     CPhysics& operator=(const CPhysics&) = delete;
     CPhysics(CPhysics&&) = delete;
     CPhysics& operator=(const CPhysics&&) = delete;
     //--------------------------------------------------//
-    Gravity* GetGravity() const { return gravity_;}
-    //--------------------------------------------------//
     Motion* GetMotion() const { return motion_;}
+    //--------------------------------------------------//
+    
     //--------------------------------------------------//
     void SetMass(const float& mass) {mass_ = mass; GetGravity()->SetMass(mass_); GetMotion()->SetMass(mass_);}
     float GetMass() const {return mass_;}
@@ -31,9 +38,12 @@ public:
     bool IsCollidable() const {return collider_ != nullptr;}
     Colliders::Collider* GetCollider() const { return collider_;}
     //--------------------------------------------------//
+    void AddGameObject(GameObject* game_object) { object_ = game_object; gravity_->AddGameObject(game_object);}
+    GameObject* GetGameObject() const { return object_; }
+    //--------------------------------------------------//
     //void ActivateModule(); - For later
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//
-    virtual ~CPhysics();
+    ~CPhysics() override;
 };

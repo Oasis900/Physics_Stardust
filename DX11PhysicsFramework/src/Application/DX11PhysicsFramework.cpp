@@ -543,15 +543,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	ground_tex_rv_ = load_->LoadTexture(device_, R"(Resources\\Textures\\floor.dds)");
 	sun_tex_rv = load_->LoadTexture(device_, R"(Resources\\Textures\\sun.dds)");
 	#pragma endregion
-
-	#pragma region Setup Camera
-	/*XMFLOAT3 eye = XMFLOAT3(0.0f, 2.0f, -1.0f);
-	XMFLOAT3 at = XMFLOAT3(0.0f, 2.0f, 0.0f);
-	XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
-
-	camera_ = new Camera(eye, at, up, static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT), 0.01f, 200.0f);*/
-	#pragma endregion
-
+	
 	#pragma region Setup Scene Light
 	light_->ambient_light = XMFLOAT4(0.2f, 0.2f, 0.2f, 1.0f);
 	light_->diffuse_light = XMFLOAT4(0.6f, 0.6f, 0.6f, 1.0f);
@@ -612,51 +604,45 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	game_object->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(ground_tex_rv_);
 	game_object->GetPhysics()->SetMass(0);
-	//game_object_.push_back(game_object);
-	#pragma endregion
-
-	#pragma region Intialise Cube Objects
-	/*for (int i = 0; i < 4; i++)
-	{
-		game_object = new GameObject(CUBE, cubeGeometry, shinyMaterial, 5);
-		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
-		game_object->GetTransform()->SetPosition(-2.0f + (static_cast<float>(i) * 2.5f), 1.0f, 10.0f);
-		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-
-		game_object_.push_back(game_object);
-	}*/
+	game_object_.push_back(game_object);
 	#pragma endregion
 
 	#pragma region Intialise Sun Object
 	game_object = new GameObject(SUN, sunGeometry, shinyMaterial);
-	game_object->GetTransform()->SetScale(3.0f, 3.0f, 3.0f);
+	game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(sun_tex_rv);
 	game_object->GetPhysics()->SetMass(k_Solar_Mass);
-	//game_object_.push_back(game_object);
+	game_object_.push_back(game_object);
 	#pragma endregion
 	
 	#pragma region Intialise Planet Object
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		float random_x = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
-		float random_y = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
+		float random_y = -10.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
 		float random_z = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
 		
 		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
-		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
+		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
 		game_object->GetPhysics()->SetMass(1);
-		if (i % 2 == 0)
-		{
-			game_object->GetPhysics()->SetMass(k_Solar_Mass);
-			game_object->GetRender()->SetTextureRV(sun_tex_rv);
-		}
 		
 		game_object_.push_back(game_object);
 	}
 	#pragma endregion
+
+	for (auto element : game_object_)
+	{
+		if (element->GetPhysics()->GetMass() <= 0.0f) {continue;}
+		
+		for (auto thing : game_object_)
+		{
+			if (thing == element) {continue;}
+			element->GetPhysics()->AddGameObject(thing);
+		}
+	}
 	
 	return S_OK;
 }
@@ -673,17 +659,6 @@ void DX11PhysicsFramework::Update()
 		
 		for (const auto game_object : game_object_)
 		{
-			for (auto element : game_object_)
-			{
-				if (element->GetPhysics()->GetMass() <= 0.0f) {continue;}
-		
-				for (auto thing : game_object_)
-				{
-					if (thing == element) {continue;}
-					element->GetTransform()->AddGameObject(thing);
-				}
-			}
-			
 			game_object->GetPhysics()->Update(FPS60);
 		}
 		
@@ -785,49 +760,28 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
-		if (game_object_.at(0))
+		if (game_object_.at(0) != nullptr)
 		{
 			current_object = game_object_.at(0);
 		}
 	}
 	if (GetAsyncKeyState('2') & 0x8000)
 	{
-		if (game_object_.at(1))
+		if (game_object_.at(1) != nullptr)
 		{
 			current_object = game_object_.at(1);
 		}
 	}
 	if (GetAsyncKeyState('3') & 0x8000)
 	{
-		if (game_object_.at(3))
+		if (game_object_.at(3) != nullptr)
 		{
 			current_object = game_object_.at(3);
 		}
 	}
-	/*if (GetAsyncKeyState('4') & 0x8000)
-	{
-		if (game_object_.at(4))
-		{
-			current_object = game_object_.at(4);
-		}
-	}
-	if (GetAsyncKeyState('5') & 0x8000)
-	{
-		if (game_object_.at(5))
-		{
-			current_object = game_object_.at(5);
-		}
-	}
-	if (GetAsyncKeyState('6') & 0x8000)
-	{
-		if (game_object_.at(6))
-		{
-			current_object = game_object_.at(6);
-		}
-	}*/
 	if (GetAsyncKeyState('W') & 0x8000) // Forward
 	{
-		if (current_object)
+		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, SPEED));
 			Debug::DebugPrintF("acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
@@ -839,7 +793,7 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('S') & 0x8000) // Backward
 	{
-		if (current_object)
+		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -SPEED));
 			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
@@ -851,7 +805,7 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('A') & 0x8000) // Left
 	{
-		if (current_object)
+		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-SPEED, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude());
@@ -863,7 +817,7 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('D') & 0x8000) // Right
 	{
-		if (current_object)
+		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(SPEED, 0.0f, 0.0f));
 			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
@@ -891,7 +845,7 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
-		if (current_object)
+		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, SPEED, 0.0f));
 			Debug::DebugPrintF("acceleration ip is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
@@ -903,7 +857,7 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState(VK_SHIFT) & 0x8000)
 	{
-		if (current_object)
+		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, -SPEED, 0.0f));
 			Debug::DebugPrintF("acceleration down is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");

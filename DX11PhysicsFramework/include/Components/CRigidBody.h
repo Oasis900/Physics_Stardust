@@ -1,10 +1,13 @@
 ﻿#pragma once
 #include <Components/CPhysics.h>
 
+#include "Observer/ISubject.h"
+
 // TODO (CRigidBody) [12/01/26] : Complete implementation of component for Collision detection to be functional
 
 class CRigidBody : public CPhysics
 {
+    
 public:
     CRigidBody(CTransform* transform) : CPhysics(transform) {}
     //--------------------------------------------------//
@@ -12,6 +15,10 @@ public:
     CRigidBody& operator=(const CRigidBody&) = delete;
     CRigidBody(CRigidBody&&) = delete;
     CRigidBody& operator=(const CRigidBody&&) = delete;
+    //--------------------------------------------------//
+    
+    //--------------------------------------------------//
+    void Update(const float& dt) override;
     //--------------------------------------------------//
     ~CRigidBody() override;
 };

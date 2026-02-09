@@ -5,6 +5,7 @@
 
 class Gravity : public Force
 {
+    GameObject* object_ = nullptr;
 public:
     explicit Gravity(CTransform* transform) : Force(transform) {}
     //--------------------------------------------------//
@@ -13,7 +14,9 @@ public:
     Gravity(Gravity&&) = delete;
     Gravity& operator=(const Gravity&&) = delete;
     //--------------------------------------------------//
-    Vector3 CalculateGravity(const GameObject* other);
+    void AddGameObject(GameObject* game_object) { object_ = game_object; }
     //--------------------------------------------------//
-    ~Gravity() override = default;
+    Vector3 CalculateGravity();
+    //--------------------------------------------------//
+    ~Gravity() override {object_ = nullptr;}
 };

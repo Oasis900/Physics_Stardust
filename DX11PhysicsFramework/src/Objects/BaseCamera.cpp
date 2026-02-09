@@ -29,6 +29,6 @@ BaseCamera::BaseCamera()
 
 BaseCamera::~BaseCamera()
 {
-    delete data_; data_ = nullptr;
+    if (data_) {delete data_; data_ = nullptr;}
 }
 

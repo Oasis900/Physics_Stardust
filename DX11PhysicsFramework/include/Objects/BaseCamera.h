@@ -56,6 +56,6 @@ public:
     //--------------------------------------------------//
     virtual DirectX::XMFLOAT4X4 SetView() = 0;
     void Update(const float& delta_time) override = 0;
-    
-    virtual ~BaseCamera();
+    //--------------------------------------------------//
+    ~BaseCamera() override;
 };

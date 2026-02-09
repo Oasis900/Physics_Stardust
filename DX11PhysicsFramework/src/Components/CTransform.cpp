@@ -1,11 +1,6 @@
 ﻿#include <Components/CTransform.h>
 #include <Objects/GameObject.h>
 
-CTransform::~CTransform()
-{
-    object_ = nullptr;
-}
-
 void CTransform::Update(const float& dt)
 {
 	#pragma region DX11 Maths & Functions

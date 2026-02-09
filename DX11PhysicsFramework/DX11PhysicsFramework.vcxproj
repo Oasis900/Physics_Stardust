@@ -794,6 +794,8 @@
     <ClInclude Include="include\Objects\BaseCamera.h" />
     <ClInclude Include="include\Objects\DebugCamera.h" />
     <ClInclude Include="include\Objects\GameObject.h" />
+    <ClInclude Include="include\Observer\IObserver.h" />
+    <ClInclude Include="include\Observer\ISubject.h" />
     <ClInclude Include="include\Physics\Force.h" />
     <ClInclude Include="include\Physics\Gravity.h" />
     <ClInclude Include="include\Physics\Motion.h" />

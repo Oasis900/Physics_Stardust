@@ -3,9 +3,11 @@
 #include <Physics/Gravity.h>
 #include <Interface/IUpdateable.h>
 
+#include "Observer/ISubject.h"
+
 static constexpr float DAMPENING = 0.99f;
 
-class Motion final : public Force, public IUpdateable
+class Motion : public Force, public IUpdateable
 {
     Vector3 velocity_;
     Vector3 acceleration_;

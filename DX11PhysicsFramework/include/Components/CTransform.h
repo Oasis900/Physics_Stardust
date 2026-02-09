@@ -12,7 +12,6 @@ class CTransform : IUpdateable
     DirectX::XMFLOAT3 rotation_ = DirectX::XMFLOAT3();
     DirectX::XMFLOAT3 scale_ = DirectX::XMFLOAT3();
     Vector3 position_;
-    GameObject* object_;
 public:
     explicit CTransform() = default;
     //--------------------------------------------------//
@@ -20,9 +19,6 @@ public:
     CTransform& operator=(const CTransform&) = delete;
     CTransform(CTransform&&) = delete;
     CTransform& operator=(const CTransform&&) = delete;
-    //--------------------------------------------------//
-    void AddGameObject(GameObject* game_object) { object_ = game_object; }
-    GameObject* GetGameObject() const { return object_; }
     //--------------------------------------------------//
     DirectX::XMMATRIX GetWorldMatrix() const { return DirectX::XMLoadFloat4x4(&world_); }
     void SetWorldMatrix(const DirectX::XMMATRIX& world) { XMStoreFloat4x4(&world_, world); }
@@ -41,5 +37,5 @@ public:
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//
-    virtual ~CTransform();
+    ~CTransform() override = default;
 };

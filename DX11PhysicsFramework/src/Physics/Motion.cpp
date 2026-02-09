@@ -6,7 +6,7 @@ void Motion::Update(const float& dt)
 
     assert(dt > 0.0f);
 
-    acceleration_ += gravity_comp_->CalculateGravity(GetTransform()->GetGameObject()) / GetMass();
+    acceleration_ += gravity_comp_->CalculateGravity() / GetMass();
     acceleration_ += GetNetForce() / GetMass();
     acceleration_ *= dt;
 
