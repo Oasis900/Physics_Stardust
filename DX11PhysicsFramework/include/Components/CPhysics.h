@@ -43,7 +43,7 @@ public:
     //--------------------------------------------------//
     //void ActivateModule(); - For later
     //--------------------------------------------------//
-    void Update(const float& dt) override;
+    void Update(const float& dt) override = 0;
     //--------------------------------------------------//
     ~CPhysics() override;
 };

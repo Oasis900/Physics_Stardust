@@ -612,7 +612,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
 	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(sun_tex_rv);
-	game_object->GetPhysics()->SetMass(k_Solar_Mass);
+	game_object->GetPhysics()->SetMass(static_cast<float>(k_Solar_Mass) * game_object->GetTransform()->GetScale().x);
 	game_object_.push_back(game_object);
 	#pragma endregion
 	
@@ -624,10 +624,11 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		float random_z = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
 		
 		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
-		game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
+		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
+		if (i % 2 == 0) { game_object->GetTransform()->SetScale(0.25f, 0.25f, 0.25f); }
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(1);
+		game_object->GetPhysics()->SetMass(static_cast<float>(1) * game_object->GetTransform()->GetScale().x);
 		
 		game_object_.push_back(game_object);
 	}
@@ -652,17 +653,17 @@ void DX11PhysicsFramework::Update()
 	static float time_accumulation = 0.0f;
 
 	time_accumulation += timer_->GetDeltaTime();
-
+	
 	while (time_accumulation >= FPS60)
 	{
-		KeyInput();
-		
 		for (const auto game_object : game_object_)
 		{
 			game_object->GetPhysics()->Update(FPS60);
 		}
 		
 		time_accumulation -= FPS60;
+
+		KeyInput();
 	}
 
 	const float alpha = time_accumulation / FPS60;
@@ -774,9 +775,9 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('3') & 0x8000)
 	{
-		if (game_object_.at(3) != nullptr)
+		if (game_object_.at(2) != nullptr)
 		{
-			current_object = game_object_.at(3);
+			current_object = game_object_.at(2);
 		}
 	}
 	if (GetAsyncKeyState('W') & 0x8000) // Forward
@@ -784,7 +785,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, SPEED));
-			Debug::DebugPrintF("acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
+			Debug::DebugPrintF("\n acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 		else if (current_object == nullptr)
 		{
@@ -796,7 +797,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -SPEED));
-			Debug::DebugPrintF("acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 		else if (current_object == nullptr)
 		{
@@ -808,7 +809,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-SPEED, 0.0f, 0.0f));
-			Debug::DebugPrintF("acceleration left is %f\n", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude());
+			Debug::DebugPrintF("\n acceleration left is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude());
 		}
 		else if (current_object == nullptr)
 		{
@@ -820,7 +821,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(SPEED, 0.0f, 0.0f));
-			Debug::DebugPrintF("acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 		else if (current_object == nullptr)
 		{
@@ -848,7 +849,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, SPEED, 0.0f));
-			Debug::DebugPrintF("acceleration ip is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n acceleration up is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 		else
 		{
@@ -860,7 +861,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, -SPEED, 0.0f));
-			Debug::DebugPrintF("acceleration down is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n acceleration down is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
 		}
 		else
 		{

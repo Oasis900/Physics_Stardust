@@ -16,7 +16,7 @@ static constexpr double k_Time_Scale = 1E-10;
 static constexpr double k_Seconds_In_Year = 3.154E7;
 
 /* Random velocity range for bodies */
-static constexpr int k_Meters_In_Kilometers = 100;
+static constexpr int k_Meters_In_Kilometers = 1000;
 static constexpr double K_Min_Velocity = -0.5 * k_Meters_In_Kilometers;
 static constexpr double k_Max_Velocity = 0.5 * k_Meters_In_Kilometers;
 

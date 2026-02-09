@@ -6,6 +6,7 @@
 Vector3 Gravity::CalculateGravity()
 {
     Vector3 direction = object_->GetTransform()->GetPosition() - GetTransform()->GetPosition();
+    //if (direction.Magnitude() > 40.0f) {return {0,0,0};}
     float distance = sqrt(direction.Magnitude());
     direction.Normalize();
     

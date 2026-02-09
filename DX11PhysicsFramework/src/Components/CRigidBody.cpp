@@ -9,7 +9,7 @@ void CRigidBody::Update(const float& dt)
         Debug::DebugPrintF("Objects have collided");
     }
     
-    CPhysics::Update(dt);
+    GetMotion()->Update(dt);
 }
 
 CRigidBody::~CRigidBody()
