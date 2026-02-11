@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <Components/CTransform.h>
 #include <cmath>
+#include <Structures/Structures.h>
+#include <Core/constants.h>
 
 namespace Colliders
 {
@@ -39,12 +41,16 @@ namespace Colliders
         float GetRadius() const { return radius_; }
     };
 
+
     inline bool SphereCollider::CollidesWith(SphereCollider& other)
     {
-        float combined_radius = other.GetRadius() + GetRadius();
-        float distance = abs(other.GetPosition().Magnitude() - GetPosition().Magnitude());
+        float combined_radius = GetRadius() + other.GetRadius();
+        float distance = abs((GetPosition() - other.GetPosition()).Magnitude());
 
-        if (distance <= combined_radius) { return true; }
+        if (distance <= combined_radius)
+        {
+            return true;
+        }
 
         return false;
     }

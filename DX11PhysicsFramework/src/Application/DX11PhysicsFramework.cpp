@@ -139,7 +139,7 @@ DX11PhysicsFramework::~DX11PhysicsFramework()
 	if (sampler_state_) {sampler_state_->Release(); sampler_state_ = nullptr;}
 	if (stone_tex_rv_) {stone_tex_rv_->Release(); stone_tex_rv_ = nullptr;}
 	if (!ground_tex_rv_) {ground_tex_rv_->Release(); ground_tex_rv_ = nullptr;}
-	if (sun_tex_rv) {sun_tex_rv->Release(); sun_tex_rv = nullptr;}
+	if (sun_tex_rv) {sun_tex_rv = nullptr;}
 
 	if (dxgi_device_) {dxgi_device_->Release(); dxgi_device_ = nullptr;}
 	if (dxgi_factory_) {dxgi_factory_->Release(); dxgi_factory_ = nullptr;}
@@ -554,7 +554,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 
 	#pragma region Setup Sun Geometry
 	Geometry sunGeometry;
-	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\planet.obj)");
+	obj_mesh_ = load_->LoadMesh(device_, R"(Resources\\OBJ\\sun.obj)");
 	sunGeometry.index_buffer = obj_mesh_->index_buffer;
 	sunGeometry.indices_num = static_cast<int>(obj_mesh_->index_count);
 	sunGeometry.vertex_buffer = obj_mesh_->vertex_buffer;
@@ -610,9 +610,9 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma region Intialise Sun Object
 	game_object = new GameObject(SUN, sunGeometry, shinyMaterial);
 	game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f);
-	game_object->GetTransform()->SetPosition(0.0f, 0.0f, 0.0f);
+	game_object->GetTransform()->SetPosition(0.0f, 10.0f, 0.0f);
 	game_object->GetRender()->SetTextureRV(sun_tex_rv);
-	game_object->GetPhysics()->SetMass(static_cast<float>(k_Solar_Mass) * game_object->GetTransform()->GetScale().x);
+	game_object->GetPhysics()->SetMass(k_Solar_Mass);
 	game_object_.push_back(game_object);
 	#pragma endregion
 	
@@ -624,11 +624,11 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		float random_z = -20.0f + static_cast<float>(rand()) / static_cast<float> (RAND_MAX / 40.0);
 		
 		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
-		game_object->GetTransform()->SetScale(0.5f, 0.5f, 0.5f);
-		if (i % 2 == 0) { game_object->GetTransform()->SetScale(0.25f, 0.25f, 0.25f); }
+		game_object->GetTransform()->SetScale(1, 1, 1);
+		if (i % 2 == 0) { game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f); }
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(static_cast<float>(1) * game_object->GetTransform()->GetScale().x);
+		game_object->GetPhysics()->SetMass(k_Planet_Mass);
 		
 		game_object_.push_back(game_object);
 	}
