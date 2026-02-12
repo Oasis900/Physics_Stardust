@@ -5,7 +5,7 @@
 
 #include "Observer/ISubject.h"
 
-static constexpr float DAMPENING = 0.99f;
+static constexpr float DAMPENING = 0.999f;
 
 class Motion : public Force, public IUpdateable
 {

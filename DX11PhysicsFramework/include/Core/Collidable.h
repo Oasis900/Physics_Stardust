@@ -11,9 +11,12 @@ namespace Colliders
     class Collider abstract
     {
         CTransform* transform_ = nullptr;
+
+        protected:
+        float radius_ = 0.0f;
         
         public:
-        Collider(CTransform* transform) : transform_(transform) {}
+        Collider(CTransform* transform, const float& radius) : transform_(transform), radius_(radius) {}
         //--------------------------------------------------//
         Collider(const Collider& other) = delete;
         Collider& operator=(const Collider&) = delete;
@@ -25,20 +28,19 @@ namespace Colliders
         //--------------------------------------------------//
         Vector3 GetPosition () const { return transform_->GetPosition(); }
         //--------------------------------------------------//
+        float GetRadius() const { return radius_; }
+        //--------------------------------------------------//
         virtual ~Collider() = default;
     };
 
     class SphereCollider : public Collider
     {
-        float radius_ = 0.0f;
-        
         public:
-        SphereCollider(CTransform* transform, const float& radius) : Collider(transform), radius_(radius) {}
+        SphereCollider(CTransform* transform, const float& radius) : Collider(transform, radius) {}
         //--------------------------------------------------//
         bool CollidesWith(Collider& other) override { return other.CollidesWith(*this); }
         bool CollidesWith(SphereCollider& other) override; 
         //--------------------------------------------------//
-        float GetRadius() const { return radius_; }
     };
 
 

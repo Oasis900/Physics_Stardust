@@ -21,12 +21,12 @@ public:
 		{
 			case PLANET:
 			physics_comp_ = new CRigidBody(transform_comp_);
-			physics_comp_->SetCollider(new Colliders::SphereCollider(transform_comp_, static_cast<float>(K_Planet_Radius * k_Mass_Scale)));
+			physics_comp_->SetCollider(new Colliders::SphereCollider(transform_comp_, static_cast<float>(K_Planet_Radius)));
 			break;
 
 			case SUN:
 			physics_comp_ = new CRigidBody(transform_comp_);
-			physics_comp_->SetCollider(new Colliders::SphereCollider(transform_comp_, static_cast<float>(k_Solar_Radius * k_Mass_Scale)));
+			physics_comp_->SetCollider(new Colliders::SphereCollider(transform_comp_, static_cast<float>(k_Solar_Radius)));
 			break;
 
 			default:
