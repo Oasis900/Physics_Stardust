@@ -1,11 +1,7 @@
 ﻿#pragma once
 #include <Components/CPhysics.h>
 
-#include "Observer/ISubject.h"
-
-// TODO (CRigidBody) [12/01/26] : Complete implementation of component for Collision detection to be functional
-
-constexpr float restitution = 1E-6; 
+constexpr float restitution = 1E-6; // Magical number, change for bouncy-iness
 
 class CRigidBody : public CPhysics
 {
@@ -18,7 +14,7 @@ public:
     CRigidBody(CRigidBody&&) = delete;
     CRigidBody& operator=(const CRigidBody&&) = delete;
     //--------------------------------------------------//
-    void ApplyImpulse(const Vector3& impulse, const float& dt); 
+    void ApplyImpulse(const Vector3& impulse, const float& dt) const; 
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//

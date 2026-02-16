@@ -625,7 +625,6 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		
 		game_object = new GameObject(PLANET, planetGeometry, noSpecMaterial);
 		game_object->GetTransform()->SetScale(1, 1, 1);
-		if (i % 2 == 0) { game_object->GetTransform()->SetScale(1.0f, 1.0f, 1.0f); }
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
 		game_object->GetPhysics()->SetMass(k_Planet_Mass);
