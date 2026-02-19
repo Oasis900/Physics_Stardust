@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include <Physics/Force.h>
-#include <Physics/Gravity.h>
 #include <Interface/IUpdateable.h>
 
-#include "Observer/ISubject.h"
+class Gravity;
+class Drag;
 
-static constexpr float DAMPENING = 0.95f;
+static constexpr float DAMPENING = 0.89f;
 
 class Motion : public Force, public IUpdateable
 {
@@ -13,9 +13,10 @@ class Motion : public Force, public IUpdateable
     Vector3 acceleration_;
     Vector3 position_;
     Gravity* gravity_comp_ = nullptr;
+    Drag* drag_comp_ = nullptr;
     
 public:
-    Motion(CTransform* transform, Gravity* gravity) : Force(transform), position_(transform->GetPosition()), gravity_comp_(gravity) {}
+    Motion(CTransform* transform, Gravity* gravity, Drag* drag) : Force(transform), position_(transform->GetPosition()), gravity_comp_(gravity), drag_comp_(drag) {}
     //--------------------------------------------------//
     Motion(const Motion& other) = delete;
     Motion& operator=(const Motion&) = delete;
@@ -36,3 +37,9 @@ public:
     //--------------------------------------------------//
     ~Motion() override;
 };
+
+inline Motion::~Motion()
+{
+    if (gravity_comp_) {gravity_comp_ = nullptr;}
+    if (drag_comp_) {drag_comp_ = nullptr;}
+}

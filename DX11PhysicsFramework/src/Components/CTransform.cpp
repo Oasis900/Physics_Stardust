@@ -20,4 +20,9 @@ void CTransform::Update(const float& dt)
     XMMATRIX translation = XMMatrixTranslation(position_.x, position_.y, position_.z);
 
     XMStoreFloat4x4(&world_, scale * rotation * translation);
+
+	if (parent_ != nullptr)
+	{
+		XMStoreFloat4x4(&world_, this->GetWorldMatrix() * parent_->GetTransform()->GetWorldMatrix()); // For representing where the 
+	}
 }

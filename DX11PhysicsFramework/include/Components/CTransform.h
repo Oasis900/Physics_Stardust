@@ -12,6 +12,8 @@ class CTransform : IUpdateable
     DirectX::XMFLOAT3 rotation_ = DirectX::XMFLOAT3();
     DirectX::XMFLOAT3 scale_ = DirectX::XMFLOAT3();
     Vector3 position_;
+    GameObject* parent_ = nullptr;
+    
 public:
     explicit CTransform() = default;
     //--------------------------------------------------//
@@ -31,11 +33,13 @@ public:
     void SetScale(float x, float y, float z) { scale_.x = x; scale_.y = y; scale_.z = z; }
     DirectX::XMFLOAT3 GetScale() const { return scale_; }
     //--------------------------------------------------//
+    void SetParent(GameObject* parent) { parent_ = parent; }
+    //--------------------------------------------------//
     void SetRotation(DirectX::XMFLOAT3 rotation) { rotation_ = rotation; }
     void SetRotation(float x, float y, float z) { rotation_.x = x; rotation_.y = y; rotation_.z = z; }
     DirectX::XMFLOAT3 GetRotation() const { return rotation_; }
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//
-    ~CTransform() override = default;
+    ~CTransform() override {parent_ = nullptr;}
 };
