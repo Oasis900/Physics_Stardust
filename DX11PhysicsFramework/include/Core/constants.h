@@ -8,9 +8,6 @@ constexpr float sphere_co_efficient = 0.47f;
 /* Universal Gravitational Constant */
 constexpr double k_G = 6.67E-11;
 
-/* Number of bodies to be run in the simulation */
-constexpr int k_Body_Count = 5;
-
 /* Mass constants - scaled for OpenFrameworks */
 constexpr double k_Mass_Scale = 1E-4;
 constexpr double k_Solar_Mass = 1.99E12;
