@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include <Components/CTransform.h>
-#include <Structures/Structures.h>
 
 class Force
 {

@@ -1,7 +1,9 @@
 #include <d3dcompiler.h>
 #include <Application/DX11PhysicsFramework.h>
-#include <Core/constants.h>
+#include <Objects/GameObject.h>
 #include <Objects/DebugCamera.h>
+#include <Core/Debug.h>
+#include <Core/constants.h>
 
 using DirectX::XMFLOAT4;
 using DirectX::XMFLOAT3;
@@ -10,12 +12,11 @@ using DirectX::XMFLOAT2;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	PAINTSTRUCT ps;
-	HDC hdc;
 
 	switch (message)
 	{
 	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
+		BeginPaint(hWnd, &ps);
 		EndPaint(hWnd, &ps);
 		break;
 

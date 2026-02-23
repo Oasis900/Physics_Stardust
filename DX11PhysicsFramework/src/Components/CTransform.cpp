@@ -23,6 +23,6 @@ void CTransform::Update(const float& dt)
 
 	if (parent_ != nullptr)
 	{
-		XMStoreFloat4x4(&world_, this->GetWorldMatrix() * parent_->GetTransform()->GetWorldMatrix()); // For representing where the 
+		XMStoreFloat4x4(&world_, this->GetWorldMatrix() * parent_->GetTransform()->GetWorldMatrix()); 
 	}
 }

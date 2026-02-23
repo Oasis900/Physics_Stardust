@@ -1,7 +1,6 @@
 ﻿#pragma once
 #define OBJ_CAM_DEBUGCAMERA_H
 #include <Objects/BaseCamera.h>
-#include <windows.h>
 
 struct MotionData
 {

@@ -1,6 +1,5 @@
 ﻿#pragma once
 #define SIMPLE_VERTEX_HPP
-#include <cstring>
 #include <DirectXMath.h>
 
 struct SimpleVertex

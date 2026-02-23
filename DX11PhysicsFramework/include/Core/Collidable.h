@@ -1,8 +1,6 @@
 ﻿#pragma once
 #include <Components/CTransform.h>
 #include <cmath>
-#include <Structures/Structures.h>
-#include <Core/constants.h>
 
 namespace Colliders
 {

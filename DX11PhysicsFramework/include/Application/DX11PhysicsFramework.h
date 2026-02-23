@@ -3,18 +3,16 @@
 
 #include <windows.h>
 #include <d3d11_1.h>
-
 #include <Core/Timer.h>
-#include <Core/Debug.h>
-#include <Objects/DebugCamera.h>
-#include <Objects/GameObject.h>
 #include <Loaders/Loader.h>
-#include <Structures/Structures.h>
 
 static constexpr int WINDOW_WIDTH = 1280;
 static constexpr int WINDOW_HEIGHT = 720;
 static constexpr float FPS60 = 1.0f/60.0f;
 static constexpr float SPEED = 1E8;
+
+class DebugCamera;
+class GameObject;
 
 class DX11PhysicsFramework
 {

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <Physics/Force.h>
-#include <Interface/IUpdateable.h>
 
+class IUpdateable;
 class Gravity;
 class Drag;
 

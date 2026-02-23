@@ -1,4 +1,5 @@
 ﻿#include <Loaders/Loader.h>
+#include <Loaders/DDSTextureLoader.h>
 
 Loader::Loader()
 {

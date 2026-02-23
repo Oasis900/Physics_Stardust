@@ -1,8 +1,8 @@
 ﻿#pragma once
 #define COMP_TRANSFORM_HPP
 #include <DirectXMath.h>
-#include <Core/Vec3MathLibrary.h>
 #include <Interface/IUpdateable.h>
+#include <Core/Vec3MathLibrary.h>
 
 class GameObject;
 

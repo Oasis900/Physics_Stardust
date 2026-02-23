@@ -4,7 +4,8 @@
 #include <Components/CRigidBody.h>
 #include <Components/CRender.h>
 #include <Components/CTransform.h>
-
+#include <Structures/Structures.h>
+#include <Core/constants.h>
 
 class GameObject
 {
