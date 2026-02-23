@@ -6,7 +6,7 @@ namespace Colliders
     class Collider;
 }
 
-class Drag : public Force
+class Drag final : public Force
 {
     Colliders::Collider* collider_ = nullptr;
 

@@ -29,6 +29,7 @@ struct LightInfo
 class ConstantBuffer
 {
 	ConstantBuffer() = default;
+	~ConstantBuffer() = default;
 	//--------------------------------------------------//
 	DirectX::XMMATRIX world_;
 	DirectX::XMMATRIX view_;
@@ -73,4 +74,6 @@ public:
 	//--------------------------------------------------//
 	float GetHasTexture() const { return has_texture_; }
 	void SetHasTexture(const bool& has_texture) { has_texture_ = has_texture; }
+	//--------------------------------------------------//
+	
 };

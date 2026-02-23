@@ -7,7 +7,7 @@ class CRigidBody : public CPhysics
 {
     
 public:
-    CRigidBody(CTransform* transform) : CPhysics(transform) {}
+    explicit CRigidBody(CTransform* transform) : CPhysics(transform) {}
     //--------------------------------------------------//
     CRigidBody(const CRigidBody& other) = delete;
     CRigidBody& operator=(const CRigidBody&) = delete;

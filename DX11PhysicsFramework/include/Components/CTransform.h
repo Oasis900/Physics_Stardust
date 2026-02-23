@@ -29,17 +29,17 @@ public:
     void SetPosition(const float& x, const float& y, const float& z) {position_.x += x; position_.y += y; position_.z += z;}
     Vector3 GetPosition() const {return position_;}
     //--------------------------------------------------//
-    void SetScale(DirectX::XMFLOAT3 scale) { scale_ = scale; }
+    void SetScale(const DirectX::XMFLOAT3 scale) { scale_ = scale; }
     void SetScale(float x, float y, float z) { scale_.x = x; scale_.y = y; scale_.z = z; }
     DirectX::XMFLOAT3 GetScale() const { return scale_; }
     //--------------------------------------------------//
     void SetParent(GameObject* parent) { parent_ = parent; }
     //--------------------------------------------------//
-    void SetRotation(DirectX::XMFLOAT3 rotation) { rotation_ = rotation; }
+    void SetRotation(const DirectX::XMFLOAT3 rotation) { rotation_ = rotation; }
     void SetRotation(float x, float y, float z) { rotation_.x = x; rotation_.y = y; rotation_.z = z; }
     DirectX::XMFLOAT3 GetRotation() const { return rotation_; }
     //--------------------------------------------------//
     void Update(const float& dt) override;
     //--------------------------------------------------//
-    ~CTransform() override {parent_ = nullptr;}
+    ~CTransform() override { parent_ = nullptr; }
 };

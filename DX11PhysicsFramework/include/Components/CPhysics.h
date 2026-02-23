@@ -18,7 +18,7 @@ protected:
     CTransform* GetTransform() const { return transform_; }
     
 public:
-    CPhysics(CTransform* transform) : gravity_(new Gravity(transform)), drag_(new Drag(transform)), motion_(new Motion(transform, gravity_, drag_)), transform_(transform) {}
+    explicit CPhysics(CTransform* transform) : gravity_(new Gravity(transform)), drag_(new Drag(transform)), motion_(new Motion(transform, gravity_, drag_)), transform_(transform) {}
     //--------------------------------------------------//
     CPhysics(const CPhysics& other) = delete;
     CPhysics& operator=(const CPhysics&) = delete;

@@ -7,7 +7,7 @@ class Drag;
 
 static constexpr float DAMPENING = 0.99f;
 
-class Motion : public Force, public IUpdateable
+class Motion final : public Force, public IUpdateable
 {
     Vector3 velocity_;
     Vector3 acceleration_;

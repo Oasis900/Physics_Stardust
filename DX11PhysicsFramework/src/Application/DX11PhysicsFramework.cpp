@@ -601,8 +601,8 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 	#pragma region Initialise PARABOLOID Object
 	game_object = new GameObject(PARABOLOID, planeGeometry, noSpecMaterial);
 	game_object->GetTransform()->SetPosition(0.0f, -5.0f, 0.0f);
-	game_object->GetTransform()->SetScale(100.0f, 100.0f, 100.0f);
 	game_object->GetTransform()->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
+	game_object->GetTransform()->SetScale(100.0f, 100.0f, 100.0f);
 	game_object->GetRender()->SetTextureRV(ground_tex_rv_);
 	game_object->GetPhysics()->SetMass(0);
 	game_object_.push_back(game_object);

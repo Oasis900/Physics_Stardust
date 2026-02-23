@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <Physics/Force.h>
 
-class Gravity : public Force
+class Gravity final : public Force
 {
 public:
     explicit Gravity(CTransform* transform) : Force(transform) {}
