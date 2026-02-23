@@ -8,12 +8,12 @@ void Motion::Update(const float& dt)
     if (GetMass() <= 0.0f) { return; }
 
     assert(dt > 0.0f);
-
-    acceleration_ += gravity_comp_->CalculateGravity() / GetMass();
-   
+    
+    acceleration_ += drag_comp_->CalculateDrag(velocity_) * velocity_.Magnitude();
+    
+    acceleration_ += gravity_comp_->CalculateGravity();
+    
     acceleration_ += GetNetForce() / GetMass();
-
-    acceleration_ += drag_comp_->CalculateDrag(velocity_) / GetMass();
     
     acceleration_ *= dt;
 

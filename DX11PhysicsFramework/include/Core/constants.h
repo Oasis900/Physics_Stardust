@@ -24,4 +24,4 @@ const double K_Planet_Radius =  pow(((3 * 19.0f)/(4 * M_PI)), 1.0f/3.0f);
 const double k_Planet_Volume = 4.0f/3.0f * M_PI * pow(K_Planet_Radius, 3);
 const double K_Planet_Density = k_Planet_Mass * k_Mass_Scale / k_Planet_Volume;
 
-const double combined_Density = k_Solar_Density - K_Planet_Density;
+const double relative_Density = k_Solar_Density - K_Planet_Density;

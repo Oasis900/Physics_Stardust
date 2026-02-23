@@ -1,14 +1,17 @@
 ﻿#pragma once
 #include <Physics/Force.h>
 
-class Gravity;
+namespace Colliders
+{
+    class Collider;
+}
 
 class Drag : public Force
 {
-    Gravity* gravity_comp_ = nullptr;
+    Colliders::Collider* collider_ = nullptr;
 
 public:
-    explicit Drag(CTransform* transform, Gravity* gravity) : Force(transform), gravity_comp_(gravity) {}
+    explicit Drag(CTransform* transform) : Force(transform) {}
     //--------------------------------------------------//
     Drag(const Drag& other) = delete;
     Drag& operator=(const Drag&) = delete;
@@ -17,11 +20,13 @@ public:
     //--------------------------------------------------//
     Vector3 CalculateDrag(const Vector3& velocity) const;
     //--------------------------------------------------//
+    void SetCollider(Colliders::Collider* collider) {collider_ = collider;}
+    //--------------------------------------------------//
     ~Drag() override;
 };
 
 inline Drag::~Drag()
 {
-    gravity_comp_ = nullptr;
+    collider_ = nullptr;
 }
 

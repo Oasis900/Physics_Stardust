@@ -10,7 +10,8 @@ Vector3 Gravity::CalculateGravity() const
     
     const float gravity_magnitude = static_cast<float>(k_G) * (GetMass() * GetGameObject()->GetPhysics()->GetMass()) / distance;
     
-    const Vector3 gravity = direction * gravity_magnitude;
+    Vector3 gravity = direction * gravity_magnitude;
+    gravity /= GetMass();
     
     return gravity;
 }

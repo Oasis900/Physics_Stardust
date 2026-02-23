@@ -627,7 +627,7 @@ HRESULT DX11PhysicsFramework::InitRunTimeData()
 		game_object->GetTransform()->SetScale(1, 1, 1);
 		game_object->GetTransform()->SetPosition(random_x, random_y, random_z);
 		game_object->GetRender()->SetTextureRV(stone_tex_rv_);
-		game_object->GetPhysics()->SetMass(k_Planet_Mass * 1E-2);
+		game_object->GetPhysics()->SetMass(k_Planet_Mass);
 		
 		game_object_.push_back(game_object);
 	}
@@ -696,18 +696,8 @@ void DX11PhysicsFramework::Draw()
 	immediate_context_->VSSetConstantBuffers(0, 1, &constant_buffer_);
 	immediate_context_->PSSetConstantBuffers(0, 1, &constant_buffer_);
 	immediate_context_->PSSetSamplers(0, 1, &sampler_state_);
-
-	//XMFLOAT4X4 tempView {camera_->GetView()};
-	//XMFLOAT4X4 tempProjection {camera_->GetProjection()};
-
-	//XMMATRIX view {XMLoadFloat4x4(&tempView)};
-	//XMMATRIX projection {XMLoadFloat4x4(&tempProjection)};
-
-	//ConstantBuffer::GetInstance().SetViewMatrix(XMMatrixTranspose(view));
-	//ConstantBuffer::GetInstance().SetProjectionMatrix(XMMatrixTranspose(projection));
 	
 	ConstantBuffer::GetInstance().SetLightInfo(*light_);
-	//ConstantBuffer::GetInstance().SetEyePosW(camera_->GetPosition());
 	#pragma endregion
 
 	#pragma region Render Game Objects
