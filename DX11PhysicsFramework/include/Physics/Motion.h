@@ -5,7 +5,7 @@
 class Gravity;
 class Drag;
 
-static constexpr float DAMPENING = 0.89f;
+static constexpr float DAMPENING = 0.99f;
 
 class Motion : public Force, public IUpdateable
 {

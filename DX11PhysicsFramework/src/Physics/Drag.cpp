@@ -5,13 +5,12 @@
 Vector3 Drag::CalculateDrag(const Vector3& velocity) const 
 {
     const Vector3 distance = GetGameObject()->GetTransform()->GetPosition() - GetTransform()->GetPosition();
-    if (abs(distance.Magnitude()) > 10.0f) {return {0,0,0};}
+    if (abs(distance.Magnitude()) > 15.0f) {return {0,0,0};}
     
     if (abs(velocity.Magnitude()) < tol) {return {0,0,0};}
     Vector3 direction = velocity;
     direction.Reverse();
     const float velocity_magnitude = direction.Magnitude() * 100;
-    direction.Normalize();
 
     const float reference_area = M_PI * pow(collider_->GetRadius(), 2);
 

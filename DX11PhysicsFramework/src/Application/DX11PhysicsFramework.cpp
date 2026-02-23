@@ -750,10 +750,7 @@ void DX11PhysicsFramework::KeyInput()
 	}
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
-		if (game_object_.at(0) != nullptr)
-		{
-			current_object = game_object_.at(0);
-		}
+		current_object = nullptr;
 	}
 	if (GetAsyncKeyState('2') & 0x8000)
 	{
@@ -774,7 +771,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, SPEED));
-			Debug::DebugPrintF("\n acceleration forward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n velocity forward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 		else if (current_object == nullptr)
 		{
@@ -786,7 +783,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, 0.0f, -SPEED));
-			Debug::DebugPrintF("\n acceleration backward is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n velocity backward is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 		else if (current_object == nullptr)
 		{
@@ -798,7 +795,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(-SPEED, 0.0f, 0.0f));
-			Debug::DebugPrintF("\n acceleration left is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude());
+			Debug::DebugPrintF("\n velocity left is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude());
 		}
 		else if (current_object == nullptr)
 		{
@@ -810,7 +807,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(SPEED, 0.0f, 0.0f));
-			Debug::DebugPrintF("\n acceleration right is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n velocity right is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 		else if (current_object == nullptr)
 		{
@@ -838,7 +835,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, SPEED, 0.0f));
-			Debug::DebugPrintF("\n acceleration up is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n velocity up is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 		else
 		{
@@ -850,7 +847,7 @@ void DX11PhysicsFramework::KeyInput()
 		if (current_object != nullptr)
 		{
 			current_object->GetPhysics()->GetMotion()->AddForce(Vector3(0.0f, -SPEED, 0.0f));
-			Debug::DebugPrintF("\n acceleration down is %f", current_object->GetPhysics()->GetMotion()->GetAcceleration().Magnitude(), "\n");
+			Debug::DebugPrintF("\n velocity down is %f", current_object->GetPhysics()->GetMotion()->GetVelocity().Magnitude(), "\n");
 		}
 		else
 		{
