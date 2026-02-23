@@ -50,11 +50,3 @@ void Motion::VelocityVerlet(const float& dt)
     position_ += velocity_ * dt + acceleration_ * 0.5f * (dt * dt);
     
 }
-
-// TODO (Motion) [16/02/26] : Implement Runge-Kutta 4 for integration and accuracy of simulation 
-
-void Motion::RungeKutta4(const float& dt)
-{
-    float k1, k2, k3, k4;
-    
-}
