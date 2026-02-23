@@ -8,10 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2d6e757-45e1-4dcd-ade0-cebd0d3d712e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Gravity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Gravity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Motion.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Motion.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/x64/Debug/DX11Phys.B8FF81B5.tlog/link.read.1.tlog" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://4" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/minwindef.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um/WinUser.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DX11PhysicsFramework/include/Objects/BaseCamera.h" root0="FORCE_HIGHLIGHTING" />
@@ -163,6 +165,7 @@
       <workItem from="1771853908591" duration="1643000" />
       <workItem from="1771855698077" duration="6000" />
       <workItem from="1771856735637" duration="1798000" />
+      <workItem from="1771858702964" duration="425000" />
     </task>
     <task id="LOCAL-00001" summary="Log #1.1&#10;---------------------------------------------------------&#10;&quot;My Cabbages!&quot;&#10;----------------------------------------------------------&#10;What did I do?&#10;&#10;- Project Structure | Major project architecture restructing occurred, the structure attempts to follow industry / open source practices. | The restructure has allowed for removal of relative includes, includes are now allocated at the project level for portability and extenability. | The restructure in project Architecture has resulted in a major improvement in build speed.&#10;&#10;- Timer Class | New definition, containing a float value used to prevent sprial of death from occurring. | Frame time is evaluated before returning, minimum value is returned, should frame time exceed max frame time, max frame time value is assigned to frame time.&#10;&#10;- Motion Class | Acceleration formula is scaled by delta time value.&#10;&#10;- CTransform Class | Lerp has been incorporated, with this the object type defined string was required to prevent the &quot;floor&quot; from being transformed from it's position. The inspiration for this implementation was Holmer (2024). &#10;&#10;----------------------------------------------------------&#10;What are the next steps?&#10;&#10;[Things to fix]&#10;&#10;- Without collision, gravity isn't represented well in the simulation. Here it may be time to consider te modification of the simulation to align with desired plan of space sim.&#10;&#10;[Next steps]&#10;&#10;- Refer to reading from prior commit.&#10;&#10;- Begin production of project UML diagram.&#10;&#10;- Continue implementation of gravity (maybe drag too) and particle component.&#10;&#10;- Investigate Texture and Obj loader, find out why they are causing errors that prevents the project from being built in release mode.&#10;&#10;----------------------------------------------------------&#10;Resources&#10;&#10;- Holmer, F. (2024) Lerp smoothing is broken. 29 May. Available at: https://www.youtube.com/watch?v=LSNQuFEDOyQ (Accessed: 8 January 2026)&#10;&#10;- https://learn.microsoft.com/en-us/cpp/build/reference/c-cpp-prop-page?view=msvc-170&#10;&#10;----------------------------------------------------------&#10;signing off, till next time,&#10;﹒ ﹒   '     ﹒✦ ╰┈ ✈︎">
       <option name="closed" value="true" />
@@ -252,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771858486698</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Removed runge kuta skeleton">
+      <option name="closed" value="true" />
+      <created>1771858779809</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1771858779809</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +295,8 @@
     <MESSAGE value="Minor changes" />
     <MESSAGE value="removed key input for 0" />
     <MESSAGE value="Include optimisations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Include optimisations" />
+    <MESSAGE value="Removed runge kuta skeleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed runge kuta skeleton" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

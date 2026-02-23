@@ -9,7 +9,7 @@ void Motion::Update(const float& dt)
 
     assert(dt > 0.0f);
     
-    acceleration_ += drag_comp_->CalculateDrag(velocity_) * velocity_.Magnitude();
+    acceleration_ += drag_comp_->CalculateDrag(velocity_);
     
     acceleration_ += gravity_comp_->CalculateGravity();
     

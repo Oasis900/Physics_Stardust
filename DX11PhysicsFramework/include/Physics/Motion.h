@@ -33,7 +33,6 @@ public:
     void SemiImplicitEuler(const float& dt);
     void StormerVerlet(const float& dt);
     void VelocityVerlet(const float& dt);
-    void RungeKutta4(const float& dt);
     //--------------------------------------------------//
     ~Motion() override;
 };
