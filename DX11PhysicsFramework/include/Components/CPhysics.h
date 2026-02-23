@@ -9,8 +9,8 @@ class CPhysics : public IUpdateable
     Gravity* gravity_ = nullptr;
     Drag* drag_ = nullptr;
     Motion* motion_ = nullptr;
-    CTransform* transform_ = nullptr;
     Colliders::Collider* collider_ = nullptr;
+    CTransform* transform_ = nullptr;
     GameObject* object_ = nullptr;
     float mass_ = 0.0f;
 
