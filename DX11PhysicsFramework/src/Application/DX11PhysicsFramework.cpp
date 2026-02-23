@@ -744,10 +744,6 @@ void DX11PhysicsFramework::KeyInput()
 {
 	static GameObject* current_object;
 
-	if (GetAsyncKeyState('0') & 0x8000)
-	{
-		current_object = nullptr;
-	}
 	if (GetAsyncKeyState('1') & 0x8000)
 	{
 		current_object = nullptr;
