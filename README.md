@@ -16,5 +16,7 @@ Oscar Freeman | f017956n GDEV50017 Artefact Assignment
 - 
 
 - WASD - X and Z axis movement
-- ARROW Keys - X, Y, Z axis rotations through quaternions of camera eye
+- ARROW Keys OR HFGT - X, Y, Z axis rotations through quaternions of camera eye
 - SPACE & SHIFT - Y axis movement
+- 1 - Enter Camera Control Mode
+- 2 - Select Sun; 3 - Select Planet; WASD - X and Z axis acceleration; Space and Shift - Y axis acceleration
