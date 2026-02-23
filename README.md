@@ -5,7 +5,7 @@ Oscar Freeman | f017956n GDEV50017 Artefact Assignment
 -
 
 - Component Design Pattern for Game Objects and Physics systems.
-- Constant Velocity & Acceleration.
+- Object motion controlled through velocity and acceleration.
 - Dynamic Velocity from User Input & external forces.
 - Gravity affecting objects through Newtonian Gravity.
 - Drag affecting objects within a certain proximity of each other.
