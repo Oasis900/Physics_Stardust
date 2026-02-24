@@ -9,7 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2d6e757-45e1-4dcd-ade0-cebd0d3d712e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DX11PhysicsFramework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CPhysics.h" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/include/Components/CPhysics.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Gravity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DX11PhysicsFramework/src/Physics/Gravity.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Oasis900/Physics_Stardust.git",
-    "accountId": "70658332-2076-4bde-8f81-ed7d807df4d7"
+    "accountId": "1e05b64c-1f7a-4a99-8f1b-4bbf863d7cb3"
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
@@ -165,6 +165,7 @@
       <workItem from="1771856735637" duration="1798000" />
       <workItem from="1771858702964" duration="425000" />
       <workItem from="1771875581776" duration="5745000" />
+      <workItem from="1771889534666" duration="4391000" />
     </task>
     <task id="LOCAL-00001" summary="Log #1.1&#10;---------------------------------------------------------&#10;&quot;My Cabbages!&quot;&#10;----------------------------------------------------------&#10;What did I do?&#10;&#10;- Project Structure | Major project architecture restructing occurred, the structure attempts to follow industry / open source practices. | The restructure has allowed for removal of relative includes, includes are now allocated at the project level for portability and extenability. | The restructure in project Architecture has resulted in a major improvement in build speed.&#10;&#10;- Timer Class | New definition, containing a float value used to prevent sprial of death from occurring. | Frame time is evaluated before returning, minimum value is returned, should frame time exceed max frame time, max frame time value is assigned to frame time.&#10;&#10;- Motion Class | Acceleration formula is scaled by delta time value.&#10;&#10;- CTransform Class | Lerp has been incorporated, with this the object type defined string was required to prevent the &quot;floor&quot; from being transformed from it's position. The inspiration for this implementation was Holmer (2024). &#10;&#10;----------------------------------------------------------&#10;What are the next steps?&#10;&#10;[Things to fix]&#10;&#10;- Without collision, gravity isn't represented well in the simulation. Here it may be time to consider te modification of the simulation to align with desired plan of space sim.&#10;&#10;[Next steps]&#10;&#10;- Refer to reading from prior commit.&#10;&#10;- Begin production of project UML diagram.&#10;&#10;- Continue implementation of gravity (maybe drag too) and particle component.&#10;&#10;- Investigate Texture and Obj loader, find out why they are causing errors that prevents the project from being built in release mode.&#10;&#10;----------------------------------------------------------&#10;Resources&#10;&#10;- Holmer, F. (2024) Lerp smoothing is broken. 29 May. Available at: https://www.youtube.com/watch?v=LSNQuFEDOyQ (Accessed: 8 January 2026)&#10;&#10;- https://learn.microsoft.com/en-us/cpp/build/reference/c-cpp-prop-page?view=msvc-170&#10;&#10;----------------------------------------------------------&#10;signing off, till next time,&#10;﹒ ﹒   '     ﹒✦ ╰┈ ✈︎">
       <option name="closed" value="true" />
