@@ -851,4 +851,11 @@ void DX11PhysicsFramework::KeyInput()
 			b_camera_->Elevation(-cam_speed_);
 		}
 	}
+	if (GetAsyncKeyState(VK_TAB) & 0x8000)
+	{
+		for (auto object : game_object_)
+		{
+			object->GetPhysics()->ToggleGravity();
+		}
+	}
 }

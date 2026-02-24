@@ -3,8 +3,9 @@
 
 class Gravity final : public Force
 {
+    bool is_gravity_enabled_;
 public:
-    explicit Gravity(CTransform* transform) : Force(transform) {}
+    explicit Gravity(CTransform* transform) : Force(transform) { is_gravity_enabled_ = true; }
     //--------------------------------------------------//
     Gravity(const Gravity& other) = delete;
     Gravity& operator=(const Gravity&) = delete;
@@ -12,6 +13,8 @@ public:
     Gravity& operator=(const Gravity&&) = delete;
     //--------------------------------------------------//
     Vector3 CalculateGravity() const;
+    //--------------------------------------------------//
+    void FlipSwitch();
     //--------------------------------------------------//
     ~Gravity() override = default;
 };

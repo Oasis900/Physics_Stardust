@@ -38,6 +38,8 @@ public:
     void AddGameObject(GameObject* game_object) { object_ = game_object; gravity_->AddGameObject(game_object); motion_->AddGameObject(game_object); drag_->AddGameObject(game_object);}
     GameObject* GetGameObject() const { return object_; }
     //--------------------------------------------------//
+    void ToggleGravity() const {gravity_->FlipSwitch();}
+    //--------------------------------------------------//
     void Update(const float& dt) override = 0;
     //--------------------------------------------------//
     ~CPhysics() override;
