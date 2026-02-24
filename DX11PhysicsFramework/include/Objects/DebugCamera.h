@@ -4,20 +4,20 @@
 
 struct MotionData
 {
-    DirectX::XMFLOAT3 position;
-    DirectX::XMFLOAT3 right;
-    DirectX::XMFLOAT3 up;
-    DirectX::XMFLOAT3 look;
+    DirectX::XMFLOAT3 position = DirectX::XMFLOAT3();
+    DirectX::XMFLOAT3 right = DirectX::XMFLOAT3();
+    DirectX::XMFLOAT3 up = DirectX::XMFLOAT3();
+    DirectX::XMFLOAT3 look = DirectX::XMFLOAT3();
 };
 
 class DebugCamera : public BaseCamera
 {
     MotionData* motion_ = nullptr;
     //--------------------------------------------------//
-    DirectX::XMVECTOR pos_;
-    DirectX::XMVECTOR look_;
-    DirectX::XMVECTOR right_;
-    DirectX::XMVECTOR up_;
+    DirectX::XMVECTOR pos_ = DirectX::XMVECTOR();
+    DirectX::XMVECTOR look_ = DirectX::XMVECTOR();
+    DirectX::XMVECTOR right_ = DirectX::XMVECTOR();
+    DirectX::XMVECTOR up_ = DirectX::XMVECTOR();
 public:
     DebugCamera();
     //--------------------------------------------------//

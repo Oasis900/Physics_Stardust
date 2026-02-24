@@ -7,17 +7,17 @@ struct Geometry
 {
     ID3D11Buffer* vertex_buffer;
     ID3D11Buffer* index_buffer;
-    int indices_num;
+    int indices_num = 0;
 
-    UINT vb_stride;
-    UINT vb_offset;
+    UINT vb_stride = 0;
+    UINT vb_offset = 0;
 };
 
 struct Material
 {
-    DirectX::XMFLOAT4 diffuse;
-    DirectX::XMFLOAT4 ambient;
-    DirectX::XMFLOAT4 specular;
+    DirectX::XMFLOAT4 diffuse = DirectX::XMFLOAT4();
+    DirectX::XMFLOAT4 ambient = DirectX::XMFLOAT4();
+    DirectX::XMFLOAT4 specular = DirectX::XMFLOAT4();
 };
 
 class CRender

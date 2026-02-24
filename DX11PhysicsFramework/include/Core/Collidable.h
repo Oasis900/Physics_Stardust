@@ -31,7 +31,7 @@ namespace Colliders
         virtual ~Collider() = default;
     };
 
-    class SphereCollider : public Collider
+    class SphereCollider final : public Collider
     {
         public:
         SphereCollider(CTransform* transform, const float& radius) : Collider(transform, radius) {}

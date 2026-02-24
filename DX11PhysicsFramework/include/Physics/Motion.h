@@ -9,9 +9,9 @@ static constexpr float DAMPENING = 0.99f;
 
 class Motion final : public Force, public IUpdateable
 {
-    Vector3 velocity_;
-    Vector3 acceleration_;
-    Vector3 position_;
+    Vector3 velocity_ = {0,0,0};
+    Vector3 acceleration_ = {0,0,0};
+    Vector3 position_ = {0,0,0};
     Gravity* gravity_comp_ = nullptr;
     Drag* drag_comp_ = nullptr;
     

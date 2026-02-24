@@ -11,7 +11,7 @@ class CTransform : IUpdateable
     DirectX::XMFLOAT4X4 world_ = DirectX::XMFLOAT4X4();
     DirectX::XMFLOAT3 rotation_ = DirectX::XMFLOAT3();
     DirectX::XMFLOAT3 scale_ = DirectX::XMFLOAT3();
-    Vector3 position_;
+    Vector3 position_ = {0,0,0};
     GameObject* parent_ = nullptr;
     
 public:
