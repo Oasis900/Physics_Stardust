@@ -20,3 +20,4 @@ Oscar Freeman | f017956n GDEV50017 Artefact Assignment
 - SPACE & SHIFT - Y axis movement
 - 1 - Enter Camera Control Mode
 - 2 - Select Sun; 3 - Select Planet; WASD - X and Z axis acceleration; Space and Shift - Y axis acceleration
+- TAB - Toggle Gravity off/on
